@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/png" href="favicon.png"/>
+  <title>Sky Tu Luz — Velas Artesanales & Aromas</title>
+  <meta name="description" content="Velas artesanales hechas con alma para transformar cualquier momento en una experiencia única. Sky Tu Luz, Zumarraga."/>
+  
+  <!-- Tailwind CSS & FontAwesome -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+  <!-- Three.js for 3D elements -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --brand-cream: #eee5d3;
+      --brand-beige: #eee5d3;
+      --brand-dark: #2c2c2c;
+      --brand-accent: #b89b72;
+      --brand-accent-glow: rgba(184, 155, 114, 0.4);
+    }
+
+    html, body {
+      font-family: 'Inter', sans-serif;
+      color: #2c2c2c;
+      background-color: #eee5d3 !important;
+      overflow-x: hidden;
+    }
+
+    /* 3D Perspective Scroll Container */
+    .perspective-container {
+      perspective: 1000px;
+      perspective-origin: 50% 50%;
+    }
+    .card-3d-scroll {
+      transform-style: preserve-3d;
+      will-change: transform;
+      transition: transform 0.1s ease-out;
+    }
+
+    h1, h2, h3, h4, .font-serif {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .font-dancing {
+      font-family: 'Dancing Script', cursive;
+    }
+
+    /* Liquid Glass Aesthetic */
+    .liquid-glass {
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 20px 50px rgba(44, 44, 44, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.95);
+    }
+
+    .liquid-glass-dark {
+      background: rgba(28, 28, 30, 0.85);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    }
+
+    /* Smooth Hover Animations & Shadows */
+    .card-hover {
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .card-hover:hover {
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 25px 50px -12px rgba(44, 44, 44, 0.12);
+    }
+
+    .img-rounded-zoom {
+      border-radius: 1.75rem;
+      overflow: hidden;
+    }
+    .img-rounded-zoom img, .img-rounded-zoom video {
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .img-rounded-zoom:hover img, .img-rounded-zoom:hover video {
+      transform: scale(1.06);
+    }
+
+    /* Glow Button Effect */
+    .btn-glow {
+      position: relative;
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+    .btn-glow::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.6s ease;
+    }
+    .btn-glow:hover::after {
+      left: 100%;
+    }
+
+    /* Custom Toast Notification Animation */
+    @keyframes slideInRight {
+      from { transform: translateX(120%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slideOutRight {
+      from { transform: translateX(0); opacity: 1; }
+      to { transform: translateX(120%); opacity: 0; }
+    }
+    .toast-enter {
+      animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .toast-exit {
+      animation: slideOutRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Scroll Reveal Animations */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Heart pulse effect */
+    .heart-active {
+      color: #ef4444 !important;
+      animation: heartPulse 0.3s ease-in-out;
+    }
+    @keyframes heartPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body class="antialiased font-light text-gray-800">
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+  <!-- Search Modal Overlay -->
+  <div id="search-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
+    <div class="bg-[#faf8f5] rounded-3xl p-8 max-w-xl w-full shadow-2xl border border-[#b89b72]/20 transform scale-95 transition-transform duration-300" id="search-modal-content">
+      <div class="flex justify-between items-center mb-6">
+        <h3 class="text-2xl font-serif text-[#2c2c2c]">Buscar en Sky Tu Luz</h3>
+        <button id="close-search-btn" class="w-10 h-10 rounded-full bg-gray-100 hover:bg-[#b89b72] hover:text-white transition-colors flex items-center justify-center text-gray-600">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="relative">
+        <input type="text" id="search-input" placeholder="Escribe tu aroma o producto favorito..." class="w-full pl-12 pr-4 py-4 rounded-2xl border border-gray-200 focus:border-[#b89b72] focus:ring-2 focus:ring-[#b89b72]/20 outline-none text-gray-800 placeholder-gray-400 bg-white">
+        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg"></i>
+      </div>
+      <div class="mt-4 flex flex-wrap gap-2 text-xs">
+        <span class="text-gray-400">Populares:</span>
+        <button class="px-3 py-1 bg-white border border-gray-200 rounded-full hover:border-[#b89b72] hover:text-[#b89b72] transition-colors tag-search">Vainilla</button>
+        <button class="px-3 py-1 bg-white border border-gray-200 rounded-full hover:border-[#b89b72] hover:text-[#b89b72] transition-colors tag-search">Brisa</button>
+        <button class="px-3 py-1 bg-white border border-gray-200 rounded-full hover:border-[#b89b72] hover:text-[#b89b72] transition-colors tag-search">Bosque</button>
+        <button class="px-3 py-1 bg-white border border-gray-200 rounded-full hover:border-[#b89b72] hover:text-[#b89b72] transition-colors tag-search">Personalizadas</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-[#faf8f5] p-8 shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300" id="cart-drawer-content">
+      <div class="flex justify-between items-center border-b border-gray-200 pb-6 mb-6">
+        <h3 class="text-2xl font-serif text-[#2c2c2c] flex items-center gap-3">
+          <i class="fa-solid fa-bag-shopping text-[#b89b72]"></i> Tu Carrito
+        </h3>
+        <button id="close-cart-btn" class="w-10 h-10 rounded-full bg-gray-100 hover:bg-[#b89b72] hover:text-white transition-colors flex items-center justify-center text-gray-600">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div id="cart-items-list" class="flex-grow overflow-y-auto space-y-4 pr-1">
+        <!-- Cart Items Inserted JS Dynamic -->
+      </div>
+      <div class="border-t border-gray-200 pt-6 mt-4">
+        <div class="flex justify-between text-lg font-serif mb-6">
+          <span>Total estimado</span>
+          <span id="cart-total-price" class="font-bold text-[#b89b72]">0,00 €</span>
+        </div>
+        <button id="checkout-btn" class="w-full bg-[#2c2c2c] text-white py-4 rounded-2xl font-medium tracking-wider uppercase hover:bg-[#b89b72] transition-all duration-300 shadow-lg btn-glow flex items-center justify-center gap-2">
+          <span>Procesar Pedido</span>
+          <i class="fa-solid fa-arrow-right text-xs"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIQUID GLASS APPLE DYNAMIC ISLAND -->
+  <header class="fixed top-6 left-1/2 -translate-x-1/2 z-40">
+    <div id="dynamic-island" class="liquid-glass rounded-full px-5 py-2.5 flex items-center gap-3 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-2xl border border-white/80 select-none">
+      
+      <!-- Logo Capsule -->
+      <a href="#inicio" class="flex items-center gap-2 text-[#2c2c2c] font-serif text-base tracking-tight hover:opacity-80 transition-opacity">
+        <span class="w-7 h-7 rounded-full bg-[#b89b72]/20 border border-[#b89b72]/40 flex items-center justify-center text-[#b89b72] text-xs shadow-inner">
+          <i class="fa-solid fa-fire-flame-curved animate-pulse"></i>
+        </span>
+        <span class="font-semibold text-sm tracking-wide text-[#2c2c2c]">Sky Tu Luz</span>
+      </a>
+
+      <!-- Decompress / Expand Toggle Button -->
+      <button id="island-toggle-btn" class="w-8 h-8 rounded-full bg-white/70 hover:bg-[#b89b72] hover:text-white text-[#2c2c2c] flex items-center justify-center transition-all duration-300 shadow-sm ml-1" title="Descomprimir Menú">
+        <i id="island-toggle-icon" class="fa-solid fa-bars text-xs transition-transform duration-300"></i>
+      </button>
+
+      <!-- Expandable Navigation links (Compressed by default, decompresses on click) -->
+      <nav id="island-nav" class="max-w-0 opacity-0 overflow-hidden flex items-center gap-5 text-[11px] font-semibold tracking-widest uppercase text-[#2c2c2c] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] whitespace-nowrap">
+        <a class="hover:text-[#b89b72] transition-colors" href="#inicio">Inicio</a>
+        <a class="hover:text-[#b89b72] transition-colors" href="#tienda">Tienda</a>
+        <a class="hover:text-[#b89b72] transition-colors" href="#nosotros">Nosotros</a>
+        <a class="hover:text-[#b89b72] transition-colors" href="#experiencia">Experiencia</a>
+        <a class="hover:text-[#b89b72] transition-colors" href="#contacto">Contacto</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2 border-l border-[#2c2c2c]/10 pl-3">
+        <button id="open-search-btn" class="w-8 h-8 rounded-full hover:bg-black/5 flex items-center justify-center text-[#2c2c2c] hover:text-[#b89b72] transition-colors text-sm" title="Buscar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        <button id="open-cart-btn" class="w-8 h-8 rounded-full hover:bg-black/5 flex items-center justify-center text-[#2c2c2c] hover:text-[#b89b72] transition-colors relative text-sm" title="Carrito">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span id="cart-badge" class="absolute -top-1 -right-1 w-4 h-4 bg-[#b89b72] text-white text-[9px] font-bold rounded-full flex items-center justify-center shadow-md scale-0 transition-transform duration-300">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION WITH VIDEO BACKGROUND -->
+  <section id="inicio" class="relative h-screen min-h-[650px] flex items-center pt-16 overflow-hidden">
+    <!-- Video background full fit with warm beige background -->
+    <div class="absolute inset-0 z-0 bg-[#eee5d3]">
+      <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-100">
+        <source src="Candle_flames_flicker_quietly_202608050031.mp4" type="video/mp4"/>
+        Tu navegador no soporta reproducción de video.
+      </video>
+      <!-- Bottom gradient overlay to blend seamlessly -->
+      <div class="absolute bottom-0 left-0 right-0 h-56 bg-gradient-to-t from-[#eee5d3] via-[#eee5d3]/80 to-transparent pointer-events-none"></div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-[#2c2c2c]/80 text-xs tracking-widest uppercase animate-bounce drop-shadow-md">
+      <span class="text-[10px]">Descubre más</span>
+      <i class="fa-solid fa-chevron-down text-xs"></i>
+    </div>
+  </section>
+
+  <!-- FEATURED PRODUCTS SECTION -->
+  <section id="tienda" class="py-28 px-6 bg-[#eee5d3]">
+    <div class="container mx-auto max-w-7xl">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-12 fade-up">
+        <div>
+          <span class="font-dancing text-[#b89b72] text-3xl block mb-1">Colección Artesanal</span>
+          <h2 class="text-4xl md:text-5xl font-serif text-[#2c2c2c]">Velas &amp; Esencias Puras</h2>
+        </div>
+        
+        <!-- Filter Tabs -->
+        <div class="flex flex-wrap gap-2 mt-6 md:mt-0 bg-white/70 backdrop-blur-md p-1.5 rounded-full border border-gray-200 shadow-sm">
+          <button class="filter-tab-btn active px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#2c2c2c] text-white transition-all shadow-sm" data-filter="all">Todas</button>
+          <button class="filter-tab-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider text-gray-600 hover:text-[#b89b72] transition-all" data-filter="aromaticas">Aromáticas</button>
+          <button class="filter-tab-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider text-gray-600 hover:text-[#b89b72] transition-all" data-filter="personalizadas">Personalizadas</button>
+          <button class="filter-tab-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider text-gray-600 hover:text-[#b89b72] transition-all" data-filter="limitadas">Edición Limitada</button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Product 1 -->
+        <div class="product-item group card-hover bg-[#faf8f5] p-5 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-category="aromaticas">
+          <div>
+            <div class="relative img-rounded-zoom aspect-square mb-5 bg-[#f5f3ef]">
+              <img alt="Vela Ámbar & Vainilla" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6e1hWyTdoqLvQbdSI3O0ZNUxuu4YKLcLzFiQ7UDX6I2nsL4n0NKQRX7Utds44QJRRf0u3GiSpHMOdZi0K4F5Iu2lJPNE5ZP4fG2dBih9WuyGCI72Pd8MIS3pJYr0ZIHsw2GW2ZvBOuHXoW4FiCiHDCQ-sFWvbBuZORn7lZCCaDxZqwEBYdWlGC7yzkHaZO-1TfQrnAhPAZ0CrxRe8FioRag5tYv7wFX_GgvWzhDYoLobz0bx7buXJfQ"/>
+              <button class="like-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-colors shadow-sm" data-product="Vela Ámbar & Vainilla">
+                <i class="fa-regular fa-heart"></i>
+              </button>
+              <span class="absolute top-3 left-3 bg-[#b89b72] text-white text-[10px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full shadow-sm">Top Ventas</span>
+              <span class="absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1">
+                <i class="fa-regular fa-clock text-amber-400"></i> 45h Combustión
+              </span>
+            </div>
+            
+            <div class="flex items-center gap-1.5 text-[10px] font-semibold text-[#b89b72] uppercase tracking-wider mb-1">
+              <i class="fa-solid fa-seedling"></i> 100% Cera de Soja Natural
+            </div>
+            <h3 class="text-xl font-serif text-[#2c2c2c] mb-1">Vela Ámbar &amp; Vainilla</h3>
+            <p class="text-xs text-gray-500 mb-3 font-light leading-relaxed">Notas dulces de vainilla bourbon y cálidas ráfagas de ámbar silvestre.</p>
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between pt-3 border-t border-gray-100 mt-2">
+              <div>
+                <div class="flex items-center text-xs text-[#b89b72] mb-0.5">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                  <span class="text-gray-400 text-[10px] ml-1">(48)</span>
+                </div>
+                <p class="text-xl font-bold text-[#2c2c2c]">22,00 €</p>
+              </div>
+              <button class="add-to-cart-btn bg-[#2c2c2c] hover:bg-[#b89b72] text-white px-4 py-2.5 rounded-full text-xs font-semibold transition-all duration-300 shadow-md flex items-center gap-2 btn-glow" data-id="p1" data-name="Vela Ámbar & Vainilla" data-price="22.00" data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuD6e1hWyTdoqLvQbdSI3O0ZNUxuu4YKLcLzFiQ7UDX6I2nsL4n0NKQRX7Utds44QJRRf0u3GiSpHMOdZi0K4F5Iu2lJPNE5ZP4fG2dBih9WuyGCI72Pd8MIS3pJYr0ZIHsw2GW2ZvBOuHXoW4FiCiHDCQ-sFWvbBuZORn7lZCCaDxZqwEBYdWlGC7yzkHaZO-1TfQrnAhPAZ0CrxRe8FioRag5tYv7wFX_GgvWzhDYoLobz0bx7buXJfQ">
+                <i class="fa-solid fa-bag-shopping text-xs"></i>
+                <span>Añadir</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-item group card-hover bg-[#faf8f5] p-5 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-category="aromaticas">
+          <div>
+            <div class="relative img-rounded-zoom aspect-square mb-5 bg-[#f5f3ef]">
+              <img alt="Vela Brisa de Algodón" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUq5voZisOhc0myXDaA4Xa3YLwn-Kzin8LLBwvl95sHiM9mcbBxJb78h0ByTdJkAGhDbdtByNkkbO-W6OMBNhCGuQpKZKySYVjt-K_w7pxT_LO5XkDDPmQxjbnc8KumI34h1plAvC0lUVvsTKx9Sjn_6UnBInd0lQOHUZuTGIcn4g_s9Wg5K555svJsk2aaDQCDgB0qVC5TecszFRK-4XQxFQcRFyVlHu3It_kJs87LBSOkragNvq_Uw"/>
+              <button class="like-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-colors shadow-sm" data-product="Vela Brisa de Algodón">
+                <i class="fa-regular fa-heart"></i>
+              </button>
+              <span class="absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1">
+                <i class="fa-regular fa-clock text-amber-400"></i> 40h Combustión
+              </span>
+            </div>
+            
+            <div class="flex items-center gap-1.5 text-[10px] font-semibold text-[#b89b72] uppercase tracking-wider mb-1">
+              <i class="fa-solid fa-[#wind]"></i> Aroma Fresco & Clean
+            </div>
+            <h3 class="text-xl font-serif text-[#2c2c2c] mb-1">Vela Brisa de Algodón</h3>
+            <p class="text-xs text-gray-500 mb-3 font-light leading-relaxed">Sensación de sábanas limpias y flores blancas recién cortadas.</p>
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between pt-3 border-t border-gray-100 mt-2">
+              <div>
+                <div class="flex items-center text-xs text-[#b89b72] mb-0.5">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                  <span class="text-gray-400 text-[10px] ml-1">(36)</span>
+                </div>
+                <p class="text-xl font-bold text-[#2c2c2c]">20,00 €</p>
+              </div>
+              <button class="add-to-cart-btn bg-[#2c2c2c] hover:bg-[#b89b72] text-white px-4 py-2.5 rounded-full text-xs font-semibold transition-all duration-300 shadow-md flex items-center gap-2 btn-glow" data-id="p2" data-name="Vela Brisa de Algodón" data-price="20.00" data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuAUq5voZisOhc0myXDaA4Xa3YLwn-Kzin8LLBwvl95sHiM9mcbBxJb78h0ByTdJkAGhDbdtByNkkbO-W6OMBNhCGuQpKZKySYVjt-K_w7pxT_LO5XkDDPmQxjbnc8KumI34h1plAvC0lUVvsTKx9Sjn_6UnBInd0lQOHUZuTGIcn4g_s9Wg5K555svJsk2aaDQCDgB0qVC5TecszFRK-4XQxFQcRFyVlHu3It_kJs87LBSOkragNvq_Uw">
+                <i class="fa-solid fa-bag-shopping text-xs"></i>
+                <span>Añadir</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-item group card-hover bg-[#faf8f5] p-5 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-category="limitadas">
+          <div>
+            <div class="relative img-rounded-zoom aspect-square mb-5 bg-[#f5f3ef]">
+              <img alt="Vela Bosque Verde" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYRPKQbOGMWGQ1F3iCYmbrjJU2ZOSUgsXhp0nFNgFvW7Laq4rf5XFCkwdcuRLqrWaQuZZJxmW-M1PF8v_3gzBLghwl71aIDsfBC9C_HIV1kIwHHQOPCzjVMtla9B-ytQUGiPMngTBufh4Q5eP8NNqWTobT7Chd7Np3dhM5FewxLc8IwoXyapg-uwGIyy5F6Sj0MxGIwg2NOI2NTFFgS_J7qnuJEv_Cd-0AmmyuvBA4ZUd1_Ea9XTcgiw"/>
+              <button class="like-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-colors shadow-sm" data-product="Vela Bosque Verde">
+                <i class="fa-regular fa-heart"></i>
+              </button>
+              <span class="absolute top-3 left-3 bg-[#2c2c2c] text-white text-[10px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full shadow-sm">Edición Limitada</span>
+              <span class="absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1">
+                <i class="fa-regular fa-clock text-amber-400"></i> 50h Combustión
+              </span>
+            </div>
+            
+            <div class="flex items-center gap-1.5 text-[10px] font-semibold text-[#b89b72] uppercase tracking-wider mb-1">
+              <i class="fa-solid fa-tree"></i> Pino Silvestre &amp; Cedro
+            </div>
+            <h3 class="text-xl font-serif text-[#2c2c2c] mb-1">Vela Bosque Verde</h3>
+            <p class="text-xs text-gray-500 mb-3 font-light leading-relaxed">Esencia amaderada intensa inspirada en los bosques del norte.</p>
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between pt-3 border-t border-gray-100 mt-2">
+              <div>
+                <div class="flex items-center text-xs text-[#b89b72] mb-0.5">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                  <span class="text-gray-400 text-[10px] ml-1">(82)</span>
+                </div>
+                <p class="text-xl font-bold text-[#2c2c2c]">22,00 €</p>
+              </div>
+              <button class="add-to-cart-btn bg-[#2c2c2c] hover:bg-[#b89b72] text-white px-4 py-2.5 rounded-full text-xs font-semibold transition-all duration-300 shadow-md flex items-center gap-2 btn-glow" data-id="p3" data-name="Vela Bosque Verde" data-price="22.00" data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuDYRPKQbOGMWGQ1F3iCYmbrjJU2ZOSUgsXhp0nFNgFvW7Laq4rf5XFCkwdcuRLqrWaQuZZJxmW-M1PF8v_3gzBLghwl71aIDsfBC9C_HIV1kIwHHQOPCzjVMtla9B-ytQUGiPMngTBufh4Q5eP8NNqWTobT7Chd7Np3dhM5FewxLc8IwoXyapg-uwGIyy5F6Sj0MxGIwg2NOI2NTFFgS_J7qnuJEv_Cd-0AmmyuvBA4ZUd1_Ea9XTcgiw">
+                <i class="fa-solid fa-bag-shopping text-xs"></i>
+                <span>Añadir</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-item group card-hover bg-[#faf8f5] p-5 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-category="personalizadas">
+          <div>
+            <div class="relative img-rounded-zoom aspect-square mb-5 bg-[#f5f3ef]">
+              <img alt="Vela Flor de Cerezo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1-hzjXCB65RreXOqYEIQV9m_Su13GD2eZWsI5f5C_UwXZQkuQxuaX-DUYirfi9BGBkCx87b9GeTtBCLZanuBbRL__4pEpLhrYy1eLBSILlN44AuDamlbKldrkgoZpzeZmB5OGhDyIG5L3HLvCi3Aa6aHzo5R3KhIyJW7qe-aWk5q5ELJor0puNutFWNiG5udbcAFKYhoSNbW90q_XTd2nkk9t63wzVXyG48_JbjCJYMMzgPkqRjON4A"/>
+              <button class="like-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-colors shadow-sm" data-product="Vela Flor de Cerezo">
+                <i class="fa-regular fa-heart"></i>
+              </button>
+              <span class="absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1">
+                <i class="fa-regular fa-clock text-amber-400"></i> 45h Combustión
+              </span>
+            </div>
+            
+            <div class="flex items-center gap-1.5 text-[10px] font-semibold text-[#b89b72] uppercase tracking-wider mb-1">
+              <i class="fa-solid fa-spa"></i> Sakura &amp; Pétalos Dulces
+            </div>
+            <h3 class="text-xl font-serif text-[#2c2c2c] mb-1">Vela Flor de Cerezo</h3>
+            <p class="text-xs text-gray-500 mb-3 font-light leading-relaxed">Delicada mezcla floral relajante ideal para meditación y baños.</p>
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between pt-3 border-t border-gray-100 mt-2">
+              <div>
+                <div class="flex items-center text-xs text-[#b89b72] mb-0.5">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                  <span class="text-gray-400 text-[10px] ml-1">(41)</span>
+                </div>
+                <p class="text-xl font-bold text-[#2c2c2c]">21,00 €</p>
+              </div>
+              <button class="add-to-cart-btn bg-[#2c2c2c] hover:bg-[#b89b72] text-white px-4 py-2.5 rounded-full text-xs font-semibold transition-all duration-300 shadow-md flex items-center gap-2 btn-glow" data-id="p4" data-name="Vela Flor de Cerezo" data-price="21.00" data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuA1-hzjXCB65RreXOqYEIQV9m_Su13GD2eZWsI5f5C_UwXZQkuQxuaX-DUYirfi9BGBkCx87b9GeTtBCLZanuBbRL__4pEpLhrYy1eLBSILlN44AuDamlbKldrkgoZpzeZmB5OGhDyIG5L3HLvCi3Aa6aHzo5R3KhIyJW7qe-aWk5q5ELJor0puNutFWNiG5udbcAFKYhoSNbW90q_XTd2nkk9t63wzVXyG48_JbjCJYMMzgPkqRjON4A">
+                <i class="fa-solid fa-bag-shopping text-xs"></i>
+                <span>Añadir</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORY CARDS SECTION -->
+  <section id="experiencia" class="py-24 px-6 relative z-20">
+    <div class="container mx-auto max-w-6xl">
+      <div class="text-center mb-16 fade-up">
+        <span class="font-dancing text-[#b89b72] text-3xl block">Colecciones</span>
+        <h2 class="text-4xl font-serif text-[#2c2c2c]">Encuentra Tu Aroma Ideal</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Card 1 -->
+        <div class="card-hover bg-[#faf8f5] p-10 text-center rounded-3xl shadow-xl shadow-gray-200/50 border border-gray-200/60 flex flex-col items-center h-80">
+          <div class="w-16 h-16 rounded-full bg-[#f5f3ef] flex items-center justify-center text-[#b89b72] text-2xl mb-6 shadow-inner">
+            <i class="fa-solid fa-leaf"></i>
+          </div>
+          <h3 class="text-2xl font-serif text-[#2c2c2c] mb-3">Velas Aromáticas</h3>
+          <p class="text-gray-500 mb-8 text-xs leading-relaxed font-light">Aromas que transforman el ambiente de tu hogar con serenidad.</p>
+          <button class="category-btn text-xs tracking-widest font-semibold uppercase text-[#2c2c2c] hover:text-[#b89b72] transition-colors flex items-center gap-2 mt-auto" data-[#cat]="Aromáticas">
+            <span>Ver Colección</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </button>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card-hover bg-[#faf8f5] p-10 text-center rounded-3xl shadow-xl shadow-gray-200/50 border border-gray-200/60 flex flex-col items-center h-80">
+          <div class="w-16 h-16 rounded-full bg-[#f5f3ef] flex items-center justify-center text-[#b89b72] text-2xl mb-6 shadow-inner">
+            <i class="fa-solid fa-gift"></i>
+          </div>
+          <h3 class="text-2xl font-serif text-[#2c2c2c] mb-3">Regalos Personalizados</h3>
+          <p class="text-gray-500 mb-8 text-xs leading-relaxed font-light">Detalles únicos y velas con mensajes personalizados para momentos especiales.</p>
+          <button class="category-btn text-xs tracking-widest font-semibold uppercase text-[#2c2c2c] hover:text-[#b89b72] transition-colors flex items-center gap-2 mt-auto" data-cat="Personalizados">
+            <span>Descubrir Más</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </button>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card-hover bg-[#faf8f5] p-10 text-center rounded-3xl shadow-xl shadow-gray-200/50 border border-gray-200/60 flex flex-col items-center h-80">
+          <div class="w-16 h-16 rounded-full bg-[#f5f3ef] flex items-center justify-center text-[#b89b72] text-2xl mb-6 shadow-inner">
+            <i class="fa-solid fa-sparkles"></i>
+          </div>
+          <h3 class="text-2xl font-serif text-[#2c2c2c] mb-3">Ediciones Especiales</h3>
+          <p class="text-gray-600 mb-8 text-xs leading-relaxed font-light">Colecciones de temporada producidas en tiradas pequeñas y exclusivas.</p>
+          <button class="category-btn text-xs tracking-widest font-semibold uppercase text-[#2c2c2c] hover:text-[#b89b72] transition-colors flex items-center gap-2 mt-auto" data-cat="Especiales">
+            <span>Explorar</span>
+            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND STORY SECTION -->
+  <section id="nosotros" class="bg-[#eee5d3] py-24 px-6 md:px-16 overflow-hidden">
+    <div class="container mx-auto max-w-7xl">
+      <div class="flex flex-col lg:flex-row items-center gap-16">
+        <div class="lg:w-1/2 img-rounded-zoom rounded-3xl shadow-2xl relative">
+          <img alt="Proceso de creación de velas artesanales" class="w-full h-[500px] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCv-s7pm7tOFJep87nYyT_ylUlFDgMrcj-SPXgbHCpA6zIbSqyJ_XlH0OXnOJFG8JnVuH_cSBt13zTCHgpjw_epDvMpPZ5rmSxMVbcBXwmlBPNpsNy3ASPxehoDM-3xXHrYxMtpgb6DJO-nWJLJSHVdr95cZ_3l5RASXH08TQH4cFwkbFX0o2SOL_4Y1RJGlJrqhmTz0aWgpnQiC4GrR6_EYY1-jqcmzDgZ4gGdU3-CpMyoIShko_epRw"/>
+          <div class="absolute bottom-6 right-6 bg-[#faf8f5]/95 backdrop-blur-md p-6 rounded-2xl shadow-lg border border-gray-200/80 hidden sm:block">
+            <p class="font-serif text-3xl text-[#2c2c2c]">100%</p>
+            <p class="text-xs uppercase tracking-wider text-[#b89b72] font-semibold">Cera Vegetal Natural</p>
+          </div>
+        </div>
+
+        <div class="lg:w-1/2 fade-up">
+          <span class="font-dancing text-[#b89b72] text-3xl block mb-2">Hechas con alma</span>
+          <h2 class="text-4xl lg:text-5xl font-serif text-[#2c2c2c] mb-6 leading-tight">Artesanía, Amor &amp; Cuidado en Cada Detalle</h2>
+          <p class="text-gray-700 text-base leading-relaxed mb-10 font-light">
+            En Sky Tu Luz elaboramos cada vela a mano de forma artesanal. Seleccionamos cuidadosamente ceras vegetales de soya, esencias aromáticas puras de la más alta calidad y mechas de algodón ecológico. Ponemos alma en cada proceso para regalarte momentos inolvidables de calma y bienestar.
+          </p>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+            <div class="p-4 bg-[#faf8f5] shadow-sm backdrop-blur-sm rounded-2xl border border-gray-200/80">
+              <i class="fa-solid fa-hand-sparkles text-2xl text-[#b89b72] mb-2"></i>
+              <span class="text-xs font-semibold uppercase tracking-wide text-gray-700 block">Hecho a mano</span>
+            </div>
+            <div class="p-4 bg-[#faf8f5] shadow-sm backdrop-blur-sm rounded-2xl border border-gray-200/80">
+              <i class="fa-solid fa-leaf text-2xl text-[#b89b72] mb-2"></i>
+              <span class="text-xs font-semibold uppercase tracking-wide text-gray-700 block">Ecológico</span>
+            </div>
+            <div class="p-4 bg-[#faf8f5] shadow-sm backdrop-blur-sm rounded-2xl border border-gray-200/80">
+              <i class="fa-solid fa-wind text-2xl text-[#b89b72] mb-2"></i>
+              <span class="text-xs font-semibold uppercase tracking-wide text-gray-700 block">Aromas únicos</span>
+            </div>
+            <div class="p-4 bg-[#faf8f5] shadow-sm backdrop-blur-sm rounded-2xl border border-gray-200/80">
+              <i class="fa-regular fa-star text-2xl text-[#b89b72] mb-2"></i>
+              <span class="text-xs font-semibold uppercase tracking-wide text-gray-700 block">Propósito</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="py-24 px-6 bg-[#eee5d3]">
+    <div class="container mx-auto max-w-7xl">
+      <h2 class="text-4xl font-serif text-[#2c2c2c] text-center mb-16 fade-up">¿Por qué elegir Sky Tu Luz?</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="card-hover bg-[#faf8f5] border border-gray-200/60 p-8 rounded-3xl flex flex-col items-start shadow-md">
+          <div class="w-14 h-14 bg-[#eee5d3]/50 rounded-2xl flex items-center justify-center shadow-sm mb-6 text-[#b89b72] text-2xl">
+            <i class="fa-regular fa-sun"></i>
+          </div>
+          <h3 class="text-xl font-serif text-[#2c2c2c] mb-3">Elaboración Artesanal</h3>
+          <p class="text-gray-600 text-sm leading-relaxed font-light">Vertidas a mano una a una con máxima dedicación y supervisión de calidad.</p>
+        </div>
+
+        <div class="card-hover bg-[#faf8f5] border border-gray-200/60 p-8 rounded-3xl flex flex-col items-start shadow-md">
+          <div class="w-14 h-14 bg-[#eee5d3]/50 rounded-2xl flex items-center justify-center shadow-sm mb-6 text-[#b89b72] text-2xl">
+            <i class="fa-solid fa-seedling"></i>
+          </div>
+          <h3 class="text-xl font-serif text-[#2c2c2c] mb-3">Ingredientes Botánicos</h3>
+          <p class="text-gray-600 text-sm leading-relaxed font-light">Sin parafinas ni tóxicos. Ceras de soya limpias para una combustión duradera.</p>
+        </div>
+
+        <div class="card-hover bg-[#faf8f5] border border-gray-200/60 p-8 rounded-3xl flex flex-col items-start shadow-md">
+          <div class="w-14 h-14 bg-[#eee5d3]/50 rounded-2xl flex items-center justify-center shadow-sm mb-6 text-[#b89b72] text-2xl">
+            <i class="fa-solid fa-box-open"></i>
+          </div>
+          <h3 class="text-xl font-serif text-[#2c2c2c] mb-3">Empaque Elegante</h3>
+          <p class="text-gray-600 text-sm leading-relaxed font-light">Presentaciones cuidadas ideales para sorprender con un regalo especial.</p>
+        </div>
+
+        <div class="card-hover bg-[#faf8f5] border border-gray-200/60 p-8 rounded-3xl flex flex-col items-start shadow-md">
+          <div class="w-14 h-14 bg-[#eee5d3]/50 rounded-2xl flex items-center justify-center shadow-sm mb-6 text-[#b89b72] text-2xl">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+          </div>
+          <h3 class="text-xl font-serif text-[#2c2c2c] mb-3">Experiencia Olfativa</h3>
+          <p class="text-gray-600 text-sm leading-relaxed font-light">Combinaciones de esencias pensadas para evocar emociones y recuerdos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS SECTION -->
+  <section class="py-24 px-6 bg-[#eee5d3]">
+    <div class="container mx-auto max-w-7xl">
+      <div class="text-center mb-16 fade-up">
+        <span class="font-dancing text-[#b89b72] text-3xl block">Testimonios</span>
+        <h2 class="text-4xl font-serif text-[#2c2c2c]">Lo Que Dicen Nuestras Clientas</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="card-hover bg-[#faf8f5] p-8 rounded-3xl shadow-md border border-gray-200/60 flex flex-col justify-between">
+          <div>
+            <div class="flex text-[#b89b72] text-sm mb-4">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-gray-700 italic mb-6 font-light leading-relaxed">"Las velas huelen increíble incluso apagadas. El ambiente que crean en el salón es cálido e inigualable."</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <img alt="Nerea A." class="w-12 h-12 rounded-full object-cover border-2 border-[#b89b72]/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0-J35Tba58F91G69MkqOyACOf4_x1EFkUSa49B7dRuaqQQewDi_m9QEliVV7aOHUp9rrJP6E8H1vYF5MbZWoCzblJ0-kr940VSTzHO51i3qHshRsfAOyyq7bolNBc0o-nAtP1NuNXL3oMOtXtT-Vega8FQouc8_ZB4ScCFFb3DnJHM61QXJbA7PxinsRxo4_fYnboGjXkiB2Xhs3O8ZvCXUYjy-BuA_cCOHLMz7UIYK6nGfIWuuQYUw"/>
+            <div>
+              <p class="font-medium text-[#2c2c2c]">Nerea A.</p>
+              <p class="text-xs text-gray-400">Clienta Verificada</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-hover bg-[#faf8f5] p-8 rounded-3xl shadow-md border border-gray-200/60 flex flex-col justify-between">
+          <div>
+            <div class="flex text-[#b89b72] text-sm mb-4">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-gray-700 italic mb-6 font-light leading-relaxed">"Encargué velas personalizadas como recuerdo y fue el regalo perfecto. La presentación cuidada al máximo."</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <img alt="Maialen R." class="w-12 h-12 rounded-full object-cover border-2 border-[#b89b72]/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJ956ssQab6ULfnHmRWp_nDtKIJT5MIhJ-5OoEmCjJUE5xbdXfRaGUEs2dA1_XQKg4MMF5bmKZ7KaAkkg1ZHNh9uTss9mfOtso5XEZiO-ilhudTN9_4t-onJzWGqHk9lsSDdEBPuaiJSwY_vH2h8_mMt3Ub83CXDSuYtuluLnD4ctfeYqeZ4LmWKBf56foeg-wCBiaddyBDgH4cUVgmarwy7-DQEuJxozGAiOG3o3sQg2Co3KDbu-_Nw"/>
+            <div>
+              <p class="font-medium text-[#2c2c2c]">Maialen R.</p>
+              <p class="text-xs text-gray-400">Clienta Verificada</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-hover bg-[#faf8f5] p-8 rounded-3xl shadow-md border border-gray-200/60 flex flex-col justify-between">
+          <div>
+            <div class="flex text-[#b89b72] text-sm mb-4">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-gray-700 italic mb-6 font-light leading-relaxed">"Se nota el cariño en cada detalle. La mecha arde de forma limpia y duradera. Repetiré sin duda."</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <img alt="Leire G." class="w-12 h-12 rounded-full object-cover border-2 border-[#b89b72]/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkrQojJ6An4HatMkWSMD78NvzmtiN_Dsrng_MjbOiuyAUuEhOTqwxMZDrhjXAusx19wDi3hf-DcEXfxX7_CNv3O94YAqM7jqvdeiCt-4Lddm1u8zEYsV7R-Z7j6taMrGvH4eG6J_c9roWzCAyuKiiHCyRjV98HSmbhvCoiL-aqEimlc18L8eO4UF0KgE1Lzi27JKsU1lMDl2xYUFsGj49ROcGNrNSRis4B_Jp-tRmXaUEswkXRG2FBEw"/>
+            <div>
+              <p class="font-medium text-[#2c2c2c]">Leire G.</p>
+              <p class="text-xs text-gray-400">Clienta Verificada</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT US SECTION -->
+  <section id="contacto" class="py-24 px-6 bg-[#eee5d3] relative">
+    <div class="container mx-auto max-w-6xl">
+      <div class="bg-[#faf8f5] rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row relative z-10 border border-gray-200/80">
+        <!-- Map image -->
+        <div class="md:w-1/3 img-rounded-zoom relative min-h-[320px]">
+          <img alt="Mapa de ubicación Zumarraga" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSJlg1Nc8-CHBriGufMgGGc-MXNNTcrS-9DN5wOVjiwLXt08pvGHbfUjD-Bt6WVbnyRvgf-Gy0Jx8Syhf2cPTGYkd1diSDlnb93kGC8nE2t5xQ5dZqF8yUYVDpe-WbtmFDc4VjebUEK2r_76BycoHq_VS107nQXQCadmrlWck_6gBS-v1kiTuLTXnPcC-Zl-Qz_qv6UnZp1aq6wISiANAVEYntbJVrZJ3OcOiQPcNqz5rM_rkyWyOk0Q"/>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <i class="fa-solid fa-location-dot text-5xl text-[#b89b72] drop-shadow-xl animate-bounce"></i>
+          </div>
+        </div>
+
+        <!-- Contact details -->
+        <div class="md:w-1/3 p-10 flex flex-col justify-center">
+          <span class="font-dancing text-[#b89b72] text-2xl block mb-1">Te esperamos</span>
+          <h2 class="text-3xl font-serif text-[#2c2c2c] mb-6">Visítanos</h2>
+          <div class="text-gray-600 space-y-4 text-sm leading-relaxed mb-8 font-light">
+            <p><i class="fa-solid fa-house-chimney text-[#b89b72] mr-2"></i><strong>Sky Tu Luz</strong><br/>Piedad Kalea 4<br/>Zumarraga, Guipúzcoa</p>
+            <p><i class="fa-solid fa-envelope text-[#b89b72] mr-2"></i><a class="hover:text-[#b89b72] transition-colors" href="mailto:skytuluz.tu@gmail.com">skytuluz.tu@gmail.com</a></p>
+            <p><i class="fa-solid fa-clock text-[#b89b72] mr-2"></i>Lunes - Viernes: 10:00 - 14:00 / 16:30 - 19:30<br/>Sábado: 10:00 - 14:00</p>
+          </div>
+          <button id="get-directions-btn" class="bg-[#2c2c2c] text-white px-7 py-3 rounded-full text-xs font-semibold tracking-widest uppercase hover:bg-[#b89b72] transition-all duration-300 w-max shadow-md btn-glow flex items-center gap-2">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>Cómo Llegar</span>
+          </button>
+        </div>
+
+        <!-- Store Image -->
+        <div class="md:w-1/3 img-rounded-zoom relative min-h-[320px]">
+          <img alt="Fachada de la tienda Sky Tu Luz" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhtKw6_IlcV-WFI1GxDhlxAM-lWRXwdjx4rdWqljGU-i-lPA9o5a-dgx1R0NHW7E2cUpEG-OJTjHv5sITiNM0_3msTv-xMittmvhrv9Tl2Vhqv1L1Dcy_4cvpmLiF87FN_XUuFKkC72mcdTlc29jjxFu-LBqBKBetXcVPR5BTSgrk1GIbkrNG560KJmAyOrEyF26dnkE4Glwfm6512cFpOJtuXwUggikALHt-kOUyoh4WktLmCanPvIQ"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       INSTAGRAM CINEMATIC SHOWCASE — ultra-premium, goal: MAX followers
+       ═══════════════════════════════════════════════════════════════ -->
+  <section id="instagram-3d-section" class="relative py-0 overflow-hidden" style="background:#251c14; min-height:100vh;">
+
+    <!-- WebGL Particle Canvas (candle sparks + stars) -->
+    <canvas id="ig-particles-canvas" class="absolute inset-0 w-full h-full z-0 pointer-events-none"></canvas>
+
+    <!-- Gradient overlays for smooth top transition into dark beige -->
+    <div class="absolute top-0 left-0 right-0 h-32 z-1 pointer-events-none" style="background: linear-gradient(to bottom, #eee5d3, #251c14);"></div>
+
+    <!-- Main Content Grid -->
+    <div class="relative z-10 container mx-auto max-w-7xl px-6 py-28 flex flex-col lg:flex-row items-center justify-between gap-16 min-h-screen">
+
+      <!-- LEFT: Copy & CTAs -->
+      <div class="lg:w-1/2 text-white text-center lg:text-left">
+        <!-- Live badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold uppercase tracking-widest text-pink-300 mb-6">
+          <span class="w-2 h-2 rounded-full bg-pink-400 animate-ping"></span>
+          Comunidad activa ahora mismo
+        </div>
+
+        <!-- Headline -->
+        <h2 class="text-5xl md:text-7xl font-serif leading-tight mb-4" style="background: linear-gradient(135deg, #fff 0%, #b89b72 50%, #ff85a2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+          Donde la llama<br/>cobra vida
+        </h2>
+
+        <p class="text-gray-300 text-base md:text-lg mb-8 font-light leading-relaxed max-w-md mx-auto lg:mx-0">
+          Únete a miles de personas que transforman sus hogares con luz artesanal. Síguenos y sé el primero en descubrir nuevas velas, sorteos exclusivos y contenido que enamora.
+        </p>
+
+        <!-- Social proof counters -->
+        <div class="flex flex-wrap gap-6 justify-center lg:justify-start mb-10">
+          <div class="text-center">
+            <div id="ig-follower-count" class="text-4xl font-bold text-white" style="font-family:'Playfair Display',serif;">3.4K</div>
+            <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Seguidores</div>
+          </div>
+          <div class="w-px bg-white/20 self-stretch"></div>
+          <div class="text-center">
+            <div class="text-4xl font-bold text-white" style="font-family:'Playfair Display',serif;">128</div>
+            <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Publicaciones</div>
+          </div>
+          <div class="w-px bg-white/20 self-stretch"></div>
+          <div class="text-center">
+            <div class="text-4xl font-bold text-white" style="font-family:'Playfair Display',serif;">98%</div>
+            <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Engagement</div>
+          </div>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+          <a id="instagram-cta-btn" href="https://instagram.com/skytuluz.tu" target="_blank"
+             class="group relative inline-flex items-center gap-3 px-8 py-4 rounded-2xl text-white text-sm font-bold overflow-hidden shadow-2xl transition-all duration-500 hover:scale-105 hover:shadow-pink-500/30"
+             style="background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);">
+            <span class="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity" style="background:white;"></span>
+            <i class="fa-brands fa-instagram text-xl"></i>
+            <span>Seguir @skytuluz.tu</span>
+            <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+          </a>
+          <button class="inline-flex items-center gap-2 px-6 py-4 rounded-2xl text-sm font-semibold text-white border border-white/30 backdrop-blur-md hover:bg-white/10 transition-all duration-300">
+            <i class="fa-solid fa-bell text-[#b89b72]"></i>
+            Activar notificaciones
+          </button>
+        </div>
+
+        <!-- Sorteo promo banner -->
+        <div class="mt-10 inline-flex items-start gap-4 p-5 rounded-2xl border border-[#b89b72]/30 max-w-sm mx-auto lg:mx-0" style="background: rgba(184,155,114,0.08); backdrop-filter: blur(12px);">
+          <div class="text-3xl">🎁</div>
+          <div>
+            <p class="text-white font-semibold text-sm mb-1">Sorteo esta semana</p>
+            <p class="text-gray-400 text-xs">Pack de velas artesanales valorado en <strong class="text-[#b89b72]">75€</strong>. Solo seguidores de Instagram.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:w-1/2 flex items-center justify-center">
+        <div id="ig-phone-scene" class="relative" style="width:320px; height:620px;">
+
+          <!-- iPhone body -->
+          <div id="ig-phone-3d" class="relative w-full h-full rounded-[3rem] border-2 border-white/20 overflow-hidden shadow-2xl"
+               style="background: #111; transform-style: preserve-3d; transition: transform 0.1s ease-out;">
+
+            <!-- Notch -->
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 bg-black rounded-b-2xl z-30"></div>
+
+            <!-- Instagram header inside phone -->
+            <div class="absolute top-0 left-0 right-0 z-20 pt-8 px-4 pb-3 flex items-center justify-between" style="background: linear-gradient(to bottom, #000, transparent);">
+              <span class="text-white text-xs font-bold tracking-wide" style="font-family:'Playfair Display',serif;">skytuluz.tu</span>
+              <div class="flex gap-2 items-center">
+                <i class="fa-brands fa-instagram text-white text-sm"></i>
+              </div>
+            </div>
+
+            <!-- Scrolling posts inside phone -->
+            <div id="phone-scroll-reel" class="absolute inset-0 flex flex-col" style="animation: phoneScroll 12s linear infinite;">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6e1hWyTdoqLvQbdSI3O0ZNUxuu4YKLcLzFiQ7UDX6I2nsL4n0NKQRX7Utds44QJRRf0u3GiSpHMOdZi0K4F5Iu2lJPNE5ZP4fG2dBih9WuyGCI72Pd8MIS3pJYr0ZIHsw2GW2ZvBOuHXoW4FiCiHDCQ-sFWvbBuZORn7lZCCaDxZqwEBYdWlGC7yzkHaZO-1TfQrnAhPAZ0CrxRe8FioRag5tYv7wFX_GgvWzhDYoLobz0bx7buXJfQ" class="w-full object-cover flex-shrink-0" style="height:340px;" alt="Post 1"/>
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUq5voZisOhc0myXDaA4Xa3YLwn-Kzin8LLBwvl95sHiM9mcbBxJb78h0ByTdJkAGhDbdtByNkkbO-W6OMBNhCGuQpKZKySYVjt-K_w7pxT_LO5XkDDPmQxjbnc8KumI34h1plAvC0lUVvsTKx9Sjn_6UnBInd0lQOHUZuTGIcn4g_s9Wg5K555svJsk2aaDQCDgB0qVC5TecszFRK-4XQxFQcRFyVlHu3It_kJs87LBSOkragNvq_Uw" class="w-full object-cover flex-shrink-0" style="height:340px;" alt="Post 2"/>
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYRPKQbOGMWGQ1F3iCYmbrjJU2ZOSUgsXhp0nFNgFvW7Laq4rf5XFCkwdcuRLqrWaQuZZJxmW-M1PF8v_3gzBLghwl71aIDsfBC9C_HIV1kIwHHQOPCzjVMtla9B-ytQUGiPMngTBufh4Q5eP8NNqWTobT7Chd7Np3dhM5FewxLc8IwoXyapg-uwGIyy5F6Sj0MxGIwg2NOI2NTFFgS_J7qnuJEv_Cd-0AmmyuvBA4ZUd1_Ea9XTcgiw" class="w-full object-cover flex-shrink-0" style="height:340px;" alt="Post 3"/>
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6e1hWyTdoqLvQbdSI3O0ZNUxuu4YKLcLzFiQ7UDX6I2nsL4n0NKQRX7Utds44QJRRf0u3GiSpHMOdZi0K4F5Iu2lJPNE5ZP4fG2dBih9WuyGCI72Pd8MIS3pJYr0ZIHsw2GW2ZvBOuHXoW4FiCiHDCQ-sFWvbBuZORn7lZCCaDxZqwEBYdWlGC7yzkHaZO-1TfQrnAhPAZ0CrxRe8FioRag5tYv7wFX_GgvWzhDYoLobz0bx7buXJfQ" class="w-full object-cover flex-shrink-0" style="height:340px;" alt="Post 4"/>
+            </div>
+
+            <!-- Bottom fade inside phone -->
+            <div class="absolute bottom-0 left-0 right-0 h-32 z-20" style="background: linear-gradient(to top, #000, transparent);"></div>
+
+            <!-- Heart burst overlay triggered by JS -->
+            <div id="heart-burst" class="absolute inset-0 z-25 pointer-events-none flex items-center justify-center opacity-0 transition-opacity duration-300">
+              <i class="fa-solid fa-heart text-red-500 text-6xl animate-bounce"></i>
+            </div>
+          </div>
+
+          <!-- Floating action pill cards -->
+          <div id="ig-float-1" class="absolute -left-16 top-24 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl px-4 py-3 flex items-center gap-2 shadow-xl ig-float-card" style="min-width:130px;">
+            <i class="fa-solid fa-heart text-red-400 text-sm"></i>
+            <div>
+              <p class="text-white text-xs font-bold">1.247 ❤️</p>
+              <p class="text-gray-400 text-[10px]">Me gustas</p>
+            </div>
+          </div>
+
+          <div id="ig-float-2" class="absolute -right-14 top-40 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl px-4 py-3 flex items-center gap-2 shadow-xl ig-float-card" style="min-width:120px;">
+            <i class="fa-solid fa-fire text-orange-400 text-sm"></i>
+            <div>
+              <p class="text-white text-xs font-bold">Trending 🔥</p>
+              <p class="text-gray-400 text-[10px]">Esta semana</p>
+            </div>
+          </div>
+
+          <div id="ig-float-3" class="absolute -left-20 bottom-36 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl px-4 py-3 flex items-center gap-2 shadow-xl ig-float-card" style="min-width:140px;">
+            <i class="fa-solid fa-user-plus text-sky-400 text-sm"></i>
+            <div>
+              <p class="text-white text-xs font-bold">+47 hoy</p>
+              <p class="text-gray-400 text-[10px]">Nuevos seguidores</p>
+            </div>
+          </div>
+
+          <div id="ig-float-4" class="absolute -right-16 bottom-20 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl px-4 py-3 flex items-center gap-2 shadow-xl ig-float-card" style="min-width:130px;">
+            <i class="fa-solid fa-trophy text-yellow-400 text-sm"></i>
+            <div>
+              <p class="text-white text-xs font-bold">10% DTO 🎁</p>
+              <p class="text-gray-400 text-[10px]">Solo seguidores</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    @keyframes phoneScroll {
+      0%   { transform: translateY(0); }
+      100% { transform: translateY(-66.6%); }
+    }
+    @keyframes igFloatA {
+      0%, 100% { transform: translateY(0px) rotate(-2deg); }
+      50%       { transform: translateY(-12px) rotate(2deg); }
+    }
+    @keyframes igFloatB {
+      0%, 100% { transform: translateY(0px) rotate(1deg); }
+      50%       { transform: translateY(-18px) rotate(-1deg); }
+    }
+    @keyframes igFloatC {
+      0%, 100% { transform: translateY(0px) rotate(-1deg); }
+      50%       { transform: translateY(-10px) rotate(3deg); }
+    }
+    @keyframes igFloatD {
+      0%, 100% { transform: translateY(0px) rotate(2deg); }
+      50%       { transform: translateY(-14px) rotate(-2deg); }
+    }
+    #ig-float-1 { animation: igFloatA 4s ease-in-out infinite; }
+    #ig-float-2 { animation: igFloatB 5s ease-in-out infinite; }
+    #ig-float-3 { animation: igFloatC 3.5s ease-in-out infinite; }
+    #ig-float-4 { animation: igFloatD 4.5s ease-in-out infinite; }
+
+    #ig-phone-3d { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+  </style>
+
+
+
+  <!-- CONTRAST DARK BEIGE-BROWN LUXURY FOOTER -->
+  <footer class="relative pt-24 pb-12 px-6 md:px-16 bg-[#251c14] text-white overflow-hidden border-t border-[#b89b72]/30">
+    <div class="container mx-auto max-w-7xl relative z-10">
+      <!-- Newsletter & Links Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-16">
+        <div class="lg:col-span-2 pr-0 lg:pr-8">
+          <div class="text-3xl font-serif text-white mb-3">
+            Sky<span class="text-xs font-sans tracking-widest uppercase block -mt-1 text-[#b89b72]">Tu Luz</span>
+          </div>
+          <p class="text-xs text-gray-300 mb-6 leading-relaxed font-light">
+            Velas artesanales creadas a mano con cera vegetal pura y esencias seleccionadas para iluminar y transformar cada rincón de tu hogar.
+          </p>
+          <div class="bg-[#33261c] p-4 rounded-2xl border border-white/10 shadow-sm mb-6">
+            <h5 class="text-xs font-semibold uppercase tracking-wider text-[#b89b72] mb-2">Recibe Ofertas Secretas</h5>
+            <div class="flex gap-2">
+              <input type="email" id="newsletter-email" placeholder="Tu correo electrónico..." class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-white/10 outline-none focus:border-[#b89b72] bg-[#251c14] text-white placeholder-gray-400"/>
+              <button id="newsletter-btn" class="bg-[#b89b72] text-white px-5 py-2.5 rounded-xl text-xs font-semibold hover:bg-white hover:text-[#2c2c2c] transition-colors whitespace-nowrap">Unirme</button>
+            </div>
+          </div>
+          <div class="flex space-x-3">
+            <button class="social-icon-btn w-9 h-9 rounded-full bg-[#33261c] border border-white/10 flex items-center justify-center text-gray-300 hover:bg-[#b89b72] hover:text-white transition-all shadow-sm" data-social="Instagram">
+              <i class="fa-brands fa-instagram text-sm"></i>
+            </button>
+            <button class="social-icon-btn w-9 h-9 rounded-full bg-[#33261c] border border-white/10 flex items-center justify-center text-gray-300 hover:bg-[#b89b72] hover:text-white transition-all shadow-sm" data-social="Email">
+              <i class="fa-regular fa-envelope text-sm"></i>
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-serif text-white mb-4 text-base font-semibold">Tienda</h4>
+          <ul class="space-y-2.5 text-xs text-gray-400 font-light">
+            <li><a class="footer-link hover:text-[#b89b72] transition-colors" href="#tienda">Velas aromáticas</a></li>
+            <li><a class="footer-link hover:text-[#b89b72] transition-colors" href="#tienda">Regalos personalizados</a></li>
+            <li><a class="footer-link hover:text-[#b89b72] transition-colors" href="#tienda">Ediciones especiales</a></li>
+            <li><a class="footer-link hover:text-[#b89b72] transition-colors" href="#tienda">Accesorios</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-serif text-white mb-4 text-base font-semibold">Información</h4>
+          <ul class="space-y-2.5 text-xs text-gray-400 font-light">
+            <li><a class="footer-link hover:text-[#b89b72] transition-colors" href="#nosotros">Sobre nosotros</a></li>
+            <li><a class="footer-link hover:text-[#b89b72] transition-colors" href="#contacto">Envíos y devoluciones</a></li>
+            <li><a class="footer-link hover:text-[#b89b72] transition-colors" href="#contacto">Preguntas frecuentes</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-serif text-white mb-4 text-base font-semibold">Contacto</h4>
+          <ul class="space-y-2 text-xs text-gray-400 font-light">
+            <li><a class="hover:text-[#b89b72] transition-colors" href="mailto:skytuluz.tu@gmail.com">skytuluz.tu@gmail.com</a></li>
+            <li>Piedad Kalea 4</li>
+            <li>Zumarraga, Guipúzcoa</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex flex-col md:flex-row justify-between items-center text-center text-xs text-gray-500 border-t border-white/10 pt-8">
+        <p>© 2026 Sky Tu Luz. Todos los derechos reservados. Velas artesanales con alma.</p>
+        <button id="back-to-top" class="mt-4 md:mt-0 flex items-center gap-2 text-gray-300 hover:text-[#b89b72] font-semibold uppercase tracking-wider transition-colors">
+          <span>Volver arriba</span>
+          <i class="fa-solid fa-arrow-up bg-[#33261c] p-2 rounded-full border border-white/10 shadow-sm text-xs"></i>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- INTERACTIVE JAVASCRIPT LOGIC -->
+  <script>
+    // State management
+    const cartState = [];
+
+    // Toast Notification System
+    function showToast(message, type = 'info') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      
+      const icon = type === 'success' ? 'fa-circle-check text-emerald-500' : 'fa-bell text-[#b89b72]';
+      
+      toast.className = `toast-enter pointer-events-auto bg-[#2c2c2c] text-white px-5 py-3.5 rounded-2xl shadow-xl border border-white/10 text-xs font-medium flex items-center gap-3 backdrop-blur-md min-w-[260px]`;
+      toast.innerHTML = `<i class="fa-solid ${icon} text-sm"></i><span>${message}</span>`;
+      
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        toast.classList.remove('toast-enter');
+        toast.classList.add('toast-exit');
+        setTimeout(() => toast.remove(), 400);
+      }, 3000);
+    }
+
+    // Scroll Navbar Effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('header-glass', 'py-3');
+        navbar.classList.remove('py-5');
+      } else {
+        navbar.classList.remove('header-glass', 'py-3');
+        navbar.classList.add('py-5');
+      }
+    });
+
+    // Scroll Reveal Observer
+    const fadeElements = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    fadeElements.forEach(el => observer.observe(el));
+
+    // Cart Drawer Logic
+    const cartDrawer = document.getElementById('cart-drawer');
+    const cartDrawerContent = document.getElementById('cart-drawer-content');
+    const openCartBtn = document.getElementById('open-cart-btn');
+    const closeCartBtn = document.getElementById('close-cart-btn');
+    const cartBadge = document.getElementById('cart-badge');
+    const cartItemsList = document.getElementById('cart-items-list');
+    const cartTotalPrice = document.getElementById('cart-total-price');
+
+    function toggleCart(open) {
+      if (open) {
+        cartDrawer.classList.remove('opacity-0', 'pointer-events-none');
+        cartDrawerContent.classList.remove('translate-x-full');
+      } else {
+        cartDrawer.classList.add('opacity-0', 'pointer-events-none');
+        cartDrawerContent.classList.add('translate-x-full');
+      }
+    }
+
+    openCartBtn.addEventListener('click', () => toggleCart(true));
+    closeCartBtn.addEventListener('click', () => toggleCart(false));
+    cartDrawer.addEventListener('click', (e) => {
+      if (e.target === cartDrawer) toggleCart(false);
+    });
+
+    function updateCartUI() {
+      const totalCount = cartState.reduce((sum, item) => sum + item.quantity, 0);
+      cartBadge.textContent = totalCount;
+      if (totalCount > 0) {
+        cartBadge.classList.remove('scale-0');
+      } else {
+        cartBadge.classList.add('scale-0');
+      }
+
+      if (cartState.length === 0) {
+        cartItemsList.innerHTML = `
+          <div class="text-center py-12 text-gray-400">
+            <i class="fa-solid fa-basket-shopping text-4xl mb-3 opacity-40"></i>
+            <p class="text-xs font-light">Tu carrito está vacío</p>
+          </div>
+        `;
+        cartTotalPrice.textContent = '0,00 €';
+        return;
+      }
+
+      let total = 0;
+      cartItemsList.innerHTML = cartState.map((item, index) => {
+        total += item.price * item.quantity;
+        return `
+          <div class="flex items-center justify-between bg-white p-3 rounded-2xl border border-gray-100 shadow-sm">
+            <img src="${item.img}" alt="${item.name}" class="w-14 h-14 object-cover rounded-xl"/>
+            <div class="flex-grow px-3">
+              <h4 class="text-xs font-semibold text-[#2c2c2c]">${item.name}</h4>
+              <p class="text-xs text-[#b89b72] font-semibold">${item.price.toFixed(2)} €</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="changeQty(${index}, -1)" class="w-6 h-6 rounded-full bg-gray-100 hover:bg-gray-200 text-xs flex items-center justify-center">-</button>
+              <span class="text-xs font-semibold">${item.quantity}</span>
+              <button onclick="changeQty(${index}, 1)" class="w-6 h-6 rounded-full bg-gray-100 hover:bg-gray-200 text-xs flex items-center justify-center">+</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      cartTotalPrice.textContent = total.toFixed(2).replace('.', ',') + ' €';
+    }
+
+    window.changeQty = function(index, delta) {
+      cartState[index].quantity += delta;
+      if (cartState[index].quantity <= 0) {
+        cartState.splice(index, 1);
+      }
+      updateCartUI();
+    };
+
+    // Add to Cart Buttons
+    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = btn.dataset.id;
+        const name = btn.dataset.name;
+        const price = parseFloat(btn.dataset.price);
+        const img = btn.dataset.img;
+
+        const existing = cartState.find(item => item.id === id);
+        if (existing) {
+          existing.quantity += 1;
+        } else {
+          cartState.push({ id, name, price, img, quantity: 1 });
+        }
+
+        updateCartUI();
+        showToast(`Añadido: ${name}`, 'success');
+      });
+    });
+
+    // Like / Favorite Heart Button Toggle
+    document.querySelectorAll('.like-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const icon = btn.querySelector('i');
+        const isLiked = icon.classList.contains('fa-solid');
+        const productName = btn.dataset.product || 'Producto';
+
+        if (isLiked) {
+          icon.classList.remove('fa-solid', 'heart-active');
+          icon.classList.add('fa-regular');
+          showToast(`Eliminado de favoritos: ${productName}`);
+        } else {
+          icon.classList.remove('fa-regular');
+          icon.classList.add('fa-solid', 'heart-active');
+          showToast(`Añadido a tus favoritos ❤️`, 'success');
+        }
+      });
+    });
+
+    // Search Modal Logic
+    const searchModal = document.getElementById('search-modal');
+    const searchModalContent = document.getElementById('search-modal-content');
+    const openSearchBtn = document.getElementById('open-search-btn');
+    const closeSearchBtn = document.getElementById('close-search-btn');
+    const searchInput = document.getElementById('search-input');
+
+    function toggleSearch(open) {
+      if (open) {
+        searchModal.classList.remove('opacity-0', 'pointer-events-none');
+        searchModalContent.classList.remove('scale-95');
+        setTimeout(() => searchInput.focus(), 100);
+      } else {
+        searchModal.classList.add('opacity-0', 'pointer-events-none');
+        searchModalContent.classList.add('scale-95');
+      }
+    }
+
+    openSearchBtn.addEventListener('click', () => toggleSearch(true));
+    closeSearchBtn.addEventListener('click', () => toggleSearch(false));
+    searchModal.addEventListener('click', (e) => {
+      if (e.target === searchModal) toggleSearch(false);
+    });
+
+    // Liquid Glass Dynamic Island Decompress / Expand Logic
+    const islandToggleBtn = document.getElementById('island-toggle-btn');
+    const islandToggleIcon = document.getElementById('island-toggle-icon');
+    const islandNav = document.getElementById('island-nav');
+    const dynamicIsland = document.getElementById('dynamic-island');
+    let isIslandExpanded = false;
+
+    function toggleIsland(expand) {
+      isIslandExpanded = expand !== undefined ? expand : !isIslandExpanded;
+      if (isIslandExpanded) {
+        islandNav.classList.remove('max-w-0', 'opacity-0');
+        islandNav.classList.add('max-w-[600px]', 'opacity-100');
+        if (islandToggleIcon) {
+          islandToggleIcon.classList.remove('fa-bars');
+          islandToggleIcon.classList.add('fa-xmark');
+        }
+      } else {
+        islandNav.classList.remove('max-w-[600px]', 'opacity-100');
+        islandNav.classList.add('max-w-0', 'opacity-0');
+        if (islandToggleIcon) {
+          islandToggleIcon.classList.remove('fa-xmark');
+          islandToggleIcon.classList.add('fa-bars');
+        }
+      }
+    }
+
+    if (islandToggleBtn) {
+      islandToggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleIsland();
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      if (isIslandExpanded && dynamicIsland && !dynamicIsland.contains(e.target)) {
+        toggleIsland(false);
+      }
+    });
+
+    // Newsletter Signup Handler
+    const newsletterBtn = document.getElementById('newsletter-btn');
+    const newsletterEmail = document.getElementById('newsletter-email');
+    if (newsletterBtn) {
+      newsletterBtn.addEventListener('click', () => {
+        const email = newsletterEmail ? newsletterEmail.value.trim() : '';
+        if (!email || !email.includes('@')) {
+          showToast('Por favor introduce un correo válido');
+          return;
+        }
+        showToast('¡Gracias por unirte a Sky Tu Luz! 💌', 'success');
+        if (newsletterEmail) newsletterEmail.value = '';
+      });
+    }
+
+    // 3D Scroll Animation for Instagram Section
+    const ig3dCard = document.getElementById('ig-3d-card');
+    const ig3dSection = document.getElementById('instagram-3d-section');
+    if (ig3dCard && ig3dSection) {
+      window.addEventListener('scroll', () => {
+        const rect = ig3dSection.getBoundingClientRect();
+        const viewHeight = window.innerHeight;
+        if (rect.top < viewHeight && rect.bottom > 0) {
+          const progress = (viewHeight - rect.top) / (viewHeight + rect.height);
+          const rotateX = (progress - 0.5) * 22;
+          const rotateY = (progress - 0.5) * -18;
+          const translateZ = (1 - Math.abs(progress - 0.5) * 2) * 30;
+          ig3dCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${translateZ}px)`;
+        }
+      });
+    }
+
+    // Product Category Filter Tabs Logic
+    const filterTabs = document.querySelectorAll('.filter-tab-btn');
+    const productItems = document.querySelectorAll('.product-item');
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        filterTabs.forEach(t => {
+          t.classList.remove('active', 'bg-[#2c2c2c]', 'text-white');
+          t.classList.add('text-gray-600');
+        });
+        tab.classList.add('active', 'bg-[#2c2c2c]', 'text-white');
+        tab.classList.remove('text-gray-600');
+
+        const filter = tab.dataset.filter;
+        productItems.forEach(item => {
+          if (filter === 'all' || item.dataset.category === filter) {
+            item.style.display = 'flex';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+        showToast(`Filtrado por: ${tab.textContent}`);
+      });
+    });
+
+    document.querySelectorAll('.tag-search').forEach(tag => {
+      tag.addEventListener('click', () => {
+        searchInput.value = tag.textContent;
+        showToast(`Buscando: ${tag.textContent}`);
+        toggleSearch(false);
+      });
+    });
+
+    // Navigation & Buttons Interactions
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId && targetId !== '#') {
+          const targetEl = document.querySelector(targetId);
+          if (targetEl) {
+            e.preventDefault();
+            targetEl.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+    });
+
+    document.getElementById('checkout-btn').addEventListener('click', () => {
+      if (cartState.length === 0) {
+        showToast('Tu carrito está vacío');
+        return;
+      }
+      showToast('Redirigiendo a pasarela de pago...', 'success');
+    });
+
+    document.getElementById('get-directions-btn').addEventListener('click', () => {
+      window.open('https://maps.google.com/?q=Piedad+Kalea+4+Zumarraga+Guipuzcoa', '_blank');
+      showToast('Abriendo Google Maps 🗺️');
+    });
+
+    // Instagram CTA (now an anchor, no extra listener needed)
+    const igCtaBtn = document.getElementById('instagram-cta-btn');
+    if (igCtaBtn && igCtaBtn.tagName !== 'A') {
+      igCtaBtn.addEventListener('click', () => {
+        window.open('https://instagram.com/skytuluz.tu', '_blank');
+        showToast('Abriendo perfil de Instagram 📸');
+      });
+    }
+
+    // ── 3D Phone Mouse Tracking ──────────────────────────────────────
+    const phone3d = document.getElementById('ig-phone-3d');
+    const phoneScene = document.getElementById('ig-phone-scene');
+    if (phone3d && phoneScene) {
+      phoneScene.addEventListener('mousemove', (e) => {
+        const rect = phoneScene.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const dx = (e.clientX - cx) / (rect.width / 2);
+        const dy = (e.clientY - cy) / (rect.height / 2);
+        phone3d.style.transform = `rotateY(${dx * 22}deg) rotateX(${-dy * 18}deg) scale(1.03)`;
+      });
+      phoneScene.addEventListener('mouseleave', () => {
+        phone3d.style.transform = 'rotateY(0deg) rotateX(0deg) scale(1)';
+        phone3d.style.transition = 'transform 0.6s cubic-bezier(0.23,1,0.32,1)';
+      });
+      phoneScene.addEventListener('mouseenter', () => {
+        phone3d.style.transition = 'transform 0.08s ease-out';
+      });
+      // Double-tap / click: heart burst
+      phoneScene.addEventListener('click', () => {
+        const burst = document.getElementById('heart-burst');
+        if (burst) {
+          burst.style.opacity = '1';
+          setTimeout(() => { burst.style.opacity = '0'; }, 600);
+        }
+      });
+    }
+
+    // ── WebGL Candle-Spark Particle System ───────────────────────────
+    (function initIGParticles() {
+      const canvas = document.getElementById('ig-particles-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let W, H;
+      const particles = [];
+
+      function resize() {
+        W = canvas.width = canvas.offsetWidth;
+        H = canvas.height = canvas.offsetHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      class Spark {
+        constructor() { this.reset(); }
+        reset() {
+          this.x = Math.random() * W;
+          this.y = H + 10;
+          this.vx = (Math.random() - 0.5) * 0.8;
+          this.vy = -(Math.random() * 1.5 + 0.5);
+          this.life = 1;
+          this.decay = Math.random() * 0.008 + 0.004;
+          this.size = Math.random() * 2.5 + 0.5;
+          // Diverse beige palette (light warm beige, sand, champagne, vanilla, caramel)
+          const beigeTones = [
+            { h: 40, s: 45, l: 85 }, // Light Warm Beige
+            { h: 36, s: 40, l: 75 }, // Artisan Sand Beige
+            { h: 42, s: 55, l: 80 }, // Champagne Gold Beige
+            { h: 38, s: 60, l: 90 }, // Soft Vanilla Cream
+            { h: 32, s: 50, l: 70 }, // Muted Caramel Beige
+            { h: 45, s: 35, l: 82 }  // Ivory Silk Beige
+          ];
+          const tone = beigeTones[Math.floor(Math.random() * beigeTones.length)];
+          this.color = `hsl(${tone.h}, ${tone.s}%, ${tone.l}%)`;
+        }
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          this.vx += (Math.random() - 0.5) * 0.04;
+          this.life -= this.decay;
+          if (this.life <= 0) this.reset();
+        }
+        draw() {
+          ctx.save();
+          ctx.globalAlpha = this.life * 0.85;
+          ctx.fillStyle = this.color;
+          ctx.shadowColor = this.color;
+          ctx.shadowBlur = 6;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
+      }
+
+      for (let i = 0; i < 180; i++) {
+        const s = new Spark();
+        s.y = Math.random() * H; // scatter initial positions
+        s.life = Math.random();
+        particles.push(s);
+      }
+
+      function loop() {
+        ctx.clearRect(0, 0, W, H);
+        particles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(loop);
+      }
+      loop();
+    })();
+
+    document.querySelectorAll('.social-icon-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        showToast(`Conectando con ${btn.dataset.social}...`);
+      });
+    });
+
+    document.querySelectorAll('.category-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        showToast(`Explorando categoría: ${btn.dataset.cat || 'Velas'}`);
+      });
+    });
+
+    document.getElementById('view-all-shop-btn').addEventListener('click', () => {
+      showToast('Cargando catálogo completo...');
+    });
+
+    document.getElementById('back-to-top').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ThreeJS 3D Element in Footer
+    (function initThreeJS() {
+      const container = document.getElementById('threejs-container');
+      if (!container) return;
+
+      const width = container.clientWidth || 220;
+      const height = container.clientHeight || 220;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      renderer.setSize(width, height);
+      container.appendChild(renderer.domElement);
+
+      const instagramGroup = new THREE.Group();
+
+      const outerGeom = new THREE.BoxGeometry(2, 2, 0.3);
+      const material = new THREE.MeshPhongMaterial({ 
+        color: 0x2c2c2c, 
+        shininess: 90,
+        transparent: true,
+        opacity: 0.95
+      });
+      const outerBox = new THREE.Mesh(outerGeom, material);
+      instagramGroup.add(outerBox);
+
+      const ringGeom = new THREE.TorusGeometry(0.5, 0.08, 16, 100);
+      const ringMat = new THREE.MeshPhongMaterial({ color: 0xb89b72 });
+      const ring = new THREE.Mesh(ringGeom, ringMat);
+      ring.position.z = 0.2;
+      instagramGroup.add(ring);
+
+      const dotGeom = new THREE.SphereGeometry(0.09, 16, 16);
+      const dot = new THREE.Mesh(dotGeom, ringMat);
+      dot.position.set(0.55, 0.55, 0.2);
+      instagramGroup.add(dot);
+
+      scene.add(instagramGroup);
+
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+      scene.add(ambientLight);
+      const pointLight = new THREE.PointLight(0xb89b72, 1.2);
+      pointLight.position.set(4, 4, 4);
+      scene.add(pointLight);
+
+      camera.position.z = 3.8;
+
+      let mouseX = 0, mouseY = 0;
+      window.addEventListener('mousemove', (e) => {
+        mouseX = (e.clientX / window.innerWidth) - 0.5;
+        mouseY = (e.clientY / window.innerHeight) - 0.5;
+      });
+
+      function animate() {
+        requestAnimationFrame(animate);
+        instagramGroup.rotation.y += 0.008;
+        instagramGroup.rotation.x += (mouseY * 0.4 - instagramGroup.rotation.x) * 0.05;
+        instagramGroup.rotation.y += (mouseX * 0.4 - instagramGroup.rotation.y) * 0.05;
+        renderer.render(scene, camera);
+      }
+
+      animate();
+    })();
+
+    // WebGL Shader Background for Footer
+    (function initFooterShader() {
+      const canvas = document.getElementById('footer-shader');
+      if (!canvas) return;
+      const gl = canvas.getContext('webgl');
+      if (!gl) return;
+
+      canvas.width = canvas.clientWidth;
+      canvas.height = canvas.clientHeight;
+
+      const vsSource = `
+        attribute vec4 a_position;
+        varying vec2 v_texCoord;
+        void main() {
+          gl_Position = a_position;
+          v_texCoord = a_position.xy * 0.5 + 0.5;
+        }
+      `;
+
+      const fsSource = `
+        precision highp float;
+        varying vec2 v_texCoord;
+        uniform float u_time;
+
+        void main() {
+            vec2 uv = v_texCoord;
+            float t = u_time * 0.15;
+            
+            vec3 color1 = vec3(0.99, 0.98, 0.96); // Warm Cream
+            vec3 color2 = vec3(0.96, 0.91, 0.82); // Amber light tint
+            
+            float noise = sin(uv.x * 3.5 + t) * cos(uv.y * 2.5 - t * 0.5) * 0.5 + 0.5;
+            vec3 color = mix(color1, color2, noise * 0.35);
+            
+            gl_FragColor = vec4(color, 1.0);
+        }
+      `;
+
+      function createShader(gl, type, source) {
+        const shader = gl.createShader(type);
+        gl.shaderSource(shader, source);
+        gl.compileShader(shader);
+        return shader;
+      }
+
+      const vertexShader = createShader(gl, gl.VERTEX_SHADER, vsSource);
+      const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fsSource);
+
+      const program = gl.createProgram();
+      gl.attachShader(program, vertexShader);
+      gl.attachShader(program, fragmentShader);
+      gl.linkProgram(program);
+      gl.useProgram(program);
+
+      const positionBuffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+        -1.0,  1.0,
+        -1.0, -1.0,
+         1.0,  1.0,
+         1.0, -1.0,
+      ]), gl.STATIC_DRAW);
+
+      const positionLocation = gl.getAttribLocation(program, 'a_position');
+      gl.enableVertexAttribArray(positionLocation);
+      gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+
+      const timeLocation = gl.getUniformLocation(program, 'u_time');
+
+      function render(time) {
+        time *= 0.001;
+        if (canvas.width !== canvas.clientWidth || canvas.height !== canvas.clientHeight) {
+          canvas.width = canvas.clientWidth;
+          canvas.height = canvas.clientHeight;
+          gl.viewport(0, 0, canvas.width, canvas.height);
+        }
+        gl.uniform1f(timeLocation, time);
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+        requestAnimationFrame(render);
+      }
+      requestAnimationFrame(render);
+    })();
+  </script>
+</body>
+</html>
