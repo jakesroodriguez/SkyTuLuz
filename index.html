@@ -14,6 +14,11 @@
   <link rel="manifest" href="site.webmanifest"/>
   <meta name="theme-color" content="#eee5d3"/>
 
+  <!-- HTTP Cache Invalidation for Instant Deployment Updates -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
+
   <!-- Local SEO & Geo Tags -->
   <meta name="geo.region" content="ES-SS"/>
   <meta name="geo.placename" content="Zumarraga"/>
@@ -563,11 +568,11 @@
       <div class="absolute inset-0 z-0 bg-[#eee5d3]">
         <!-- Desktop Video (Horizontal >= 768px) -->
         <video autoplay loop muted playsinline preload="metadata" class="hidden md:block w-full h-full object-cover opacity-85">
-          <source src="Candle_flames_flicker_quietly_202608050031.mp4" type="video/mp4"/>
+          <source src="Candle_flames_flicker_quietly_202608050031.mp4?v=20260930" type="video/mp4"/>
         </video>
         <!-- Mobile Video (Vertical 9:16 < 768px) -->
-        <video autoplay loop muted playsinline preload="metadata" class="block md:hidden w-full h-full object-cover opacity-85">
-          <source src="landigMovil.mp4" type="video/mp4"/>
+        <video autoplay loop muted playsinline preload="metadata" poster="landigMovil_poster.jpg" class="block md:hidden w-full h-full object-cover opacity-85">
+          <source src="landigMovil.mp4?v=20260930" type="video/mp4"/>
         </video>
         <!-- Top and bottom gradient overlays for smooth blending -->
         <div class="absolute inset-0 bg-gradient-to-b from-[#eee5d3]/50 via-transparent to-[#eee5d3] pointer-events-none"></div>
