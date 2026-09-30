@@ -257,6 +257,11 @@
         transform: translateY(3cm);
       }
     }
+    @media (max-width: 767px) {
+      .hero-btn-group {
+        transform: none !important;
+      }
+    }
 
     /* Liquid Glass Aesthetic */
     .liquid-glass {
@@ -546,17 +551,17 @@
         <div class="absolute inset-0 bg-gradient-to-b from-[#eee5d3]/50 via-transparent to-[#eee5d3] pointer-events-none"></div>
       </div>
 
-      <!-- Hero Main Content with Action Buttons -->
-      <div class="relative z-10 container mx-auto max-w-4xl px-6 text-center text-[#2c2c2c] fade-up visible">
+      <!-- Hero Main Content with Action Buttons (Positioned below 'Tu equilibrio' on mobile) -->
+      <div class="relative z-10 container mx-auto max-w-4xl px-3 sm:px-6 text-center text-[#2c2c2c] fade-up visible max-md:absolute max-md:top-[24.5%] max-md:left-0 max-md:right-0 max-md:w-full max-md:pr-6 max-md:pl-2">
         <h1 class="sr-only">Sky Tu Luz · Velas Artesanales de Cera de Soja en Zumarraga</h1>
 
-        <div class="hero-btn-group flex flex-wrap items-center justify-center gap-4">
-          <a href="#portafolio" class="bg-[#a68257] hover:bg-[#8f6d43] text-[#fdfbf7] border border-[#c4a67e] px-8 py-3.5 rounded-full text-xs font-semibold tracking-widest uppercase transition-all duration-300 shadow-lg shadow-[#a68257]/25 flex items-center gap-2">
+        <div class="hero-btn-group flex items-center justify-center gap-2 sm:gap-4 flex-nowrap sm:flex-wrap mx-auto">
+          <a href="#portafolio" class="bg-[#a68257] hover:bg-[#8f6d43] text-[#fdfbf7] border border-[#c4a67e] px-3.5 sm:px-8 py-2 sm:py-3.5 rounded-full text-[10.5px] sm:text-xs font-semibold tracking-wider sm:tracking-widest uppercase transition-all duration-300 shadow-md shadow-[#a68257]/20 flex items-center gap-1.5 sm:gap-2 whitespace-nowrap">
             <span>Explorar Portafolio</span>
-            <i class="fa-solid fa-arrow-down text-[10px] text-[#fdfbf7]/80"></i>
+            <i class="fa-solid fa-arrow-down text-[8px] sm:text-[10px] text-[#fdfbf7]/80"></i>
           </a>
-          <button onclick="toggleFavDrawer(true)" class="bg-[#fdfaf5]/90 hover:bg-[#f5ede0] backdrop-blur-md border border-[#d6c4aa] text-[#5c4632] px-6 py-3.5 rounded-full text-xs font-semibold tracking-wider transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2">
-            <i class="fa-regular fa-heart text-[#a68257]"></i>
+          <button onclick="toggleFavDrawer(true)" class="bg-[#fdfaf5]/90 hover:bg-[#f5ede0] backdrop-blur-md border border-[#d6c4aa] text-[#5c4632] px-3.5 sm:px-6 py-2 sm:py-3.5 rounded-full text-[10.5px] sm:text-xs font-semibold tracking-wider transition-all duration-300 shadow-sm hover:shadow-md flex items-center gap-1.5 sm:gap-2 whitespace-nowrap">
+            <i class="fa-regular fa-heart text-[#a68257] text-[11px] sm:text-xs"></i>
             <span>Mis Favoritas</span>
           </button>
         </div>
