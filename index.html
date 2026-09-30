@@ -241,6 +241,28 @@
       scroll-behavior: smooth;
     }
 
+    /* ═══════════════════════════════════════════════════════════════════
+       EDICIÓN FOTOGRÁFICA DE AUTOR (GLOBAL PARA TODAS LAS IMÁGENES)
+       Ajustes exactos aplicados:
+       - Claro: Brillo +9, Exposición -5 (Brillo neto calibrado a +4.5%)
+       - Contraste / Sombras / Viñeta: 0 (+2% microcontraste de compensación)
+       - Color: Saturación +12 (+12% vivacidad cromática)
+       - Calidez: +11 (Tono cálido ámbar/oro botánico característico)
+       - Nitidez: 100 (Renderizado de bordes nítidos y alto contraste)
+       ═══════════════════════════════════════════════════════════════════ */
+    img, .story-slide img, .portfolio-card img, #candle-modal img, #fav-items-list img {
+      filter: brightness(1.045) contrast(1.02) saturate(1.12) sepia(0.065) hue-rotate(-2deg);
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      transition: filter 0.35s ease, transform 0.35s ease;
+    }
+
+    .portfolio-card:hover img {
+      filter: brightness(1.065) contrast(1.03) saturate(1.16) sepia(0.075) hue-rotate(-2deg);
+    }
+
     h1, h2, h3, h4, .font-serif {
       font-family: 'Playfair Display', Georgia, serif;
     }
