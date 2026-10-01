@@ -177,7 +177,37 @@ const TRANSLATIONS = {
 
     // Footer
     footer_rights: '© 2026 Sky Tu Luz. Portafolio de velas artesanales con alma.',
-    footer_back_to_top: 'Volver arriba'
+    footer_back_to_top: 'Volver arriba',
+
+    // Filter Bar & Faceted Search
+    filter_label_cat: 'Colección',
+    filter_label_color: 'Color',
+    filter_label_size: 'Formato',
+    filter_cat_all: 'Todas',
+    filter_cat_vaso: 'Vasos Aromáticos',
+    filter_cat_escultura: 'Esculturales',
+    filter_cat_botanica: 'Botánicas & Flores',
+    filter_cat_regalo: 'Sets de Regalo',
+    filter_color_all: 'Todos los colores',
+    filter_color_blanco: 'Blanco / Neutro',
+    filter_color_rosa: 'Rosa / Pastel',
+    filter_color_rojo: 'Rojo / Pasión',
+    filter_color_amarillo: 'Amarillo / Dorado',
+    filter_color_cafe: 'Café / Tostado',
+    filter_color_verde: 'Verde / Menta',
+    filter_size_all: 'Todos los formatos',
+    filter_size_vaso: 'Vaso Cristal (220g)',
+    filter_size_escultura: 'Escultura Mediana',
+    filter_size_ramo: 'Centro / Ramo Grande',
+    filter_size_pack: 'Set / Pack Regalo',
+    filter_search_placeholder: 'Buscar por aroma, flor o nombre (ej. Café, Tulipán, Bambú)...',
+    filter_counter_prefix: 'Mostrando',
+    filter_counter_of: 'de',
+    filter_counter_suffix: 'creaciones artesanas',
+    filter_reset_btn: 'Restablecer filtros',
+    filter_empty_title: 'No encontramos velas con esos filtros',
+    filter_empty_desc: 'Prueba a cambiar los criterios de color, tamaño o borra la búsqueda.',
+    filter_empty_btn: 'Ver todas las creaciones'
   },
 
   eu: {
@@ -350,7 +380,37 @@ const TRANSLATIONS = {
 
     // Footer
     footer_rights: '© 2026 Sky Tu Luz. Arimadun eskuz egindako kandelen portafolioa.',
-    footer_back_to_top: 'Gora itzuli'
+    footer_back_to_top: 'Gora itzuli',
+
+    // Filter Bar & Faceted Search
+    filter_label_cat: 'Bilduma',
+    filter_label_color: 'Kolorea',
+    filter_label_size: 'Formatua',
+    filter_cat_all: 'Guztiak',
+    filter_cat_vaso: 'Ontzi Aromatikoak',
+    filter_cat_escultura: 'Eskulturalak',
+    filter_cat_botanica: 'Botanikoak & Loreak',
+    filter_cat_regalo: 'Opari Setak',
+    filter_color_all: 'Kolore guztiak',
+    filter_color_blanco: 'Zuria / Neutroa',
+    filter_color_rosa: 'Arrosa / Pastela',
+    filter_color_rojo: 'Gorria / Pasioa',
+    filter_color_amarillo: 'Horia / Urreztatua',
+    filter_color_cafe: 'Kafea / Epelea',
+    filter_color_verde: 'Berdea / Botanikoa',
+    filter_size_all: 'Formatu guztiak',
+    filter_size_vaso: 'Beirazko Ontzia (220g)',
+    filter_size_escultura: 'Eskultura Ertaina',
+    filter_size_ramo: 'Zentroa / Lore-sorta Handia',
+    filter_size_pack: 'Opari Seta / Pack-a',
+    filter_search_placeholder: 'Bilatu aromaz, lorez edo izenez (adib. Kafea, Tulipa, Banbua)...',
+    filter_counter_prefix: 'Erakusten:',
+    filter_counter_of: '/',
+    filter_counter_suffix: 'artisau-sorkuntza',
+    filter_reset_btn: 'Garbitu iragazkiak',
+    filter_empty_title: 'Ez dugu aurkitu kandelarik iragazki horiekin',
+    filter_empty_desc: 'Saiatu bilduma, kolorea edo bilaketa-hitza aldatzen.',
+    filter_empty_btn: 'Ikusi sorkuntza guztiak'
   },
 
   en: {
@@ -523,7 +583,37 @@ const TRANSLATIONS = {
 
     // Footer
     footer_rights: '© 2026 Sky Tu Luz. Handcrafted candles with soul.',
-    footer_back_to_top: 'Back to top'
+    footer_back_to_top: 'Back to top',
+
+    // Filter Bar & Faceted Search
+    filter_label_cat: 'Collection',
+    filter_label_color: 'Color',
+    filter_label_size: 'Format',
+    filter_cat_all: 'All',
+    filter_cat_vaso: 'Aromatic Jars',
+    filter_cat_escultura: 'Sculptural',
+    filter_cat_botanica: 'Botanical & Floral',
+    filter_cat_regalo: 'Gift Sets',
+    filter_color_all: 'All colors',
+    filter_color_blanco: 'White / Neutral',
+    filter_color_rosa: 'Pink / Pastel',
+    filter_color_rojo: 'Red / Passion',
+    filter_color_amarillo: 'Yellow / Golden',
+    filter_color_cafe: 'Coffee / Warm',
+    filter_color_verde: 'Green / Botanical',
+    filter_size_all: 'All formats',
+    filter_size_vaso: 'Glass Jar (220g)',
+    filter_size_escultura: 'Medium Sculpture',
+    filter_size_ramo: 'Centerpiece / Large Bouquet',
+    filter_size_pack: 'Gift Set / Pack',
+    filter_search_placeholder: 'Search by scent, flower or name (e.g. Coffee, Tulip, Bamboo)...',
+    filter_counter_prefix: 'Showing',
+    filter_counter_of: 'of',
+    filter_counter_suffix: 'artisan creations',
+    filter_reset_btn: 'Reset filters',
+    filter_empty_title: 'No candles match these filters',
+    filter_empty_desc: 'Try adjusting your collection, color, or clearing the search box.',
+    filter_empty_btn: 'View all creations'
   }
 };
 
@@ -531,137 +621,1037 @@ const TRANSLATIONS = {
  * Translations for individual Candle Items
  */
 const CANDLE_I18N = {
-  c1: {
-    title: { es: 'Ámbar & Vainilla Imperial', eu: 'Ámbar & Vainilla Imperiala', en: 'Imperial Amber & Vanilla' },
-    category: { es: 'Aromáticas', eu: 'Aromatikoak', en: 'Aromatic' },
-    tag: { es: 'Pieza de Autor', eu: 'Egile Lana', en: 'Signature Piece' },
-    burnTime: { es: '45h de llama limpia', eu: '45 orduko sugar garbia', en: '45h clean burn' },
-    essence: {
-      es: 'Notas dulces de vainilla bourbon y cálidas ráfagas de ámbar silvestre.',
-      eu: 'Bourbon banillaren nota gozoak eta anbar basatiaren ukitu beroak.',
-      en: 'Sweet notes of bourbon vanilla and warm breezes of wild amber.'
+  "c1": {
+    "title": {
+      "es": "Café Espresso & Avellana Tostada",
+      "eu": "Kafe Txigortua & Hur Eztia",
+      "en": "Roasted Espresso & Hazelnut"
     },
-    story: {
-      es: 'Nuestra creación insignia. Nace inspirada en las tardes pausadas de lectura junto al calor de una taza de café. La vainilla de Madagascar se entrelaza de manera armónica con las resinas de ámbar báltico, llenando el espacio con un ambiente acogedor y relajante.',
-      eu: 'Gure sorkuntza adierazgarriena. Kafe bero batekin egindako irakurketa arratsalde lasaietan inspiratua. Madagaskarreko banilla eta anbar erretxinak modu harmonikoan uztartzen dira, giro goxo eta lasaigarria sortuz.',
-      en: 'Our flagship creation. Inspired by quiet reading afternoons by the warmth of a coffee cup. Madagascar vanilla harmoniously blends with Baltic amber resins, filling the space with a cozy, relaxing aura.'
+    "category": {
+      "es": "Vasos Aromáticos",
+      "eu": "Ontzi Aromatikoak",
+      "en": "Aromatic Jars"
     },
-    pyramid: {
-      salida: { es: 'Flor de vainilla, orquídea silvestre, bergamota.', eu: 'Banilla lorea, orkidea basatia, bergamota.', en: 'Vanilla flower, wild orchid, bergamot.' },
-      corazon: { es: 'Vainilla bourbon pura, benjuí de Sumatra, caramelo tostado.', eu: 'Bourbon banilla garbia, Sumatralar bentzoina, karamelo txigortua.', en: 'Pure bourbon vanilla, Sumatra benzoin, toasted caramel.' },
-      fondo: { es: 'Ámbar dorado silvestre, sándalo cálido, haba tonka.', eu: 'Urrezko anbar basatia, sandalo beroa, tonka.', en: 'Wild golden amber, warm sandalwood, tonka bean.' }
+    "tag": {
+      "es": "Gourmand de Autor",
+      "eu": "Egile Gourmand-a",
+      "en": "Signature Gourmand"
+    },
+    "burnTime": {
+      "es": "45h de combustión pura",
+      "eu": "45 orduko sugar garbia",
+      "en": "45h pure burn time"
+    },
+    "essence": {
+      "es": "Intenso aroma a granos de café tostado, notas de avellana crujiente y fondo de vainilla de Madagascar.",
+      "eu": "Kafe ale txigortu berrien aroma sakona, hur kurruskaria eta Madagaskarko banilla epelez biribildua.",
+      "en": "Rich notes of freshly roasted espresso beans, crunchy toasted hazelnuts, and warm Madagascar vanilla."
+    },
+    "story": {
+      "es": "Inspirada en el despertar pausado con un café humeante recién molido en el taller de Zumarraga. La intensidad del café tostado se suaviza con acordes de crema dulce y avellanas.",
+      "eu": "Zumarragako lantegian prestatutako goizeko kafe usaintsuan inspiratuta. Txigortutako kafearen indarra esne-apar gozoarekin eta hurrekin orekatzen da.",
+      "en": "Inspired by slow mornings with a freshly brewed cup of coffee in our Zumarraga atelier. Bold roasted coffee notes balanced with creamy hazelnut warmth."
+    },
+    "pyramid": {
+      "salida": {
+        "es": "Granos de café arábica tostado, toque de cacao amargo.",
+        "eu": "Arabika kafe ale txigortuak, kakao mingots ukitua.",
+        "en": "Roasted arabica beans, touch of dark cocoa."
+      },
+      "corazon": {
+        "es": "Avellana tostada, espuma de leche tibia, canela suave.",
+        "eu": "Hur txigortua, esne epela, kanela leuna.",
+        "en": "Toasted hazelnut, warm milk froth, gentle cinnamon."
+      },
+      "fondo": {
+        "es": "Vainilla bourbon, haba tonka, caramelo tostado.",
+        "eu": "Bourbon banilla, tonka haba, karamelu txigortua.",
+        "en": "Bourbon vanilla, tonka bean, caramelized amber."
+      }
     }
   },
-  c2: {
-    title: { es: 'Brisa de Algodón Silvestre', eu: 'Kotoi Basatiaren Haizea', en: 'Wild Cotton Breeze' },
-    category: { es: 'Aromáticas', eu: 'Aromatikoak', en: 'Aromatic' },
-    tag: { es: 'Aroma Limpio', eu: 'Aroma Garbia', en: 'Clean Scent' },
-    burnTime: { es: '40h de combustión pura', eu: '40 orduko errekuntza garbia', en: '40h pure burn' },
-    essence: {
-      es: 'Frescura pura de lino blanco secado al sol y jazmín silvestre.',
-      eu: 'Eguzkitan lehortutako liho zuriaren eta jasmin basatiaren freskura garbia.',
-      en: 'Pure freshness of sun-dried white linen and wild jasmine.'
+  "c2": {
+    "title": {
+      "es": "Bambú Silvestre & Flor de Cerezo",
+      "eu": "Banbu Basatia & Gerezi Lorea",
+      "en": "Wild Bamboo & Cherry Blossom"
     },
-    story: {
-      es: 'La reconfortante sensación de sábanas blancas secadas al sol de primavera y flores recién cortadas. Purifica el ambiente con delicada frescura botánica.',
-      eu: 'Udaberriko eguzkitan lehortutako izara zurien eta lore moztu berrien sentsazio lasaigarria. Giroa freskura botaniko finarekin garbitzen du.',
-      en: 'The comforting feeling of crisp white sheets dried in the spring sun and fresh blossoms. Purifies the atmosphere with delicate botanical freshness.'
+    "category": {
+      "es": "Vasos Aromáticos",
+      "eu": "Ontzi Aromatikoak",
+      "en": "Aromatic Jars"
     },
-    pyramid: {
-      salida: { es: 'Brisa marina suave, lino blanco, rocío matinal.', eu: 'Itsas haize leuna, liho zuria, goizeko ihintza.', en: 'Gentle sea breeze, white linen, morning dew.' },
-      corazon: { es: 'Jazmín blanco, flor de azahar, muguet.', eu: 'Jasmin zuria, laranjondo-lorea, mugueta.', en: 'White jasmine, orange blossom, lily of the valley.' },
-      fondo: { es: 'Almizcle blanco, madera de cedro suave.', eu: 'Almizkle zuria, zedro-egur leuna.', en: 'White musk, soft cedarwood.' }
+    "tag": {
+      "es": "Zen Botánico",
+      "eu": "Zen Botanikoa",
+      "en": "Botanical Zen"
+    },
+    "burnTime": {
+      "es": "45h de combustión noble",
+      "eu": "45 orduko errekuntza noblea",
+      "en": "45h serene clean burn"
+    },
+    "essence": {
+      "es": "Frescura verde de tallos de bambú japonés entrelazada con delicados pétalos de sakura y rocío matinal.",
+      "eu": "Banbu zurtoin berdeen freskotasuna eta sakura gerezi loreen petalo delikatuak goizeko ihintzarekin.",
+      "en": "Lush green Japanese bamboo shoots interwoven with delicate cherry blossom petals and morning dew."
+    },
+    "story": {
+      "es": "Una oda a la calma oriental y la meditación serena. Su fragancia limpia abre la mente y aporta una sensación de pureza natural en cualquier estancia.",
+      "eu": "Baretasun orientala eta meditazio lasaia omentzen ditu. Bere usain garbiak gogoa argitzen du eta naturaren bakea ekartzen du etxera.",
+      "en": "A tribute to mindfulness and serene harmony. Its crisp, leafy fragrance purifies the air and creates an inviting sanctuary at home."
+    },
+    "pyramid": {
+      "salida": {
+        "es": "Hojas verdes de bambú, rocío de la mañana, bergamota fresca.",
+        "eu": "Banbu hosto berdeak, goizeko ihintza, bergamota freskoa.",
+        "en": "Fresh green bamboo leaves, morning dew, crisp bergamot."
+      },
+      "corazon": {
+        "es": "Flor de cerezo (sakura), peonía de agua, lirio blanco.",
+        "eu": "Gerezi lorea (sakura), ur peonia, lili zuria.",
+        "en": "Cherry blossom petals (sakura), water peony, white lily."
+      },
+      "fondo": {
+        "es": "Madera de bambú claro, musgo blanco suave, cedro limpio.",
+        "eu": "Banbu zura arina, goroldio zuri leuna, zedro garbia.",
+        "en": "Pale bamboo wood, soft white moss, clean cedar."
+      }
     }
   },
-  c3: {
-    title: { es: 'Bosque Boreal & Pino Silvestre', eu: 'Ipar Basoa & Pinu Basatia', en: 'Boreal Forest & Wild Pine' },
-    category: { es: 'Botánicas', eu: 'Botanikoak', en: 'Botanical' },
-    tag: { es: 'Esencia Botánica', eu: 'Esentzia Botanikoa', en: 'Botanical Essence' },
-    burnTime: { es: '48h de aroma boscoso', eu: '48 orduko baso-aroma', en: '48h woodland aroma' },
-    essence: {
-      es: 'Hojas de pino silvestre, musgo húmedo y resinas de cedro.',
-      eu: 'Pinu-orratzak, goroldio hezea eta zedro-erretxinak.',
-      en: 'Wild pine needles, damp moss, and noble cedar resins.'
+  "c3": {
+    "title": {
+      "es": "Coco de Tahití & Lima Cítrica",
+      "eu": "Tahiti Kokoa & Lima Zitrikoa",
+      "en": "Tahitian Coconut & Citrus Lime"
     },
-    story: {
-      es: 'Un paseo revitalizante por los frondosos pinares tras una llovizna suave. Su fragancia profunda conecta con la serenidad de los valles del País Vasco.',
-      eu: 'Euri arinaren ondoko euskal baso hostotsuetan zehar egindako ibilaldi suspertzailea. Bere usain sakonak mendien barealdi naturalarekin lotzen gaitu.',
-      en: 'A revitalizing walk through lush pine groves after a gentle drizzle. Its deep fragrance connects with the natural serenity of the Basque valleys.'
+    "category": {
+      "es": "Vasos Aromáticos",
+      "eu": "Ontzi Aromatikoak",
+      "en": "Aromatic Jars"
     },
-    pyramid: {
-      salida: { es: 'Acículas de pino, eucalipto silvestre, enebro.', eu: 'Pinu-orratzak, eukalipto basatia, ipurua.', en: 'Pine needles, wild eucalyptus, juniper.' },
-      corazon: { es: 'Resina de abeto, cedro noble, musgo de roble.', eu: 'Izei-erretxina, zedro noblea, haritz-goroldioa.', en: 'Fir resin, noble cedar, oakmoss.' },
-      fondo: { es: 'Vetiver ahumado, corteza de pino, pachulí terroso.', eu: 'Vetiver ketua, pinu-azala, patxuli lurtsua.', en: 'Smoky vetiver, pine bark, earthy patchouli.' }
+    "tag": {
+      "es": "Cítrico Tropical",
+      "eu": "Zitriko Tropikala",
+      "en": "Tropical Citrus"
+    },
+    "burnTime": {
+      "es": "45h de llama limpia",
+      "eu": "45 orduko sugar garbia",
+      "en": "45h clean flame"
+    },
+    "essence": {
+      "es": "Ralladura de lima verde recién exprimida sobre leche de coco cremosa y un toque chispeante de verbena.",
+      "eu": "Lima berdearen azal birrindua koko-esne gozoarekin eta berbena ukitu distiratsu batekin nahastua.",
+      "en": "Zesty crushed green lime rind poured over velvety coconut cream with an invigorating splash of verbena."
+    },
+    "story": {
+      "es": "Evoca una tarde soleada de brisa marina tropical. La dulzura untuosa del coco se equilibra a la perfección con la energía viva de los cítricos.",
+      "eu": "Itsasoko brisa tropikal eguzkitsua gogorarazten du. Kokoaren leuntasunak limaren freskotasun bizi eta energiaz beterikoarekin bat egiten du.",
+      "en": "Evokes a sun-drenched afternoon caressed by tropical ocean breezes. Rich coconut cream harmonizes with sparkling citrus vitality."
+    },
+    "pyramid": {
+      "salida": {
+        "es": "Ralladura de lima de Tahití, limón verde, verbena.",
+        "eu": "Tahiti lima azala, limoi berdea, berbena.",
+        "en": "Tahitian lime zest, kaffir lime, lemon verbena."
+      },
+      "corazon": {
+        "es": "Pulpa de coco fresca, crema de leche de coco, jazmín suave.",
+        "eu": "Koko mamia, koko esne gozoa, jazmin leuna.",
+        "en": "Fresh coconut pulp, coconut cream, gentle jasmine."
+      },
+      "fondo": {
+        "es": "Vainilla suave, azúcar de caña tostado, almizcle blanco.",
+        "eu": "Banilla gozoa, kanabera azukrea, almizkle zuria.",
+        "en": "Subtle sweet vanilla, cane sugar, clean white musk."
+      }
     }
   },
-  c4: {
-    title: { es: 'Flor de Cerezo & Sakura', eu: 'Gereziondo Lorea & Sakura', en: 'Cherry Blossom & Sakura' },
-    category: { es: 'Esculturales', eu: 'Eskulturalak', en: 'Sculptural' },
-    tag: { es: 'Diseño Floral', eu: 'Lore Diseinua', en: 'Floral Design' },
-    burnTime: { es: '35h de sutileza floral', eu: '35 orduko lore-fintasuna', en: '35h floral subtlety' },
-    essence: {
-      es: 'Pétalos de cerezo japonés, néctar de melocotón y té blanco.',
-      eu: 'Japoniar gereziondo-pétaloak, mertxika-nektarra eta te zuria.',
-      en: 'Japanese cherry petals, peach nectar, and delicate white tea.'
+  "c4": {
+    "title": {
+      "es": "Gelato Cremoso de Pistacho",
+      "eu": "Pistatxo Gelato Krematsua",
+      "en": "Creamy Pistachio Gelato"
     },
-    story: {
-      es: 'El renacer de la primavera encapsulado en cera vegetal. Un homenaje a la belleza efímera y a los comienzos llenos de luz y optimismo.',
-      eu: 'Udaberriaren berpizkundea landare-argizaritan bilduta. Edertasun iragankorrari eta argiz betetako hasiera berriei egindako omenaldia.',
-      en: 'The rebirth of spring captured in vegetable wax. An homage to transient beauty and new beginnings full of light and optimism.'
+    "category": {
+      "es": "Vasos Aromáticos",
+      "eu": "Ontzi Aromatikoak",
+      "en": "Aromatic Jars"
     },
-    pyramid: {
-      salida: { es: 'Pétalos de sakura, té blanco, manzana verde.', eu: 'Sakura petalok, te zuria, sagar berdea.', en: 'Sakura petals, white tea, green apple.' },
-      corazon: { es: 'Flor de cerezo, peonía rosa, néctar de melocotón.', eu: 'Gereziondo lorea, peonia arrosa, mertxika.', en: 'Cherry blossom, pink peony, peach nectar.' },
-      fondo: { es: 'Almizcle sedoso, madera de sándalo blanco.', eu: 'Almizkle zetatsua, sandalo zuri egurra.', en: 'Silky musk, white sandalwood.' }
+    "tag": {
+      "es": "Edición Gourmet",
+      "eu": "Gourmet Edizioa",
+      "en": "Gourmet Edition"
+    },
+    "burnTime": {
+      "es": "45h de combustión dulce",
+      "eu": "45 orduko sugar gozoa",
+      "en": "45h sweet burn time"
+    },
+    "essence": {
+      "es": "Pistacho siciliano molido, crema dulce de almendra amarga y sutiles acordes de mantequilla tostada.",
+      "eu": "Siziliako pistatxo txigortua, almendra gozoa eta gurin gozoaren ukitu goxo liluragarriak.",
+      "en": "Crushed Sicilian pistachios, velvety sweet almond cream, and warm hints of browned butter."
+    },
+    "story": {
+      "es": "Inspirada en las heladerías artesanales del norte de Italia. Un aroma adictivo y cremoso que envuelve el salón en un abrazo cálido y apetecible.",
+      "eu": "Italiako artisau-izozkitegietan inspiratutako edizio goxoa. Egongela giro bero, gozo eta atsegin batez betetzen duen aroma berezia.",
+      "en": "Inspired by authentic Italian gelato parlors. An irresistibly warm, velvety fragrance that turns any room into an inviting retreat."
+    },
+    "pyramid": {
+      "salida": {
+        "es": "Pistacho tostado crujiente, licor de amaretto suave.",
+        "eu": "Pistatxo txigortu kurruskaria, amaretto likore leuna.",
+        "en": "Roasted crushed pistachio, gentle amaretto hint."
+      },
+      "corazon": {
+        "es": "Crema batida dulce, flor de almendro, leche de avena.",
+        "eu": "Esnegain harrotua, almendrondo lorea, olo-esnea.",
+        "en": "Whipped sweet cream, almond blossom, oat milk."
+      },
+      "fondo": {
+        "es": "Vainilla cremosa, azúcar moreno, haba tonka tostada.",
+        "eu": "Banilla krematsua, azukre beltza, tonka haba.",
+        "en": "Creamy Madagascar vanilla, brown sugar, roasted tonka."
+      }
     }
   },
-  c5: {
-    title: { es: 'Lavanda Serena & Azahar', eu: 'Izpiliku Barea & Azahar', en: 'Serene Lavender & Orange Blossom' },
-    category: { es: 'Aromáticas', eu: 'Aromatikoak', en: 'Aromatic' },
-    tag: { es: 'Pieza de Autor', eu: 'Egile Lana', en: 'Signature Piece' },
-    burnTime: { es: '45h de calma absoluta', eu: '45 orduko lasaitasun osoa', en: '45h absolute calm' },
-    essence: {
-      es: 'Lavanda de Provenza, azahar mediterráneo y cedro claro.',
-      eu: 'Proventzako izpilikua, laranjondo-lorea eta zedro argia.',
-      en: 'Provence lavender, Mediterranean orange blossom, and light cedar.'
+  "c5": {
+    "title": {
+      "es": "Brisa de Algodón & Lino Puro",
+      "eu": "Kotoi Brisa & Liho Garbia",
+      "en": "Cotton Breeze & Pure Linen"
     },
-    story: {
-      es: 'Creada para apaciguar el ritmo acelerado del día. Combina la flor de lavanda más pura con gotas de azahar para propiciar un descanso reparador y un ambiente libre de estrés.',
-      eu: 'Eguneko erritmo bizia baretzeko sortua. Izpiliku garbienaren lorea eta laranjondo-lore tanta freskoak uztartzen ditu atseden lasaia sustatzeko.',
-      en: 'Crafted to calm the fast pace of the day. Combines purest lavender blossoms with drops of orange blossom to invite restful sleep and peaceful moments.'
+    "category": {
+      "es": "Vasos Aromáticos",
+      "eu": "Ontzi Aromatikoak",
+      "en": "Aromatic Jars"
     },
-    pyramid: {
-      salida: { es: 'Lavandín silvestre, bergamota, salvia.', eu: 'Izpiliku basatia, bergamota, salbia.', en: 'Wild lavandin, bergamot, clary sage.' },
-      corazon: { es: 'Flor de lavanda, azahar puro, manzanilla.', eu: 'Izpiliku lorea, azahar garbia, kamamila.', en: 'Lavender blossom, pure orange blossom, chamomile.' },
-      fondo: { es: 'Cedro claro, vainilla suave, ámbar gris.', eu: 'Zedro argia, banilla gozoa, anbar grisa.', en: 'Light cedar, gentle vanilla, ambergris.' }
+    "tag": {
+      "es": "Aroma Limpio",
+      "eu": "Aroma Garbia",
+      "en": "Clean Breeze"
+    },
+    "burnTime": {
+      "es": "40h de pureza",
+      "eu": "40 orduko garbitasuna",
+      "en": "40h pure clean burn"
+    },
+    "essence": {
+      "es": "Sensación reconfortante de sábanas blancas secadas al sol, flor de algodón y una ligera brisa de lavanda silvestre.",
+      "eu": "Eguzkitan lehortutako maindire zurien usain gozoa, kotoi lorea eta izpilikuzko brisa freskagarria.",
+      "en": "Crisp sun-dried white linen, blooming cotton flowers, and an airy whisper of gentle mountain lavender."
+    },
+    "story": {
+      "es": "Un homenaje al orden, la paz y la frescura de un hogar recién ventilado. Ideal para momentos de descanso, lectura o teletrabajo.",
+      "eu": "Etxeko bakea, baretasuna eta garbitasuna omentzen dituen kandelarik maitatuena. Ezin hobea deskantsatzeko edo irakurtzeko.",
+      "en": "A celebration of clarity, peace, and freshly aired rooms. Ideal for creating an atmosphere of untroubled serenity and renewal."
+    },
+    "pyramid": {
+      "salida": {
+        "es": "Brisa de montaña, aire fresco matutino, flores de lino.",
+        "eu": "Mendiko brisa, goizeko aire freskoa, liho loreak.",
+        "en": "Mountain air breeze, morning dew, flax blossom."
+      },
+      "corazon": {
+        "es": "Flor de algodón blanco, lirio de los valles, brotes de lavanda.",
+        "eu": "Kotoi lore zuria, ibarreko lilia, izpiliku kimuak.",
+        "en": "White cotton bloom, lily of the valley, lavender sprigs."
+      },
+      "fondo": {
+        "es": "Almizcle blanco transparente, madera de cedro suave.",
+        "eu": "Almizkle zuri gardena, zedro zur leuna.",
+        "en": "Clean sheer musk, light blond cedarwood."
+      }
     }
   },
-  c6: {
-    title: { es: 'Canela & Naranja de Autor', eu: 'Kanela & Laranjondo Egile Lana', en: 'Cinnamon & Artisan Orange' },
-    category: { es: 'Personalizadas', eu: 'Pertsonalizatuak', en: 'Custom' },
-    tag: { es: 'Encargo de Autor', eu: 'Egile Eskaria', en: 'Custom Order' },
-    burnTime: { es: '50h de fuego especiado', eu: '50 orduko su espeziatua', en: '50h spiced fire' },
-    essence: {
-      es: 'Canela de Ceilán, corteza de naranja confitada y clavo dulce.',
-      eu: 'Zeilango kanela, laranja-azal gozatua eta iltzea.',
-      en: 'Ceylon cinnamon, candied orange peel, and sweet clove.'
+  "c6": {
+    "title": {
+      "es": "Sandía Fresca de Verano",
+      "eu": "Udako Angurri Freskoa",
+      "en": "Fresh Summer Watermelon"
     },
-    story: {
-      es: 'La esencia de los hogares vivos y las celebraciones. Una armonía chispeante de corteza de naranja confitada, clavo dulce y auténtica canela tostada.',
-      eu: 'Etxe bizien eta ospakizunen usain goxoa. Laranja-azal gozatuaren, iltze gozoaren eta txigortutako kanela naturalaren harmonia dirdiratsua.',
-      en: 'The essence of lively homes and warm gatherings. A sparkling harmony of candied orange peel, sweet clove, and toasted cinnamon.'
+    "category": {
+      "es": "Vasos Aromáticos",
+      "eu": "Ontzi Aromatikoak",
+      "en": "Aromatic Jars"
     },
-    pyramid: {
-      salida: { es: 'Corteza de naranja dulce, mandarina, jengibre.', eu: 'Laranja-azal gozoa, mandarina, jengibrea.', en: 'Sweet orange peel, mandarin, ginger.' },
-      corazon: { es: 'Canela en rama de Ceilán, clavo, nuez moscada.', eu: 'Zeilango kanela-makila, iltzea, intxaur muskatua.', en: 'Ceylon cinnamon stick, clove, nutmeg.' },
-      fondo: { es: 'Vainilla bourbon, azúcar moreno, sándalo.', eu: 'Bourbon banilla, azukre beltza, sandaloa.', en: 'Bourbon vanilla, brown sugar, sandalwood.' }
+    "tag": {
+      "es": "Frutal Festivo",
+      "eu": "Fruta Bizia",
+      "en": "Vibrant Fruity"
+    },
+    "burnTime": {
+      "es": "45h de llama viva",
+      "eu": "45 orduko sugar alaia",
+      "en": "45h radiant burn"
+    },
+    "essence": {
+      "es": "Jugosa sandía roja recién cortada con notas de melón cantalupo, frambuesas silvestres y un toque mentolado.",
+      "eu": "Ebaki berriko angurri gorri mamitsua, kantalupo meloia, basoko mugurdiak eta menda ukitu freskagarria.",
+      "en": "Crisp slices of juicy red watermelon paired with honeydew melon, ripe wild raspberries, and a cool mint breeze."
+    },
+    "story": {
+      "es": "La alegría de las tardes de verano condensada en cera de soja vegetal pura. Un aroma vibrante, fresco y lleno de energía positiva.",
+      "eu": "Udako arratsalde eguzkitsuen poza soja-argizari garbian bilduta. Usain alaia, bizigarria eta energiaz betea.",
+      "en": "The uplifting spirit of golden summer days captured in pure botanical soy wax. Lively, effervescent, and bursting with cheer."
+    },
+    "pyramid": {
+      "salida": {
+        "es": "Sandía roja jugosa, ralladura de lima, menta verde.",
+        "eu": "Angurri gorri mamitsua, lima azala, menda berdea.",
+        "en": "Juicy chilled watermelon, lime zest, garden mint."
+      },
+      "corazon": {
+        "es": "Melón dulce cantalupo, fresitas silvestres, pepino fresco.",
+        "eu": "Kantalupo meloi gozoa, basamugurdiak, pepino freskoa.",
+        "en": "Sweet cantaloupe melon, wild berries, crisp cucumber."
+      },
+      "fondo": {
+        "es": "Azúcar glas suave, almizcle blanco frutal.",
+        "eu": "Glas azukre leuna, fruta-almizkle garbia.",
+        "en": "Soft spun sugar, clean sheer musk."
+      }
+    }
+  },
+  "c7": {
+    "title": {
+      "es": "Arco Escultural Nórdico",
+      "eu": "Iparraldeko Arku Eskulturala",
+      "en": "Nordic Arch Sculpture"
+    },
+    "category": {
+      "es": "Esculturales",
+      "eu": "Eskulturalak",
+      "en": "Sculptural"
+    },
+    "tag": {
+      "es": "Diseño Arquitectónico",
+      "eu": "Arkitektura Diseinua",
+      "en": "Architectural Art"
+    },
+    "burnTime": {
+      "es": "35h de diseño puro",
+      "eu": "35 orduko diseinua",
+      "en": "35h sculpture burn"
+    },
+    "essence": {
+      "es": "Pieza de diseño en forma de arco doble U. Notas sutiles de vainilla blanca natural y madera de haya.",
+      "eu": "U bikoitzeko arku forma duen arte-pieza eskulturala. Banilla zuri leunaren eta pago-zuraren usain sotila.",
+      "en": "Double-arched architectural statement candle carrying faint whispering notes of ivory vanilla and white beechwood."
+    },
+    "story": {
+      "es": "Inspirada en la arquitectura minimalista escandinava. Su silueta pura funciona como objeto de arte contemporáneo tanto encendida como apagada.",
+      "eu": "Eskandinaviako arkitektura minimalistatik edaten duen sorkuntza modernoa. Bere forma garbiak dotorezia berezia ematen dio edozein gelari.",
+      "en": "Inspired by Scandinavian modernism. Its striking silhouette serves as a chic contemporary art piece whether glowing or styled on a shelf."
+    },
+    "pyramid": {
+      "salida": {
+        "es": "Aire blanco, lino nórdico, sutil flor de loto.",
+        "eu": "Aire zuria, iparraldeko lihoa, loto lorea.",
+        "en": "Clean white air, Nordic linen, lotus petal."
+      },
+      "corazon": {
+        "es": "Vainilla suave aterciopelada, cera de soja virgen.",
+        "eu": "Banilla leun belusduna, soja-argizari birjina.",
+        "en": "Velvety vanilla blossom, virgin botanical soy."
+      },
+      "fondo": {
+        "es": "Madera de sándalo rubio, almizcle blanco.",
+        "eu": "Sandalo arina, almizkle zuria.",
+        "en": "Blond sandalwood, sheer cashmere musk."
+      }
+    }
+  },
+  "c8": {
+    "title": {
+      "es": "Cubo Bubble Geométrico",
+      "eu": "Burbuila Kubo Geometrikoa",
+      "en": "Geometric Bubble Cube"
+    },
+    "category": {
+      "es": "Esculturales",
+      "eu": "Eskulturalak",
+      "en": "Sculptural"
+    },
+    "tag": {
+      "es": "Tendencia Minimalista",
+      "eu": "Joera Minimalista",
+      "en": "Minimalist Icon"
+    },
+    "burnTime": {
+      "es": "30h de llama suave",
+      "eu": "30 orduko sugar leuna",
+      "en": "30h steady glow"
+    },
+    "essence": {
+      "es": "Vela cúbica esférica elaborada con esferas de cera de soja. Fragancia equilibrada de jazmín blanco y algodón.",
+      "eu": "Soja-argizarizko burbuila esferikoz osatutako kubo dotorea. Jazmin zuri eta kotoiaren arteko oreka lurrintsua.",
+      "en": "Iconic spherical cube crafted with pure soy spheres, lightly scented with fresh white jasmine and cotton blossom."
+    },
+    "story": {
+      "es": "La pieza que revolucionó el interiorismo moderno. Vertida meticulosamente en Zumarraga para lograr una textura impecable y sedosa al tacto.",
+      "eu": "Barne-diseinuan joera handia sortu duen pieza eskulturala. Zumarragan eskuz isuria, akabera leun eta distiratsua lortzeko.",
+      "en": "The darling of modern aesthetic decor. Individually poured by hand in our Zumarraga workshop to achieve a silky, velvet-matte surface."
+    },
+    "pyramid": {
+      "salida": {
+        "es": "Rocío limpio, flor de algodón, bergamota ligera.",
+        "eu": "Ihintz garbia, kotoi lorea, bergamota arina.",
+        "en": "Clean morning dew, cotton bloom, whisper of bergamot."
+      },
+      "corazon": {
+        "es": "Jazmín de Grasse, lirio blanco, pétalos de magnolia.",
+        "eu": "Grasseko jazmina, lili zuria, magnolia petaloak.",
+        "en": "Grasse jasmine, white lily petals, magnolia."
+      },
+      "fondo": {
+        "es": "Cera botánica cremosa, sándalo blanco.",
+        "eu": "Soja-argizari krematsua, sandalo zuria.",
+        "en": "Creamy botanical soy, white sandalwood."
+      }
+    }
+  },
+  "c9": {
+    "title": {
+      "es": "Columna Cilíndrica Acanalada",
+      "eu": "Zutabe Zilindriko Urduritsua",
+      "en": "Fluted Cylinder Column"
+    },
+    "category": {
+      "es": "Esculturales",
+      "eu": "Eskulturalak",
+      "en": "Sculptural"
+    },
+    "tag": {
+      "es": "Elegancia Clásica",
+      "eu": "Dotorezia Klasikoa",
+      "en": "Classical Grace"
+    },
+    "burnTime": {
+      "es": "40h de presencia",
+      "eu": "40 orduko itzal dotorea",
+      "en": "40h pillar burn"
+    },
+    "essence": {
+      "es": "Elegante vela cilíndrica con acanalado vertical de inspiración dórica y notas cálidas de cedro y flor blanca.",
+      "eu": "Zutabe dorikoen urdintasun bertikala gogorarazten duen kandela zilindrikoa, zedro eta lore zurien usainarekin.",
+      "en": "Fluted classical pillar candle with Doric ribbed texture, releasing quiet undertones of blonde cedar and white blossoms."
+    },
+    "story": {
+      "es": "Su relieve estriado capta la luz natural creando un juego de sombras bellísimo sobre mesas, repisas o consolas de entrada.",
+      "eu": "Bere erliebe marradunak argi naturalaren distirak harrapatzen ditu, itzal joko liluragarria sortuz edozein altzariren gainean.",
+      "en": "Its architectural vertical grooves catch ambient light beautifully, casting warm, geometric shadows across any dining table or mantle."
+    },
+    "pyramid": {
+      "salida": {
+        "es": "Brisa de montaña, incienso blanco, ciprés.",
+        "eu": "Mendiko brisa, intsentsu zuria, altzifrea.",
+        "en": "Mountain mist, white frankincense, cypress."
+      },
+      "corazon": {
+        "es": "Flores blancas de almendro, madera de cedro fino.",
+        "eu": "Almendrondo lore zuriak, zedro finaren zura.",
+        "en": "White almond blossom, fine cedarwood."
+      },
+      "fondo": {
+        "es": "Ámbar seco, mirra sutil, almizcle noble.",
+        "eu": "Anbar lehorra, mirra sotila, almizkle noblea.",
+        "en": "Dry amber, warm myrrh, refined botanical musk."
+      }
+    }
+  },
+  "c10": {
+    "title": {
+      "es": "Camelia Botánica Nívea",
+      "eu": "Kamelia Botaniko Zuria",
+      "en": "Pure White Botanical Camellia"
+    },
+    "category": {
+      "es": "Botánicas",
+      "eu": "Botanikoak",
+      "en": "Botanical"
+    },
+    "tag": {
+      "es": "Escultura Floral",
+      "eu": "Lore Eskultura",
+      "en": "Sculpted Blossom"
+    },
+    "burnTime": {
+      "es": "25h de floración",
+      "eu": "25 orduko loraldi gozoa",
+      "en": "25h floral glow"
+    },
+    "essence": {
+      "es": "Flor circular esculpida con pétalos concéntricos. Esencia delicada de camelia blanca, orquídea y flor de loto.",
+      "eu": "Petalo zentrokideekin zizelkatutako lore borobila. Kamelia zuri, orkidea eta loto lorearen usain liluragarria.",
+      "en": "Sculpted concentric floral blossom releasing ethereal notes of rare white camellia, orchid mist, and water lotus."
+    },
+    "story": {
+      "es": "Cada pétalo está modelado para emular la perfección geométrica de las camelias de los jardines centenarios de Guipúzcoa.",
+      "eu": "Petalo bakoitza Gipuzkoako jauregi zaharretako lorategietako kamelien simetria perfektua omentzeko landua dago.",
+      "en": "Modeled after the ancient camellias blooming in historic Basque coastal estates, sculpted with loving anatomical precision."
+    },
+    "pyramid": {
+      "salida": {
+        "es": "Pétalos de camelia blanca, rocío matinal, té blanco.",
+        "eu": "Kamelia zuri petaloak, goizeko ihintza, te zuria.",
+        "en": "White camellia petals, morning garden mist, white tea."
+      },
+      "corazon": {
+        "es": "Orquídea silvestre, flor de loto, jazmín sambac.",
+        "eu": "Orkidea basatia, loto lorea, sambac jazmina.",
+        "en": "Wild orchid, sacred lotus blossom, sambac jasmine."
+      },
+      "fondo": {
+        "es": "Almizcle blanco transparente, madera de peral.",
+        "eu": "Almizkle zuri gardena, udareondo zura.",
+        "en": "Sheer silk musk, soft pearwood."
+      }
+    }
+  },
+  "c11": {
+    "title": {
+      "es": "Girasol Silvestre del Valle",
+      "eu": "Haraneko Eguzki-lore Basatia",
+      "en": "Valley Wild Sunflower"
+    },
+    "category": {
+      "es": "Botánicas",
+      "eu": "Botanikoak",
+      "en": "Botanical"
+    },
+    "tag": {
+      "es": "Luz & Vitalidad",
+      "eu": "Argia & Bizitasuna",
+      "en": "Sunlight & Joy"
+    },
+    "burnTime": {
+      "es": "25h de calor solar",
+      "eu": "25 orduko eguzki-berotasuna",
+      "en": "25h solar warmth"
+    },
+    "essence": {
+      "es": "Vela de girasol con centro texturizado de semillas. Fragancia cálida de miel de flores, polen silvestre y ámbar.",
+      "eu": "Eguzki-lore kandelaren forma xehea. Lore-eztiaren, basoko polenaren eta anbar urreztatuaren usain gozoa.",
+      "en": "Textured sunflower bloom releasing radiant aromas of wild wildflower honey, golden pollen, and sunlit amber."
+    },
+    "story": {
+      "es": "Símbolo de luz inagotable, energía positiva y gratitud. Llena el ambiente de luminosidad estival incluso en los días más fríos.",
+      "eu": "Argiaren, zorte onaren eta babesaren ikur unibertsala. Egun hotzenetan ere udako berotasuna ekartzen du gelara.",
+      "en": "An enduring symbol of gratitude, radiant energy, and hope. Brings a joyful burst of summer sunshine into your home year-round."
+    },
+    "pyramid": {
+      "salida": {
+        "es": "Miel silvestre, flor de girasol, néctar de naranja.",
+        "eu": "Basoko eztia, eguzki-lorea, laranja nektarra.",
+        "en": "Wildflower honey, sunflower blossom, orange nectar."
+      },
+      "corazon": {
+        "es": "Polen floral, manzanilla dorada, pétalos de caléndula.",
+        "eu": "Lore polena, kamamila urreztatua, kalendula petaloak.",
+        "en": "Golden pollen, chamomile tea, calendula petals."
+      },
+      "fondo": {
+        "es": "Cera de abeja botánica, ámbar cálido, vainilla dorada.",
+        "eu": "Argizari botanikoa, anbar epelea, banilla urreztatua.",
+        "en": "Botanical beeswax note, warm amber, spun vanilla."
+      }
+    }
+  },
+  "c12": {
+    "title": {
+      "es": "Rosa Carmesí Imperial",
+      "eu": "Errege Arrosa Gorri Bizizale",
+      "en": "Imperial Crimson Rose"
+    },
+    "category": {
+      "es": "Botánicas",
+      "eu": "Botanikoak",
+      "en": "Botanical"
+    },
+    "tag": {
+      "es": "Pasión Botánica",
+      "eu": "Pasio Botanikoa",
+      "en": "Botanical Passion"
+    },
+    "burnTime": {
+      "es": "25h de aroma envolvente",
+      "eu": "25 orduko aroma inguratzailea",
+      "en": "25h intoxicating rose"
+    },
+    "essence": {
+      "es": "Rosa roja en plena floración con pétalos aterciopelados. Fragancia clásica de rosa damascena y toques de peonía.",
+      "eu": "Arrosa gorri zabaldua petalo belusdunekin. Damasko arrosaren eta peoniaren usain erromantiko sakona.",
+      "en": "Velvet-petaled crimson garden rose releasing rich, authentic Bulgarian damask rose and peony undertones."
+    },
+    "story": {
+      "es": "La reina indiscutible de las flores recreada con pigmentos minerales naturales y esencias florales de alta fijación olfativa.",
+      "eu": "Loreen erregina dotorea, mineral naturalekin tindatua eta esentzia botaniar puruekin aberastua Zumarragan.",
+      "en": "The undisputed queen of flowers sculpted by hand with natural botanical pigments and masterfully balanced floral absolutes."
+    },
+    "pyramid": {
+      "salida": {
+        "es": "Pétalos de rosa húmedos, bergamota, pimienta rosa.",
+        "eu": "Arrosa petalo hezeak, bergamota, piperbeltz arrosa.",
+        "en": "Dew-kissed rosebuds, Italian bergamot, pink peppercorn."
+      },
+      "corazon": {
+        "es": "Rosa damascena de Bulgaria, peonía roja, clavel suave.",
+        "eu": "Bulgariako Damasko arrosa, peonia gorria, iltzea.",
+        "en": "Bulgarian Damask rose, crimson peony, soft carnation."
+      },
+      "fondo": {
+        "es": "Almizcle floral aterciopelado, madera de cedro, pachulí dulce.",
+        "eu": "Almizkle belusduna, zedro zura, patxuli gozoa.",
+        "en": "Velvety floral musk, cedarwood, sheer sweet patchouli."
+      }
+    }
+  },
+  "c13": {
+    "title": {
+      "es": "Rosa de Grasse en Estuche de Regalo",
+      "eu": "Grasse Arrosa Opari Kaxan",
+      "en": "Grasse Rose in Gift Box"
+    },
+    "category": {
+      "es": "Sets de Regalo",
+      "eu": "Opari Multzoak",
+      "en": "Gift Sets"
+    },
+    "tag": {
+      "es": "Edición Regalo",
+      "eu": "Opari Edizioa",
+      "en": "Gift Presentation"
+    },
+    "burnTime": {
+      "es": "25h de encanto",
+      "eu": "25 orduko xarma",
+      "en": "25h romantic flame"
+    },
+    "essence": {
+      "es": "Elegante rosa pastel presentada en estuche especial para regalo con cinta de seda y aroma floral empolvado.",
+      "eu": "Arrosa pastel dotorea opari-kaxa zainduan aurkeztua, zetazko xingola eta hauts-lore usain gozoarekin.",
+      "en": "Blush pink sculpted rose nestled in a boutique gift box with satin ribbon and powdery floral whispers."
+    },
+    "story": {
+      "es": "El detalle perfecto para aniversarios, bodas y ocasiones memorables. Lista para regalar y deleitar los sentidos.",
+      "eu": "Ezkontzetarako, urteurrenetarako eta une ahaztezinetarako opari ezin hobea. Zuzenean oparitzeko prest.",
+      "en": "A heartfelt handcrafted treasure designed for weddings, anniversaries, and unforgettable milestones."
+    },
+    "pyramid": {
+      "salida": {
+        "es": "Agua de rosas de mayo, lichi dulce, flor de mandarina.",
+        "eu": "Maiatzeko arrosa-ura, litxi gozoa, mandarina lorea.",
+        "en": "May rosewater, sweet lychee, mandarin blossom."
+      },
+      "corazon": {
+        "es": "Rosa centifolia, violeta de Parma, flor de almendro.",
+        "eu": "Zentifolia arrosa, Parmako bioleta, almendrondo lorea.",
+        "en": "Rose Centifolia, Parma violet, sweet almond flower."
+      },
+      "fondo": {
+        "es": "Vainilla suave, almizcle empolvado, ámbar blanco.",
+        "eu": "Banilla leuna, almizkle hautsitua, anbar zuria.",
+        "en": "Creamy soft vanilla, powdery musk, white amber."
+      }
+    }
+  },
+  "c14": {
+    "title": {
+      "es": "Cúpula Floral Sinfonía de Primavera",
+      "eu": "Udaberriko Kupula Floral Anitza",
+      "en": "Spring Symphony Floral Dome"
+    },
+    "category": {
+      "es": "Botánicas",
+      "eu": "Botanikoak",
+      "en": "Botanical"
+    },
+    "tag": {
+      "es": "Centro de Mesa",
+      "eu": "Mahai Zentroa",
+      "en": "Centerpiece Masterpiece"
+    },
+    "burnTime": {
+      "es": "50h de resplandor",
+      "eu": "50 orduko distira",
+      "en": "50h radiant centerpiece"
+    },
+    "essence": {
+      "es": "Composición floral en cúpula con rosas, dalias y peonías multicolores con esencias de jardín botánico.",
+      "eu": "Kupula formako lore-konposizioa arrosa, dalia eta peonia koloretsuekin, lorategi botanikoaren aromaz betea.",
+      "en": "Dome-shaped floral centerpiece blooming with multicolored roses, dahlias, and peonies kissed by botanical garden air."
+    },
+    "story": {
+      "es": "Nuestra obra más elaborada. Decora majestuosamente mesas de comedor, dormitorios y salones con un festín de color.",
+      "eu": "Gure piezarik landuena eta ikusgarriena. Egongelak eta jantokiak dotoreziaz eta kolorez janzten ditu.",
+      "en": "Our crowning artisanal creation. A centerpiece that commands admiration on dining tables, credenzas, and consoles."
+    },
+    "pyramid": {
+      "salida": {
+        "es": "Brisa de jardín inglés, pétalos de rosa, pera verde.",
+        "eu": "Ingalaterrako lorategi-brisa, arrosa petaloak, udare berdea.",
+        "en": "English garden breeze, fresh rose petals, green bosc pear."
+      },
+      "corazon": {
+        "es": "Peonía rosa, magnolia en flor, jazmín silvestre.",
+        "eu": "Peonia arrosa, magnolia loreduna, basako jazmina.",
+        "en": "Pink peony, magnolia blossom, wild climbing jasmine."
+      },
+      "fondo": {
+        "es": "Maderas nobles, musgo de roble blanco, ámbar claro.",
+        "eu": "Zur nobleak, haritz goroldio zuria, anbar argia.",
+        "en": "Fine noble woods, soft white moss, sheer amber."
+      }
+    }
+  },
+  "c15": {
+    "title": {
+      "es": "Sobre Botánico Carta de Amor",
+      "eu": "Maitasun Gutun Botanikoa",
+      "en": "Botanical Love Letter Envelope"
+    },
+    "category": {
+      "es": "Botánicas",
+      "eu": "Botanikoak",
+      "en": "Botanical"
+    },
+    "tag": {
+      "es": "Diseño Poético",
+      "eu": "Diseinu Poetikoa",
+      "en": "Poetic Design"
+    },
+    "burnTime": {
+      "es": "35h de poesía",
+      "eu": "35 orduko poesia",
+      "en": "35h romantic burn"
+    },
+    "essence": {
+      "es": "Vela en forma de sobre postal abierto desbordando ramilletes de flores en relieve. Notas de lino, lirios y violeta.",
+      "eu": "Gutun-azal irekiaren formako kandela, lore-sortak gainezka dituela. Liho, lili eta bioleta usain gozoa.",
+      "en": "Open postal letter candle overflowing with sculpted relief wildflower bouquets, infused with linen and iris."
+    },
+    "story": {
+      "es": "Inspirada en las cartas de amor manuscritas de antaño. Un diseño lírico que celebra las palabras sentidas y el cariño auténtico.",
+      "eu": "Eskuz idatzitako antzinako maitasun-gutunetan inspiratua. Bihotzetik idatzitako hitzak eta oroitzapenak omentzen dituen diseinua.",
+      "en": "Inspired by timeless handwritten love letters. A poetic design celebrating romantic nostalgia and sincere connection."
+    },
+    "pyramid": {
+      "salida": {
+        "es": "Papel de lino blanco, rocío matinal, flor de azahar.",
+        "eu": "Lihozko paper zuria, goizeko ihintza, laranjondo lorea.",
+        "en": "Crisp linen parchment, morning dew, orange blossom."
+      },
+      "corazon": {
+        "es": "Rosas miniatura, violeta silvestre, lirio blanco.",
+        "eu": "Arrosa txikiak, basabioleta, lili zuria.",
+        "en": "Miniature garden roses, sweet violet, white iris."
+      },
+      "fondo": {
+        "es": "Almizcle poético, madera de haya, ámbar suave.",
+        "eu": "Almizkle poetikoa, pago zura, anbar leuna.",
+        "en": "Poetic musk, pale beechwood, whisper of amber."
+      }
+    }
+  },
+  "c16": {
+    "title": {
+      "es": "Bouquet de Tulipanes Silvestres",
+      "eu": "Tulipa Basatien Bouquet-a",
+      "en": "Wild Pink Tulips Bouquet"
+    },
+    "category": {
+      "es": "Botánicas",
+      "eu": "Botanikoak",
+      "en": "Botanical"
+    },
+    "tag": {
+      "es": "Pieza de Autor",
+      "eu": "Egile Pieza",
+      "en": "Signature Bouquet"
+    },
+    "burnTime": {
+      "es": "45h de llama floral",
+      "eu": "45 orduko lore-sugarra",
+      "en": "45h floral candle bouquet"
+    },
+    "essence": {
+      "es": "Ramo de tulipanes rosa esculpidos con flores secas decorativas y aroma a tallos verdes y pétalos frescos.",
+      "eu": "Tulipa arrosaz osatutako sorta zizelkatua, lore lehor apaingarriekin eta zurtoin berdeen usain freskoarekin.",
+      "en": "Sculpted pink tulip bouquet accented with baby's breath dried florals and dewy fresh-cut botanical greens."
+    },
+    "story": {
+      "es": "El frescor de los campos de tulipanes en primavera. Una pieza sublime que embellece y llena de aroma cualquier estancia.",
+      "eu": "Udaberriko tulipa zelaien freskotasun bizia. Etxeko edozein bazter usain eta argi ederrez betetzen duen sorkuntza bikaina.",
+      "en": "Captures the buoyant freshness of spring tulip fields at dawn. An opulent centerpiece that breathes vibrancy into any interior."
+    },
+    "pyramid": {
+      "salida": {
+        "es": "Tallos verdes de tulipán, aire fresco de rocío, mandarina.",
+        "eu": "Tulipa zurtoin berdeak, ihintz aire freskoa, mandarina.",
+        "en": "Crisp green tulip stems, cool morning breeze, mandarin leaf."
+      },
+      "corazon": {
+        "es": "Tulipán rosa en flor, jacinto silvestre, flor de manzano.",
+        "eu": "Tulipa arrosa zabaldua, basajazintoa, sagarrondo lorea.",
+        "en": "Blooming pink tulips, wild hyacinth, apple blossom."
+      },
+      "fondo": {
+        "es": "Musgo blanco, cedro limpio, almizcle floral.",
+        "eu": "Goroldio zuria, zedro garbia, lore-almizklea.",
+        "en": "White musk, sheer cedarwood, soft garden moss."
+      }
+    }
+  },
+  "c17": {
+    "title": {
+      "es": "Conjunto Armonía Tulipanes & Esfera",
+      "eu": "Tulipa & Esfera Harmonia Multzoa",
+      "en": "Tulips & Orb Harmony Set"
+    },
+    "category": {
+      "es": "Botánicas",
+      "eu": "Botanikoak",
+      "en": "Botanical"
+    },
+    "tag": {
+      "es": "Edición Escultórica",
+      "eu": "Edizio Eskultorikoa",
+      "en": "Sculptural Harmony"
+    },
+    "burnTime": {
+      "es": "55h de calma",
+      "eu": "55 orduko baretasuna",
+      "en": "55h dual burn time"
+    },
+    "essence": {
+      "es": "Composición de ramo de tulipanes en tonos pastel combinada con esfera aromática de cera de soja texturizada.",
+      "eu": "Tulipa lore-sortaren eta soja-argizarizko esfera geometriko baten arteko uztarketa liluragarria.",
+      "en": "Harmonious duo pairing sculpted pastel tulips with a textured geometric soy orb infused with white peach and orchid."
+    },
+    "story": {
+      "es": "Equilibrio perfecto entre escultura geométrica y belleza botánica orgánica. Una presencia imponente y sofisticada.",
+      "eu": "Geometria eskultorikoaren eta lore-naturaren arteko oreka gorena. Edonon jartzeko moduko pieza berezia.",
+      "en": "The delicate union of floral romanticism and geometric serenity. Brings commanding sophistication to coffee tables and consoles."
+    },
+    "pyramid": {
+      "salida": {
+        "es": "Flores de loto, melocotón blanco, brisa fresca.",
+        "eu": "Loto loreak, mertxika zuria, brisa freskoa.",
+        "en": "Water lotus, white peach nectar, morning breeze."
+      },
+      "corazon": {
+        "es": "Tulipán holandés, orquídea rosa, lirio de agua.",
+        "eu": "Herbehereetako tulipa, orkidea arrosa, ur lilia.",
+        "en": "Dutch pink tulip, blush orchid, water lily."
+      },
+      "fondo": {
+        "es": "Sándalo cálido, ámbar dorado, almizcle de seda.",
+        "eu": "Sandalo epelea, anbar urreztatua, zeta-almizklea.",
+        "en": "Warm sandalwood, golden amber, sheer silk musk."
+      }
+    }
+  },
+  "c18": {
+    "title": {
+      "es": "Oso Amoroso Carmesí con Bouquet",
+      "eu": "Hartz Maitekor Gorria Bouquet-arekin",
+      "en": "Crimson Bear with Rose Bouquet"
+    },
+    "category": {
+      "es": "Sets de Regalo",
+      "eu": "Opari Multzoak",
+      "en": "Gift Sets"
+    },
+    "tag": {
+      "es": "Edición Romántica",
+      "eu": "Edizio Erromantikoa",
+      "en": "Romantic Keepsake"
+    },
+    "burnTime": {
+      "es": "35h de ternura",
+      "eu": "35 orduko gozotasuna",
+      "en": "35h tender glow"
+    },
+    "essence": {
+      "es": "Tierno osito modelado en cera de soja roja sosteniendo un ramillete de rosas. Aroma a frutos rojos y pétalos dulces.",
+      "eu": "Arrosa-sorta bat eskuetan duen hartz kuttuna soja-argizari gorriz egina. Basafruitu eta lore gozoen usainarekin.",
+      "en": "Adorably detailed crimson teddy bear holding a bouquet of sculpted roses, releasing wild berry and sweet rose nectar."
+    },
+    "story": {
+      "es": "La pieza favorita para San Valentín, aniversarios y demostraciones de cariño sincero. Modelado con minucioso detalle en cada rosa.",
+      "eu": "Maitasunaren, urteurrenen eta xehetasun berezien piezarik maitatuena. Arrosa bakoitza xehetasun handiz landua dago.",
+      "en": "A heartfelt romantic gift for anniversaries and declarations of affection. Each individual rosebud in the bear's paws is meticulously hand-finished."
+    },
+    "pyramid": {
+      "salida": {
+        "es": "Grosella roja, fresas silvestres, frambuesa.",
+        "eu": "Marrubi basatiak, andere-mahats gorria, mugurdia.",
+        "en": "Red currant, wild strawberry, raspberry nectar."
+      },
+      "corazon": {
+        "es": "Ramillete de rosas rojas, flor de cerezo, violeta.",
+        "eu": "Arrosa gorri sorta, gerezi lorea, bioleta.",
+        "en": "Crimson rose bouquet, cherry blossom, sweet violet."
+      },
+      "fondo": {
+        "es": "Vainilla cremosa, caramelo dulce, almizcle suave.",
+        "eu": "Banilla krematsua, karamelu gozoa, almizkle leuna.",
+        "en": "Creamy vanilla, warm spun sugar, gentle musk."
+      }
+    }
+  },
+  "c19": {
+    "title": {
+      "es": "Oso Solar Dorado con Bouquet",
+      "eu": "Hartz Eguzkitsu Urreztatua",
+      "en": "Golden Sun Bear with Bouquet"
+    },
+    "category": {
+      "es": "Sets de Regalo",
+      "eu": "Opari Multzoak",
+      "en": "Gift Sets"
+    },
+    "tag": {
+      "es": "Alegría & Cariño",
+      "eu": "Poza & Kuttuntasuna",
+      "en": "Joy & Warmth"
+    },
+    "burnTime": {
+      "es": "35h de calidez",
+      "eu": "35 orduko berotasuna",
+      "en": "35h sunny warmth"
+    },
+    "essence": {
+      "es": "Osito de cera de soja en tono amarillo mostaza cálido con ramillete de flores. Notas dulces de miel, flor de azahar y vainilla.",
+      "eu": "Hori epeleko hartz kuttuna lore-sortarekin. Ezti, laranjondo lore eta banillaren usain gozo eta alaia.",
+      "en": "Charming golden teddy bear holding a floral bouquet, emitting cozy notes of wildflower honey, orange blossom, and vanilla."
+    },
+    "story": {
+      "es": "Transmite felicidad, optimismo y compañía. Un regalo entrañable que ilumina habitaciones infantiles, salones o despachos.",
+      "eu": "Zoriontasuna, baikortasuna eta goxotasuna transmititzen ditu. Etxeko edozein gela alaitzeko opari maitagarria.",
+      "en": "Brings sunshine, optimism, and warm companionship into any home. A delightful gift for loved ones of all ages."
+    },
+    "pyramid": {
+      "salida": {
+        "es": "Flor de azahar, mandarina dulce, miel dorada.",
+        "eu": "Laranjondo lorea, mandarina gozoa, urre-eztia.",
+        "en": "Orange blossom, sweet clementine, golden honey."
+      },
+      "corazon": {
+        "es": "Flores silvestres amarillas, flor de almendro, manzanilla.",
+        "eu": "Basalore horiak, almendrondo lorea, kamamila.",
+        "en": "Yellow garden blossoms, almond flower, chamomile."
+      },
+      "fondo": {
+        "es": "Vainilla bourbon, cera de soja pura, madera suave.",
+        "eu": "Bourbon banilla, soja-argizari garbia, zur leuna.",
+        "en": "Bourbon vanilla, natural soy wax, warm soft woods."
+      }
+    }
+  },
+  "c20": {
+    "title": {
+      "es": "Trío de Ositos Afecto Eterno",
+      "eu": "Hiru Hartz Betiereko Maitasuna",
+      "en": "Eternal Love Bear Trio Set"
+    },
+    "category": {
+      "es": "Sets de Regalo",
+      "eu": "Opari Multzoak",
+      "en": "Gift Sets"
+    },
+    "tag": {
+      "es": "Set Trío de Regalo",
+      "eu": "Hiru Piezen Oparia",
+      "en": "Three-Piece Set"
+    },
+    "burnTime": {
+      "es": "3x15h de llama dulce",
+      "eu": "3x15 orduko sugar gozoa",
+      "en": "3x15h soft burn"
+    },
+    "essence": {
+      "es": "Set de tres ositos de cera de soja con corazón en relieve. Fragancia suave a talco de bebé, vainilla y flor de algodón.",
+      "eu": "Bihotza duten hiru hartz kuttunen multzoa. Haur-talko, banilla eta kotoi lorearen usain leun eta gozoa.",
+      "en": "Set of three adorable soy teddy bears holding relief love hearts, scented with gentle baby powder, sweet vanilla, and cotton flower."
+    },
+    "story": {
+      "es": "El trío más dulce de nuestro catálogo. Se presentan juntos para repartir armonía y encanto en varios rincones de la casa.",
+      "eu": "Gure katalogoko hirukoterik maitagarriena. Elkarrekin aurkezten dira etxeko bazterrak goxotasunez betetzeko.",
+      "en": "Our most endearing gift bundle. Styled together or placed in different corners of the home to spread sweet serenity."
+    },
+    "pyramid": {
+      "salida": {
+        "es": "Talco suave de bebé, flor de algodón, bergamota ligera.",
+        "eu": "Talko leuna, kotoi lorea, bergamota arina.",
+        "en": "Gentle baby powder, cotton bloom, whisper of bergamot."
+      },
+      "corazon": {
+        "es": "Flor de azahar, rosa empolvada, crema batida.",
+        "eu": "Laranjondo lorea, arrosa hautsitua, esnegaina.",
+        "en": "Orange blossom, dusted pink rose, whipped cream."
+      },
+      "fondo": {
+        "es": "Vainilla dulce, almizcle blanco, azúcar glas.",
+        "eu": "Banilla gozoa, almizkle zuria, azukre leuna.",
+        "en": "Sweet vanilla bean, white baby musk, spun sugar."
+      }
+    }
+  },
+  "c21": {
+    "title": {
+      "es": "Set 3 Monos Sabios de la Sabiduría",
+      "eu": "Hiru Tximino Jakintsuen Multzoa",
+      "en": "Three Wise Monkeys Wisdom Set"
+    },
+    "category": {
+      "es": "Sets de Regalo",
+      "eu": "Opari Multzoak",
+      "en": "Gift Sets"
+    },
+    "tag": {
+      "es": "Filosofía & Sabiduría",
+      "eu": "Filosofia & Jakituria",
+      "en": "Mindfulness & Wisdom"
+    },
+    "burnTime": {
+      "es": "3x20h de serenidad",
+      "eu": "3x20 orduko baretasuna",
+      "en": "3x20h contemplative burn"
+    },
+    "essence": {
+      "es": "Los tres monos sabios: No ver el mal, no oír el mal, no hablar el mal. Notas místicas de sándalo oriental, mirra y cedro.",
+      "eu": "Hiru tximino jakintsuen eskultura multzoa: gaizkirik ez ikusi, ez entzun, ez esan. Sandalo eta mirra usain mistikoa.",
+      "en": "The iconic Three Wise Monkeys (See No Evil, Hear No Evil, Speak No Evil) carrying sacred notes of Eastern sandalwood, myrrh, and aged cedar."
+    },
+    "story": {
+      "es": "Representación en cera de soja de la milenaria filosofía Toshogu. Una pieza llena de significado espiritual y profundidad interior.",
+      "eu": "Ekialdeko filosofia sakonaren irudikapena soja-argizari noblean. Zentzumenak baretzeko eta gogoeta egiteko ezin hobea.",
+      "en": "A sculptural manifestation of ancient Toshogu wisdom. Creates a mindful, grounded ambience for yoga, reading, and contemplative spaces."
+    },
+    "pyramid": {
+      "salida": {
+        "es": "Incienso blanco, nuez moscada, corteza de canela.",
+        "eu": "Intsentsu zuria, intxaur muskatua, kanela azala.",
+        "en": "White frankincense, crushed nutmeg, cinnamon bark."
+      },
+      "corazon": {
+        "es": "Madera de sándalo oriental, clavo de olor, cedro del Atlas.",
+        "eu": "Ekialdeko sandalo zura, iltzea, Atlas zedroa.",
+        "en": "Sacred oriental sandalwood, clove bud, Atlas cedar."
+      },
+      "fondo": {
+        "es": "Mirra balsámica, resina de ámbar, almizcle amaderado.",
+        "eu": "Mirra baltsamikoa, anbar erretxina, almizkle amaderatua.",
+        "en": "Balsamic myrrh, warm amber resin, smoky woody musk."
+      }
     }
   }
 };
 
-/**
- * Idioma activo actual ('es', 'eu', 'en')
- */
 let currentLanguage = 'es';
 
 /**
@@ -778,17 +1768,21 @@ function applyTranslations() {
       if (descEl && item.story && item.story[currentLanguage]) {
         descEl.textContent = item.essence ? item.essence[currentLanguage] : item.story[currentLanguage];
       }
-      const badgeEl = card.querySelector('span.absolute.top-3.left-3');
+      const badgeEl = card.querySelector('.candle-tag-badge') || card.querySelector('span.absolute.top-3.left-3');
       if (badgeEl && item.tag && item.tag[currentLanguage]) {
         const icon = badgeEl.querySelector('i');
         badgeEl.innerHTML = (icon ? icon.outerHTML + ' ' : '') + item.tag[currentLanguage];
       }
-      const burnEl = card.querySelector('span.absolute.bottom-3.left-3');
+      const burnEl = card.querySelector('.candle-burn-badge') || card.querySelector('span.absolute.bottom-3.left-3');
       if (burnEl && item.burnTime && item.burnTime[currentLanguage]) {
         burnEl.innerHTML = `<i class="fa-regular fa-clock text-amber-400"></i> ${item.burnTime[currentLanguage]}`;
       }
     }
   });
+
+    if (typeof updateFilterCounterDisplay === 'function') {
+    updateFilterCounterDisplay();
+  }
 
   // Refrescar drawer y botones de favoritos
   if (typeof renderFavorites === 'function') {

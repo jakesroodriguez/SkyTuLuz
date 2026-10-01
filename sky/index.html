@@ -729,66 +729,132 @@
 
       <div class="container mx-auto max-w-7xl">
         <!-- Section Header -->
-        <div class="flex flex-col md:flex-row justify-between items-end mb-12 fade-up">
-          <div>
-            <span class="font-dancing text-[#b89b72] text-3xl block mb-1" data-i18n="portfolio_subtitle">Portafolio de Autor</span>
-            <h2 class="text-4xl md:text-5xl font-serif text-[#2c2c2c]" data-i18n="portfolio_title">Galería de Velas Artesanales</h2>
-            <p class="text-xs text-gray-500 font-light mt-2 max-w-lg leading-relaxed" data-i18n="portfolio_desc">
-              Cada creación es vertida a mano en pequeñas tiradas utilizando cera de soja vegetal pura, esencias botánicas de alta gama y mechas de algodón ecológico. Guarda tus favoritas para inspirar tu hogar.
-            </p>
-          </div>
+        <div class="text-center mb-10 fade-up">
+          <span class="font-dancing text-[#b89b72] text-3xl block mb-1" data-i18n="portfolio_subtitle">Portafolio de Autor</span>
+          <h2 class="text-4xl md:text-5xl font-serif text-[#2c2c2c]" data-i18n="portfolio_title">Galería de Velas Artesanales</h2>
+          <p class="text-xs text-gray-500 font-light mt-2 max-w-xl mx-auto leading-relaxed" data-i18n="portfolio_desc">
+            Cada creación es vertida a mano en pequeñas tiradas utilizando cera de soja vegetal pura, esencias botánicas de alta gama y mechas de algodón ecológico. Guarda tus favoritas para inspirar tu hogar.
+          </p>
+        </div>
+
+        <!-- Multifaceted Interactive Filter Toolbar -->
+        <div class="mb-10 max-w-4xl mx-auto text-center fade-up">
           
-          <!-- Filter Tabs with ARIA -->
-          <div class="flex flex-wrap gap-2 mt-6 md:mt-0 bg-white/70 backdrop-blur-md p-1.5 rounded-full border border-gray-200 shadow-sm" role="tablist" aria-label="Filtro de categorías de velas">
-            <button class="portfolio-filter-btn active px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#2c2c2c] text-white transition-all shadow-sm" role="tab" aria-selected="true" data-filter="all" data-i18n="filter_all">Todas</button>
-            <button class="portfolio-filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider text-gray-600 hover:text-[#b89b72] transition-all" role="tab" aria-selected="false" data-filter="aromaticas" data-i18n="filter_aromatic">Aromáticas</button>
-            <button class="portfolio-filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider text-gray-600 hover:text-[#b89b72] transition-all" role="tab" aria-selected="false" data-filter="botanica" data-i18n="filter_botanical">Botánicas</button>
-            <button class="portfolio-filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider text-gray-600 hover:text-[#b89b72] transition-all" role="tab" aria-selected="false" data-filter="esculturales" data-i18n="filter_sculptural">Esculturales</button>
-            <button class="portfolio-filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider text-gray-600 hover:text-[#b89b72] transition-all" role="tab" aria-selected="false" data-filter="personalizadas" data-i18n="filter_custom">Personalizadas</button>
+          <!-- Instant Real-Time Search Bar -->
+          <div class="relative w-full max-w-md mx-auto mb-6">
+            <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-[#b89b72] text-sm pointer-events-none"></i>
+            <input type="text" id="candle-search-input" data-i18n-placeholder="filter_search_placeholder" placeholder="Buscar por aroma, flor o nombre (ej. Café, Tulipán, Bambú)..." class="w-full pl-11 pr-10 py-3 rounded-full bg-white/90 backdrop-blur-md border border-[#b89b72]/30 focus:border-[#b89b72] focus:ring-2 focus:ring-[#b89b72]/20 outline-none text-xs text-[#2c2c2c] placeholder-gray-400 shadow-sm transition-all" />
+            <button id="candle-search-clear" class="hidden absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-gray-200/80 hover:bg-[#b89b72] hover:text-white text-gray-500 text-[10px] flex items-center justify-center transition-colors" title="Borrar búsqueda" aria-label="Borrar búsqueda">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
           </div>
+
+          <!-- Dimension 1: Collections / Categories -->
+          <div class="flex flex-wrap items-center justify-center gap-2 mb-4" role="tablist" aria-label="Colecciones">
+            <span class="text-[11px] font-semibold uppercase tracking-wider text-[#8b7355] mr-1 hidden sm:inline" data-i18n="filter_label_cat">Colección:</span>
+            <button class="candle-filter-btn active px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#2c2c2c] text-white transition-all shadow-sm" data-filter-type="category" data-filter-value="all" data-i18n="filter_cat_all">Todas</button>
+            <button class="candle-filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-white/80 hover:bg-[#b89b72] hover:text-white text-gray-700 transition-all border border-gray-200/80 shadow-sm" data-filter-type="category" data-filter-value="vaso" data-i18n="filter_cat_vaso">Vasos Aromáticos</button>
+            <button class="candle-filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-white/80 hover:bg-[#b89b72] hover:text-white text-gray-700 transition-all border border-gray-200/80 shadow-sm" data-filter-type="category" data-filter-value="escultura" data-i18n="filter_cat_escultura">Esculturales</button>
+            <button class="candle-filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-white/80 hover:bg-[#b89b72] hover:text-white text-gray-700 transition-all border border-gray-200/80 shadow-sm" data-filter-type="category" data-filter-value="botanica" data-i18n="filter_cat_botanica">Botánicas & Flores</button>
+            <button class="candle-filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-white/80 hover:bg-[#b89b72] hover:text-white text-gray-700 transition-all border border-gray-200/80 shadow-sm" data-filter-type="category" data-filter-value="regalo" data-i18n="filter_cat_regalo">Sets de Regalo</button>
+          </div>
+
+          <!-- Dimension 2 & 3: Color & Size Toolbar -->
+          <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-6 pt-3 border-t border-[#b89b72]/15">
+            <!-- Color Filters -->
+            <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+              <span class="text-[11px] font-semibold uppercase tracking-wider text-[#8b7355] mr-0.5" data-i18n="filter_label_color">Color:</span>
+              <button class="candle-filter-btn active px-3 py-1 rounded-full text-[11px] font-medium bg-[#2c2c2c] text-white border border-[#2c2c2c] transition-all shadow-sm" data-filter-type="color" data-filter-value="all" data-i18n="filter_color_all">Todos</button>
+              <button class="candle-filter-btn px-2.5 py-1 rounded-full text-[11px] font-medium bg-white/80 hover:bg-white text-gray-700 border border-gray-200 transition-all flex items-center gap-1.5" data-filter-type="color" data-filter-value="blanco" title="Blanco / Neutro">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#f8f6f0] border border-gray-300 shadow-inner"></span>
+                <span data-i18n="filter_color_blanco">Blanco</span>
+              </button>
+              <button class="candle-filter-btn px-2.5 py-1 rounded-full text-[11px] font-medium bg-white/80 hover:bg-white text-gray-700 border border-gray-200 transition-all flex items-center gap-1.5" data-filter-type="color" data-filter-value="rosa" title="Rosa / Pastel">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#f3b4c4] border border-pink-300"></span>
+                <span data-i18n="filter_color_rosa">Rosa</span>
+              </button>
+              <button class="candle-filter-btn px-2.5 py-1 rounded-full text-[11px] font-medium bg-white/80 hover:bg-white text-gray-700 border border-gray-200 transition-all flex items-center gap-1.5" data-filter-type="color" data-filter-value="rojo" title="Rojo / Pasión">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#d9383a]"></span>
+                <span data-i18n="filter_color_rojo">Rojo</span>
+              </button>
+              <button class="candle-filter-btn px-2.5 py-1 rounded-full text-[11px] font-medium bg-white/80 hover:bg-white text-gray-700 border border-gray-200 transition-all flex items-center gap-1.5" data-filter-type="color" data-filter-value="amarillo" title="Amarillo / Dorado">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#f4c430]"></span>
+                <span data-i18n="filter_color_amarillo">Amarillo</span>
+              </button>
+              <button class="candle-filter-btn px-2.5 py-1 rounded-full text-[11px] font-medium bg-white/80 hover:bg-white text-gray-700 border border-gray-200 transition-all flex items-center gap-1.5" data-filter-type="color" data-filter-value="cafe" title="Café / Tostado">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#8b5a2b]"></span>
+                <span data-i18n="filter_color_cafe">Café</span>
+              </button>
+              <button class="candle-filter-btn px-2.5 py-1 rounded-full text-[11px] font-medium bg-white/80 hover:bg-white text-gray-700 border border-gray-200 transition-all flex items-center gap-1.5" data-filter-type="color" data-filter-value="verde" title="Verde / Menta">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#7ea082]"></span>
+                <span data-i18n="filter_color_verde">Verde</span>
+              </button>
+            </div>
+
+            <!-- Size / Format Filters -->
+            <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+              <span class="text-[11px] font-semibold uppercase tracking-wider text-[#8b7355] mr-0.5" data-i18n="filter_label_size">Formato:</span>
+              <button class="candle-filter-btn active px-3 py-1 rounded-full text-[11px] font-medium bg-[#2c2c2c] text-white border border-[#2c2c2c] transition-all shadow-sm" data-filter-type="size" data-filter-value="all" data-i18n="filter_size_all">Todos</button>
+              <button class="candle-filter-btn px-2.5 py-1 rounded-full text-[11px] font-medium bg-white/80 hover:bg-white text-gray-700 border border-gray-200 transition-all" data-filter-type="size" data-filter-value="vaso" data-i18n="filter_size_vaso">Vaso Cristal</button>
+              <button class="candle-filter-btn px-2.5 py-1 rounded-full text-[11px] font-medium bg-white/80 hover:bg-white text-gray-700 border border-gray-200 transition-all" data-filter-type="size" data-filter-value="escultura" data-i18n="filter_size_escultura">Escultura</button>
+              <button class="candle-filter-btn px-2.5 py-1 rounded-full text-[11px] font-medium bg-white/80 hover:bg-white text-gray-700 border border-gray-200 transition-all" data-filter-type="size" data-filter-value="ramo" data-i18n="filter_size_ramo">Centro / Ramo</button>
+              <button class="candle-filter-btn px-2.5 py-1 rounded-full text-[11px] font-medium bg-white/80 hover:bg-white text-gray-700 border border-gray-200 transition-all" data-filter-type="size" data-filter-value="pack" data-i18n="filter_size_pack">Set / Pack</button>
+            </div>
+          </div>
+
+          <!-- Active Counter & Reset Button -->
+          <div class="flex items-center justify-between px-2 text-xs text-gray-600">
+            <div id="candle-results-counter" class="font-medium text-[#5c4632]">
+              <span data-i18n="filter_counter_prefix">Mostrando</span> <strong id="candle-count-num" class="text-[#b89b72] font-bold">21</strong> <span data-i18n="filter_counter_of">de</span> 21 <span data-i18n="filter_counter_suffix">creaciones artesanas</span>
+            </div>
+            <button id="reset-filters-btn" class="hidden text-xs font-semibold text-[#b89b72] hover:text-[#2c2c2c] transition-colors flex items-center gap-1.5 bg-white/60 hover:bg-white px-3 py-1 rounded-full border border-[#b89b72]/30 shadow-sm" onclick="resetCandleFilters()">
+              <i class="fa-solid fa-rotate-left text-[10px]"></i>
+              <span data-i18n="filter_reset_btn">Restablecer filtros</span>
+            </button>
+          </div>
+
         </div>
 
         <!-- Portfolio Grid -->
         <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-
-          <!-- Candle 1: Ámbar & Vainilla -->
-          <article class="portfolio-card group card-hover bg-[#faf8f5] p-6 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-category="aromaticas" data-id="c1">
+          <!-- Candle c1: Café Espresso & Avellana Tostada -->
+          <article class="portfolio-card group card-hover bg-[#faf8f5] p-6 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-id="c1" data-category="vaso" data-color="cafe" data-size="vaso">
             <div>
               <div class="relative img-rounded-zoom aspect-[4/3] mb-5 bg-[#f5f3ef]">
-                <img alt="Vela artesanal de cera de soja con aroma de ámbar y vainilla bourbon — Sky Tu Luz" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover cursor-pointer" onclick="openCandleModal('c1')" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6e1hWyTdoqLvQbdSI3O0ZNUxuu4YKLcLzFiQ7UDX6I2nsL4n0NKQRX7Utds44QJRRf0u3GiSpHMOdZi0K4F5Iu2lJPNE5ZP4fG2dBih9WuyGCI72Pd8MIS3pJYr0ZIHsw2GW2ZvBOuHXoW4FiCiHDCQ-sFWvbBuZORn7lZCCaDxZqwEBYdWlGC7yzkHaZO-1TfQrnAhPAZ0CrxRe8FioRag5tYv7wFX_GgvWzhDYoLobz0bx7buXJfQ"/>
+                <img alt="Café Espresso & Avellana Tostada — Sky Tu Luz" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover cursor-pointer" onclick="openCandleModal('c1')" src="assets/candles/candle_c1.jpg"/>
                 
                 <!-- Favorite Heart Button -->
-                <button class="fav-toggle-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-all duration-300 shadow-md hover:scale-110" data-id="c1" aria-label="Añadir Ámbar y Vainilla a favoritas" title="Añadir a favoritas">
+                <button class="fav-toggle-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-all duration-300 shadow-md hover:scale-110" data-id="c1" aria-label="Añadir a favoritas" title="Añadir a favoritas">
                   <i class="fa-regular fa-heart"></i>
                 </button>
                 
                 <!-- Badges -->
-                <span class="absolute top-3 left-3 bg-[#b89b72] text-white text-[10px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full shadow-sm">
-                  <i class="fa-solid fa-sparkles mr-1"></i> Pieza de Autor
+                <span class="candle-tag-badge absolute top-3 left-3 bg-[#b89b72] text-white text-[10px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full shadow-sm">
+                  <i class="fa-solid fa-sparkles mr-1"></i> Gourmand de Autor
                 </span>
-                <span class="absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5">
-                  <i class="fa-regular fa-clock text-amber-400"></i> 45h Combustión Lenta
+                <span class="candle-burn-badge absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5">
+                  <i class="fa-regular fa-clock text-amber-400"></i> 45h de combustión pura
                 </span>
               </div>
               
               <div class="flex items-center gap-1.5 text-[10px] font-semibold text-[#b89b72] uppercase tracking-wider mb-1">
-                <i class="fa-solid fa-seedling"></i> 100% Cera de Soja &amp; Vainilla Bourbon
+                <i class="fa-solid fa-seedling"></i> <span class="candle-cat-badge">Vasos Aromáticos</span> · <span class="text-gray-500 font-normal">Café / Tostado</span>
               </div>
-              <h3 class="text-2xl font-serif text-[#2c2c2c] mb-2 cursor-pointer hover:text-[#b89b72] transition-colors" onclick="openCandleModal('c1')">Ámbar &amp; Vainilla Imperial</h3>
+              <h3 class="text-2xl font-serif text-[#2c2c2c] mb-2 cursor-pointer hover:text-[#b89b72] transition-colors" onclick="openCandleModal('c1')">Café Espresso & Avellana Tostada</h3>
               <p class="text-xs text-gray-600 mb-4 font-light leading-relaxed">
-                Notas dulces de vainilla bourbon y cálidas ráfagas de ámbar silvestre. Una composición envolvente pensada para transformar cualquier tarde en un instante de serenidad.
+                Intenso aroma a granos de café tostado, notas de avellana crujiente y fondo de vainilla de Madagascar.
               </p>
 
               <!-- Olfactory notes pills -->
               <div class="flex flex-wrap gap-1.5 mb-5 text-[10px]">
-                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Orquídea</span>
-                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Vainilla Bourbon</span>
-                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Ámbar Dorado</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Granos de café arábica tostado</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Avellana tostada</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Vainilla bourbon</span>
               </div>
             </div>
 
             <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
-              <button onclick="openCandleModal('c1')" class="text-xs font-semibold text-[#2c2c2c] hover:text-[#b89b72] transition-colors flex items-center gap-2 group/btn" aria-label="Ver ficha artística de Ámbar y Vainilla">
+              <button onclick="openCandleModal('c1')" class="text-xs font-semibold text-[#2c2c2c] hover:text-[#b89b72] transition-colors flex items-center gap-2 group/btn" aria-label="Ver ficha artística">
                 <span data-i18n="card_view_details">Ver Ficha Artística</span>
                 <i class="fa-solid fa-arrow-right text-[10px] transform group-hover/btn:translate-x-1 transition-transform"></i>
               </button>
@@ -799,41 +865,44 @@
             </div>
           </article>
 
-          <!-- Candle 2: Brisa de Algodón -->
-          <article class="portfolio-card group card-hover bg-[#faf8f5] p-6 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-category="aromaticas" data-id="c2">
+          <!-- Candle c2: Bambú Silvestre & Flor de Cerezo -->
+          <article class="portfolio-card group card-hover bg-[#faf8f5] p-6 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-id="c2" data-category="vaso" data-color="verde" data-size="vaso">
             <div>
               <div class="relative img-rounded-zoom aspect-[4/3] mb-5 bg-[#f5f3ef]">
-                <img alt="Vela aromática natural brisa de algodón silvestre con flores blancas — Sky Tu Luz" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover cursor-pointer" onclick="openCandleModal('c2')" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUq5voZisOhc0myXDaA4Xa3YLwn-Kzin8LLBwvl95sHiM9mcbBxJb78h0ByTdJkAGhDbdtByNkkbO-W6OMBNhCGuQpKZKySYVjt-K_w7pxT_LO5XkDDPmQxjbnc8KumI34h1plAvC0lUVvsTKx9Sjn_6UnBInd0lQOHUZuTGIcn4g_s9Wg5K555svJsk2aaDQCDgB0qVC5TecszFRK-4XQxFQcRFyVlHu3It_kJs87LBSOkragNvq_Uw"/>
+                <img alt="Bambú Silvestre & Flor de Cerezo — Sky Tu Luz" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover cursor-pointer" onclick="openCandleModal('c2')" src="assets/candles/candle_c2.jpg"/>
                 
-                <button class="fav-toggle-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-all duration-300 shadow-md hover:scale-110" data-id="c2" aria-label="Añadir Brisa de Algodón a favoritas" title="Añadir a favoritas">
+                <!-- Favorite Heart Button -->
+                <button class="fav-toggle-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-all duration-300 shadow-md hover:scale-110" data-id="c2" aria-label="Añadir a favoritas" title="Añadir a favoritas">
                   <i class="fa-regular fa-heart"></i>
                 </button>
                 
-                <span class="absolute top-3 left-3 bg-[#2c2c2c] text-white text-[10px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full shadow-sm">
-                  <i class="fa-solid fa-leaf mr-1"></i> Aroma Limpio
+                <!-- Badges -->
+                <span class="candle-tag-badge absolute top-3 left-3 bg-[#b89b72] text-white text-[10px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full shadow-sm">
+                  <i class="fa-solid fa-sparkles mr-1"></i> Zen Botánico
                 </span>
-                <span class="absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5">
-                  <i class="fa-regular fa-clock text-amber-400"></i> 40h Combustión Pura
+                <span class="candle-burn-badge absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5">
+                  <i class="fa-regular fa-clock text-amber-400"></i> 45h de combustión noble
                 </span>
               </div>
               
               <div class="flex items-center gap-1.5 text-[10px] font-semibold text-[#b89b72] uppercase tracking-wider mb-1">
-                <i class="fa-solid fa-wind"></i> Frescor Puro &amp; Flores Blancas
+                <i class="fa-solid fa-seedling"></i> <span class="candle-cat-badge">Vasos Aromáticos</span> · <span class="text-gray-500 font-normal">Verde / Bambú</span>
               </div>
-              <h3 class="text-2xl font-serif text-[#2c2c2c] mb-2 cursor-pointer hover:text-[#b89b72] transition-colors" onclick="openCandleModal('c2')">Brisa de Algodón Silvestre</h3>
+              <h3 class="text-2xl font-serif text-[#2c2c2c] mb-2 cursor-pointer hover:text-[#b89b72] transition-colors" onclick="openCandleModal('c2')">Bambú Silvestre & Flor de Cerezo</h3>
               <p class="text-xs text-gray-600 mb-4 font-light leading-relaxed">
-                La reconfortante sensación de sábanas blancas secadas al sol de primavera y flores recién cortadas. Purifica el ambiente con delicada frescura botánica.
+                Frescura verde de tallos de bambú japonés entrelazada con delicados pétalos de sakura y rocío matinal.
               </p>
 
+              <!-- Olfactory notes pills -->
               <div class="flex flex-wrap gap-1.5 mb-5 text-[10px]">
-                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Lino Puro</span>
-                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Jazmín Blanco</span>
-                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Almizcle Suave</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Hojas verdes de bambú</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Flor de cerezo (sakura)</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Madera de bambú claro</span>
               </div>
             </div>
 
             <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
-              <button onclick="openCandleModal('c2')" class="text-xs font-semibold text-[#2c2c2c] hover:text-[#b89b72] transition-colors flex items-center gap-2 group/btn" aria-label="Ver ficha artística de Brisa de Algodón">
+              <button onclick="openCandleModal('c2')" class="text-xs font-semibold text-[#2c2c2c] hover:text-[#b89b72] transition-colors flex items-center gap-2 group/btn" aria-label="Ver ficha artística">
                 <span data-i18n="card_view_details">Ver Ficha Artística</span>
                 <i class="fa-solid fa-arrow-right text-[10px] transform group-hover/btn:translate-x-1 transition-transform"></i>
               </button>
@@ -844,41 +913,44 @@
             </div>
           </article>
 
-          <!-- Candle 3: Bosque Boreal & Pino -->
-          <article class="portfolio-card group card-hover bg-[#faf8f5] p-6 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-category="botanica" data-id="c3">
+          <!-- Candle c3: Coco de Tahití & Lima Cítrica -->
+          <article class="portfolio-card group card-hover bg-[#faf8f5] p-6 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-id="c3" data-category="vaso" data-color="blanco" data-size="vaso">
             <div>
               <div class="relative img-rounded-zoom aspect-[4/3] mb-5 bg-[#f5f3ef]">
-                <img alt="Vela botánica artesanal de pino silvestre y cedro noble — Sky Tu Luz" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover cursor-pointer" onclick="openCandleModal('c3')" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYRPKQbOGMWGQ1F3iCYmbrjJU2ZOSUgsXhp0nFNgFvW7Laq4rf5XFCkwdcuRLqrWaQuZZJxmW-M1PF8v_3gzBLghwl71aIDsfBC9C_HIV1kIwHHQOPCzjVMtla9B-ytQUGiPMngTBufh4Q5eP8NNqWTobT7Chd7Np3dhM5FewxLc8IwoXyapg-uwGIyy5F6Sj0MxGIwg2NOI2NTFFgS_J7qnuJEv_Cd-0AmmyuvBA4ZUd1_Ea9XTcgiw"/>
+                <img alt="Coco de Tahití & Lima Cítrica — Sky Tu Luz" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover cursor-pointer" onclick="openCandleModal('c3')" src="assets/candles/candle_c3.jpg"/>
                 
-                <button class="fav-toggle-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-all duration-300 shadow-md hover:scale-110" data-id="c3" aria-label="Añadir Bosque Boreal a favoritas" title="Añadir a favoritas">
+                <!-- Favorite Heart Button -->
+                <button class="fav-toggle-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-all duration-300 shadow-md hover:scale-110" data-id="c3" aria-label="Añadir a favoritas" title="Añadir a favoritas">
                   <i class="fa-regular fa-heart"></i>
                 </button>
                 
-                <span class="absolute top-3 left-3 bg-[#3a4d39] text-white text-[10px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full shadow-sm">
-                  <i class="fa-solid fa-tree mr-1"></i> Botánica Silvestre
+                <!-- Badges -->
+                <span class="candle-tag-badge absolute top-3 left-3 bg-[#b89b72] text-white text-[10px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full shadow-sm">
+                  <i class="fa-solid fa-sparkles mr-1"></i> Cítrico Tropical
                 </span>
-                <span class="absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5">
-                  <i class="fa-regular fa-clock text-amber-400"></i> 50h Combustión Noble
+                <span class="candle-burn-badge absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5">
+                  <i class="fa-regular fa-clock text-amber-400"></i> 45h de llama limpia
                 </span>
               </div>
               
               <div class="flex items-center gap-1.5 text-[10px] font-semibold text-[#b89b72] uppercase tracking-wider mb-1">
-                <i class="fa-solid fa-mountain"></i> Pino Silvestre &amp; Cedro Noble
+                <i class="fa-solid fa-seedling"></i> <span class="candle-cat-badge">Vasos Aromáticos</span> · <span class="text-gray-500 font-normal">Blanco / Neutro</span>
               </div>
-              <h3 class="text-2xl font-serif text-[#2c2c2c] mb-2 cursor-pointer hover:text-[#b89b72] transition-colors" onclick="openCandleModal('c3')">Bosque Boreal &amp; Pino</h3>
+              <h3 class="text-2xl font-serif text-[#2c2c2c] mb-2 cursor-pointer hover:text-[#b89b72] transition-colors" onclick="openCandleModal('c3')">Coco de Tahití & Lima Cítrica</h3>
               <p class="text-xs text-gray-600 mb-4 font-light leading-relaxed">
-                Esencia amaderada inspirada en los montes húmedos y hayedos del norte tras la llovizna. Aporta solidez, conexión con la naturaleza y calma mental.
+                Ralladura de lima verde recién exprimida sobre leche de coco cremosa y un toque chispeante de verbena.
               </p>
 
+              <!-- Olfactory notes pills -->
               <div class="flex flex-wrap gap-1.5 mb-5 text-[10px]">
-                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Agujas de Pino</span>
-                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Cedro de Atlas</span>
-                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Musgo de Roble</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Ralladura de lima de Tahití</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Pulpa de coco fresca</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Vainilla suave</span>
               </div>
             </div>
 
             <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
-              <button onclick="openCandleModal('c3')" class="text-xs font-semibold text-[#2c2c2c] hover:text-[#b89b72] transition-colors flex items-center gap-2 group/btn" aria-label="Ver ficha artística de Bosque Boreal">
+              <button onclick="openCandleModal('c3')" class="text-xs font-semibold text-[#2c2c2c] hover:text-[#b89b72] transition-colors flex items-center gap-2 group/btn" aria-label="Ver ficha artística">
                 <span data-i18n="card_view_details">Ver Ficha Artística</span>
                 <i class="fa-solid fa-arrow-right text-[10px] transform group-hover/btn:translate-x-1 transition-transform"></i>
               </button>
@@ -889,41 +961,44 @@
             </div>
           </article>
 
-          <!-- Candle 4: Flor de Cerezo -->
-          <article class="portfolio-card group card-hover bg-[#faf8f5] p-6 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-category="esculturales" data-id="c4">
+          <!-- Candle c4: Gelato Cremoso de Pistacho -->
+          <article class="portfolio-card group card-hover bg-[#faf8f5] p-6 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-id="c4" data-category="vaso" data-color="verde" data-size="vaso">
             <div>
               <div class="relative img-rounded-zoom aspect-[4/3] mb-5 bg-[#f5f3ef]">
-                <img alt="Vela escultural de cera de soja con esencia de sakura oriental y té blanco — Sky Tu Luz" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover cursor-pointer" onclick="openCandleModal('c4')" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1-hzjXCB65RreXOqYEIQV9m_Su13GD2eZWsI5f5C_UwXZQkuQxuaX-DUYirfi9BGBkCx87b9GeTtBCLZanuBbRL__4pEpLhrYy1eLBSILlN44AuDamlbKldrkgoZpzeZmB5OGhDyIG5L3HLvCi3Aa6aHzo5R3KhIyJW7qe-aWk5q5ELJor0puNutFWNiG5udbcAFKYhoSNbW90q_XTd2nkk9t63wzVXyG48_JbjCJYMMzgPkqRjON4A"/>
+                <img alt="Gelato Cremoso de Pistacho — Sky Tu Luz" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover cursor-pointer" onclick="openCandleModal('c4')" src="assets/candles/candle_c4.jpg"/>
                 
-                <button class="fav-toggle-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-all duration-300 shadow-md hover:scale-110" data-id="c4" aria-label="Añadir Flor de Cerezo a favoritas" title="Añadir a favoritas">
+                <!-- Favorite Heart Button -->
+                <button class="fav-toggle-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-all duration-300 shadow-md hover:scale-110" data-id="c4" aria-label="Añadir a favoritas" title="Añadir a favoritas">
                   <i class="fa-regular fa-heart"></i>
                 </button>
                 
-                <span class="absolute top-3 left-3 bg-[#b56576] text-white text-[10px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full shadow-sm">
-                  <i class="fa-solid fa-spa mr-1"></i> Ritual Floral
+                <!-- Badges -->
+                <span class="candle-tag-badge absolute top-3 left-3 bg-[#b89b72] text-white text-[10px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full shadow-sm">
+                  <i class="fa-solid fa-sparkles mr-1"></i> Edición Gourmet
                 </span>
-                <span class="absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5">
-                  <i class="fa-regular fa-clock text-amber-400"></i> 45h Combustión Suave
+                <span class="candle-burn-badge absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5">
+                  <i class="fa-regular fa-clock text-amber-400"></i> 45h de combustión dulce
                 </span>
               </div>
               
               <div class="flex items-center gap-1.5 text-[10px] font-semibold text-[#b89b72] uppercase tracking-wider mb-1">
-                <i class="fa-solid fa-spa"></i> Sakura Oriental &amp; Té Blanco
+                <i class="fa-solid fa-seedling"></i> <span class="candle-cat-badge">Vasos Aromáticos</span> · <span class="text-gray-500 font-normal">Verde / Menta</span>
               </div>
-              <h3 class="text-2xl font-serif text-[#2c2c2c] mb-2 cursor-pointer hover:text-[#b89b72] transition-colors" onclick="openCandleModal('c4')">Flor de Cerezo &amp; Sakura</h3>
+              <h3 class="text-2xl font-serif text-[#2c2c2c] mb-2 cursor-pointer hover:text-[#b89b72] transition-colors" onclick="openCandleModal('c4')">Gelato Cremoso de Pistacho</h3>
               <p class="text-xs text-gray-600 mb-4 font-light leading-relaxed">
-                Delicada alquimia de pétalos de sakura, orquídea dulce y sutil té blanco. Diseñada para ceremonias de bienestar, baños relajantes y lecturas pausadas.
+                Pistacho siciliano molido, crema dulce de almendra amarga y sutiles acordes de mantequilla tostada.
               </p>
 
+              <!-- Olfactory notes pills -->
               <div class="flex flex-wrap gap-1.5 mb-5 text-[10px]">
-                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Brote de Cerezo</span>
-                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Peonía Rosa</span>
-                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Té Blanco</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Pistacho tostado crujiente</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Crema batida dulce</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Vainilla cremosa</span>
               </div>
             </div>
 
             <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
-              <button onclick="openCandleModal('c4')" class="text-xs font-semibold text-[#2c2c2c] hover:text-[#b89b72] transition-colors flex items-center gap-2 group/btn" aria-label="Ver ficha artística de Flor de Cerezo">
+              <button onclick="openCandleModal('c4')" class="text-xs font-semibold text-[#2c2c2c] hover:text-[#b89b72] transition-colors flex items-center gap-2 group/btn" aria-label="Ver ficha artística">
                 <span data-i18n="card_view_details">Ver Ficha Artística</span>
                 <i class="fa-solid fa-arrow-right text-[10px] transform group-hover/btn:translate-x-1 transition-transform"></i>
               </button>
@@ -934,41 +1009,44 @@
             </div>
           </article>
 
-          <!-- Candle 5: Lavanda Serena & Cedro -->
-          <article class="portfolio-card group card-hover bg-[#faf8f5] p-6 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-category="aromaticas" data-id="c5">
+          <!-- Candle c5: Brisa de Algodón & Lino Puro -->
+          <article class="portfolio-card group card-hover bg-[#faf8f5] p-6 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-id="c5" data-category="vaso" data-color="blanco" data-size="vaso">
             <div>
               <div class="relative img-rounded-zoom aspect-[4/3] mb-5 bg-[#f5f3ef]">
-                <img alt="Vela relajante de lavanda provenzal pura y azahar para dormir — Sky Tu Luz" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover cursor-pointer" onclick="openCandleModal('c5')" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCv-s7pm7tOFJep87nYyT_ylUlFDgMrcj-SPXgbHCpA6zIbSqyJ_XlH0OXnOJFG8JnVuH_cSBt13zTCHgpjw_epDvMpPZ5rmSxMVbcBXwmlBPNpsNy3ASPxehoDM-3xXHrYxMtpgb6DJO-nWJLJSHVdr95cZ_3l5RASXH08TQH4cFwkbFX0o2SOL_4Y1RJGlJrqhmTz0aWgpnQiC4GrR6_EYY1-jqcmzDgZ4gGdU3-CpMyoIShko_epRw"/>
+                <img alt="Brisa de Algodón & Lino Puro — Sky Tu Luz" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover cursor-pointer" onclick="openCandleModal('c5')" src="assets/candles/candle_c5.jpg"/>
                 
-                <button class="fav-toggle-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-all duration-300 shadow-md hover:scale-110" data-id="c5" aria-label="Añadir Lavanda Serena a favoritas" title="Añadir a favoritas">
+                <!-- Favorite Heart Button -->
+                <button class="fav-toggle-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-all duration-300 shadow-md hover:scale-110" data-id="c5" aria-label="Añadir a favoritas" title="Añadir a favoritas">
                   <i class="fa-regular fa-heart"></i>
                 </button>
                 
-                <span class="absolute top-3 left-3 bg-[#6d597a] text-white text-[10px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full shadow-sm">
-                  <i class="fa-solid fa-moon mr-1"></i> Paz Nocturna
+                <!-- Badges -->
+                <span class="candle-tag-badge absolute top-3 left-3 bg-[#b89b72] text-white text-[10px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full shadow-sm">
+                  <i class="fa-solid fa-sparkles mr-1"></i> Aroma Limpio
                 </span>
-                <span class="absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5">
-                  <i class="fa-regular fa-clock text-amber-400"></i> 48h Combustión Íntima
+                <span class="candle-burn-badge absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5">
+                  <i class="fa-regular fa-clock text-amber-400"></i> 40h de pureza
                 </span>
               </div>
               
               <div class="flex items-center gap-1.5 text-[10px] font-semibold text-[#b89b72] uppercase tracking-wider mb-1">
-                <i class="fa-solid fa-feather"></i> Lavandín Silvestre &amp; Azahar
+                <i class="fa-solid fa-seedling"></i> <span class="candle-cat-badge">Vasos Aromáticos</span> · <span class="text-gray-500 font-normal">Blanco / Neutro</span>
               </div>
-              <h3 class="text-2xl font-serif text-[#2c2c2c] mb-2 cursor-pointer hover:text-[#b89b72] transition-colors" onclick="openCandleModal('c5')">Lavanda Serena &amp; Azahar</h3>
+              <h3 class="text-2xl font-serif text-[#2c2c2c] mb-2 cursor-pointer hover:text-[#b89b72] transition-colors" onclick="openCandleModal('c5')">Brisa de Algodón & Lino Puro</h3>
               <p class="text-xs text-gray-600 mb-4 font-light leading-relaxed">
-                Creada para apaciguar el ritmo acelerado del día. Combina la flor de lavanda más pura con gotas de azahar y maderas nobles para propiciar un descanso reparador.
+                Sensación reconfortante de sábanas blancas secadas al sol, flor de algodón y una ligera brisa de lavanda silvestre.
               </p>
 
+              <!-- Olfactory notes pills -->
               <div class="flex flex-wrap gap-1.5 mb-5 text-[10px]">
-                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Lavandín Francés</span>
-                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Flor de Azahar</span>
-                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Cedro Claro</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Brisa de montaña</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Flor de algodón blanco</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Almizcle blanco transparente</span>
               </div>
             </div>
 
             <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
-              <button onclick="openCandleModal('c5')" class="text-xs font-semibold text-[#2c2c2c] hover:text-[#b89b72] transition-colors flex items-center gap-2 group/btn" aria-label="Ver ficha artística de Lavanda Serena">
+              <button onclick="openCandleModal('c5')" class="text-xs font-semibold text-[#2c2c2c] hover:text-[#b89b72] transition-colors flex items-center gap-2 group/btn" aria-label="Ver ficha artística">
                 <span data-i18n="card_view_details">Ver Ficha Artística</span>
                 <i class="fa-solid fa-arrow-right text-[10px] transform group-hover/btn:translate-x-1 transition-transform"></i>
               </button>
@@ -979,41 +1057,44 @@
             </div>
           </article>
 
-          <!-- Candle 6: Canela Cálida & Cítricos de Autor -->
-          <article class="portfolio-card group card-hover bg-[#faf8f5] p-6 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-category="personalizadas" data-id="c6">
+          <!-- Candle c6: Sandía Fresca de Verano -->
+          <article class="portfolio-card group card-hover bg-[#faf8f5] p-6 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-id="c6" data-category="vaso" data-color="rojo" data-size="vaso">
             <div>
               <div class="relative img-rounded-zoom aspect-[4/3] mb-5 bg-[#f5f3ef]">
-                <img alt="Vela personalizada de encargo con canela de Ceilán y naranja especiada — Sky Tu Luz" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover cursor-pointer" onclick="openCandleModal('c6')" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6e1hWyTdoqLvQbdSI3O0ZNUxuu4YKLcLzFiQ7UDX6I2nsL4n0NKQRX7Utds44QJRRf0u3GiSpHMOdZi0K4F5Iu2lJPNE5ZP4fG2dBih9WuyGCI72Pd8MIS3pJYr0ZIHsw2GW2ZvBOuHXoW4FiCiHDCQ-sFWvbBuZORn7lZCCaDxZqwEBYdWlGC7yzkHaZO-1TfQrnAhPAZ0CrxRe8FioRag5tYv7wFX_GgvWzhDYoLobz0bx7buXJfQ"/>
+                <img alt="Sandía Fresca de Verano — Sky Tu Luz" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover cursor-pointer" onclick="openCandleModal('c6')" src="assets/candles/candle_c6.jpg"/>
                 
-                <button class="fav-toggle-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-all duration-300 shadow-md hover:scale-110" data-id="c6" aria-label="Añadir Canela y Naranja a favoritas" title="Añadir a favoritas">
+                <!-- Favorite Heart Button -->
+                <button class="fav-toggle-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-all duration-300 shadow-md hover:scale-110" data-id="c6" aria-label="Añadir a favoritas" title="Añadir a favoritas">
                   <i class="fa-regular fa-heart"></i>
                 </button>
                 
-                <span class="absolute top-3 left-3 bg-[#b85d19] text-white text-[10px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full shadow-sm">
-                  <i class="fa-solid fa-gift mr-1"></i> Encargo de Autor
+                <!-- Badges -->
+                <span class="candle-tag-badge absolute top-3 left-3 bg-[#b89b72] text-white text-[10px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full shadow-sm">
+                  <i class="fa-solid fa-sparkles mr-1"></i> Frutal Festivo
                 </span>
-                <span class="absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5">
-                  <i class="fa-regular fa-clock text-amber-400"></i> 50h Fuego Especiado
+                <span class="candle-burn-badge absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5">
+                  <i class="fa-regular fa-clock text-amber-400"></i> 45h de llama viva
                 </span>
               </div>
               
               <div class="flex items-center gap-1.5 text-[10px] font-semibold text-[#b89b72] uppercase tracking-wider mb-1">
-                <i class="fa-solid fa-fire"></i> Canela de Ceilán &amp; Naranja Especiada
+                <i class="fa-solid fa-seedling"></i> <span class="candle-cat-badge">Vasos Aromáticos</span> · <span class="text-gray-500 font-normal">Rojo / Rubí</span>
               </div>
-              <h3 class="text-2xl font-serif text-[#2c2c2c] mb-2 cursor-pointer hover:text-[#b89b72] transition-colors" onclick="openCandleModal('c6')">Canela &amp; Naranja de Autor</h3>
+              <h3 class="text-2xl font-serif text-[#2c2c2c] mb-2 cursor-pointer hover:text-[#b89b72] transition-colors" onclick="openCandleModal('c6')">Sandía Fresca de Verano</h3>
               <p class="text-xs text-gray-600 mb-4 font-light leading-relaxed">
-                La esencia de los hogares vivos y las celebraciones. Una armonía chispeante de corteza de naranja confitada, clavo dulce y auténtica canela tostada.
+                Jugosa sandía roja recién cortada con notas de melón cantalupo, frambuesas silvestres y un toque mentolado.
               </p>
 
+              <!-- Olfactory notes pills -->
               <div class="flex flex-wrap gap-1.5 mb-5 text-[10px]">
-                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Corteza de Naranja</span>
-                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Canela en Rama</span>
-                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Clavo Dulce</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Sandía roja jugosa</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Melón dulce cantalupo</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Azúcar glas suave</span>
               </div>
             </div>
 
             <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
-              <button onclick="openCandleModal('c6')" class="text-xs font-semibold text-[#2c2c2c] hover:text-[#b89b72] transition-colors flex items-center gap-2 group/btn" aria-label="Ver ficha artística de Canela y Naranja">
+              <button onclick="openCandleModal('c6')" class="text-xs font-semibold text-[#2c2c2c] hover:text-[#b89b72] transition-colors flex items-center gap-2 group/btn" aria-label="Ver ficha artística">
                 <span data-i18n="card_view_details">Ver Ficha Artística</span>
                 <i class="fa-solid fa-arrow-right text-[10px] transform group-hover/btn:translate-x-1 transition-transform"></i>
               </button>
@@ -1024,6 +1105,739 @@
             </div>
           </article>
 
+          <!-- Candle c7: Arco Escultural Nórdico -->
+          <article class="portfolio-card group card-hover bg-[#faf8f5] p-6 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-id="c7" data-category="escultural" data-color="blanco" data-size="escultura">
+            <div>
+              <div class="relative img-rounded-zoom aspect-[4/3] mb-5 bg-[#f5f3ef]">
+                <img alt="Arco Escultural Nórdico — Sky Tu Luz" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover cursor-pointer" onclick="openCandleModal('c7')" src="assets/candles/candle_c7.jpg"/>
+                
+                <!-- Favorite Heart Button -->
+                <button class="fav-toggle-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-all duration-300 shadow-md hover:scale-110" data-id="c7" aria-label="Añadir a favoritas" title="Añadir a favoritas">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+                
+                <!-- Badges -->
+                <span class="candle-tag-badge absolute top-3 left-3 bg-[#b89b72] text-white text-[10px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full shadow-sm">
+                  <i class="fa-solid fa-sparkles mr-1"></i> Diseño Arquitectónico
+                </span>
+                <span class="candle-burn-badge absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5">
+                  <i class="fa-regular fa-clock text-amber-400"></i> 35h de diseño puro
+                </span>
+              </div>
+              
+              <div class="flex items-center gap-1.5 text-[10px] font-semibold text-[#b89b72] uppercase tracking-wider mb-1">
+                <i class="fa-solid fa-seedling"></i> <span class="candle-cat-badge">Esculturales</span> · <span class="text-gray-500 font-normal">Blanco / Neutro</span>
+              </div>
+              <h3 class="text-2xl font-serif text-[#2c2c2c] mb-2 cursor-pointer hover:text-[#b89b72] transition-colors" onclick="openCandleModal('c7')">Arco Escultural Nórdico</h3>
+              <p class="text-xs text-gray-600 mb-4 font-light leading-relaxed">
+                Pieza de diseño en forma de arco doble U. Notas sutiles de vainilla blanca natural y madera de haya.
+              </p>
+
+              <!-- Olfactory notes pills -->
+              <div class="flex flex-wrap gap-1.5 mb-5 text-[10px]">
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Aire blanco</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Vainilla suave aterciopelada</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Madera de sándalo rubio</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
+              <button onclick="openCandleModal('c7')" class="text-xs font-semibold text-[#2c2c2c] hover:text-[#b89b72] transition-colors flex items-center gap-2 group/btn" aria-label="Ver ficha artística">
+                <span data-i18n="card_view_details">Ver Ficha Artística</span>
+                <i class="fa-solid fa-arrow-right text-[10px] transform group-hover/btn:translate-x-1 transition-transform"></i>
+              </button>
+              <button class="fav-action-btn text-xs font-semibold px-4 py-2 rounded-full border border-gray-300 hover:border-red-400 hover:text-red-500 transition-all flex items-center gap-1.5" data-id="c7" aria-label="Marcar como favorita">
+                <i class="fa-regular fa-heart"></i>
+                <span data-i18n="card_favorite">Favorita</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Candle c8: Cubo Bubble Geométrico -->
+          <article class="portfolio-card group card-hover bg-[#faf8f5] p-6 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-id="c8" data-category="escultural" data-color="blanco" data-size="escultura">
+            <div>
+              <div class="relative img-rounded-zoom aspect-[4/3] mb-5 bg-[#f5f3ef]">
+                <img alt="Cubo Bubble Geométrico — Sky Tu Luz" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover cursor-pointer" onclick="openCandleModal('c8')" src="assets/candles/candle_c8.jpg"/>
+                
+                <!-- Favorite Heart Button -->
+                <button class="fav-toggle-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-all duration-300 shadow-md hover:scale-110" data-id="c8" aria-label="Añadir a favoritas" title="Añadir a favoritas">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+                
+                <!-- Badges -->
+                <span class="candle-tag-badge absolute top-3 left-3 bg-[#b89b72] text-white text-[10px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full shadow-sm">
+                  <i class="fa-solid fa-sparkles mr-1"></i> Tendencia Minimalista
+                </span>
+                <span class="candle-burn-badge absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5">
+                  <i class="fa-regular fa-clock text-amber-400"></i> 30h de llama suave
+                </span>
+              </div>
+              
+              <div class="flex items-center gap-1.5 text-[10px] font-semibold text-[#b89b72] uppercase tracking-wider mb-1">
+                <i class="fa-solid fa-seedling"></i> <span class="candle-cat-badge">Esculturales</span> · <span class="text-gray-500 font-normal">Blanco / Neutro</span>
+              </div>
+              <h3 class="text-2xl font-serif text-[#2c2c2c] mb-2 cursor-pointer hover:text-[#b89b72] transition-colors" onclick="openCandleModal('c8')">Cubo Bubble Geométrico</h3>
+              <p class="text-xs text-gray-600 mb-4 font-light leading-relaxed">
+                Vela cúbica esférica elaborada con esferas de cera de soja. Fragancia equilibrada de jazmín blanco y algodón.
+              </p>
+
+              <!-- Olfactory notes pills -->
+              <div class="flex flex-wrap gap-1.5 mb-5 text-[10px]">
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Rocío limpio</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Jazmín de Grasse</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Cera botánica cremosa</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
+              <button onclick="openCandleModal('c8')" class="text-xs font-semibold text-[#2c2c2c] hover:text-[#b89b72] transition-colors flex items-center gap-2 group/btn" aria-label="Ver ficha artística">
+                <span data-i18n="card_view_details">Ver Ficha Artística</span>
+                <i class="fa-solid fa-arrow-right text-[10px] transform group-hover/btn:translate-x-1 transition-transform"></i>
+              </button>
+              <button class="fav-action-btn text-xs font-semibold px-4 py-2 rounded-full border border-gray-300 hover:border-red-400 hover:text-red-500 transition-all flex items-center gap-1.5" data-id="c8" aria-label="Marcar como favorita">
+                <i class="fa-regular fa-heart"></i>
+                <span data-i18n="card_favorite">Favorita</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Candle c9: Columna Cilíndrica Acanalada -->
+          <article class="portfolio-card group card-hover bg-[#faf8f5] p-6 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-id="c9" data-category="escultural" data-color="blanco" data-size="escultura">
+            <div>
+              <div class="relative img-rounded-zoom aspect-[4/3] mb-5 bg-[#f5f3ef]">
+                <img alt="Columna Cilíndrica Acanalada — Sky Tu Luz" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover cursor-pointer" onclick="openCandleModal('c9')" src="assets/candles/candle_c9.jpg"/>
+                
+                <!-- Favorite Heart Button -->
+                <button class="fav-toggle-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-all duration-300 shadow-md hover:scale-110" data-id="c9" aria-label="Añadir a favoritas" title="Añadir a favoritas">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+                
+                <!-- Badges -->
+                <span class="candle-tag-badge absolute top-3 left-3 bg-[#b89b72] text-white text-[10px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full shadow-sm">
+                  <i class="fa-solid fa-sparkles mr-1"></i> Elegancia Clásica
+                </span>
+                <span class="candle-burn-badge absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5">
+                  <i class="fa-regular fa-clock text-amber-400"></i> 40h de presencia
+                </span>
+              </div>
+              
+              <div class="flex items-center gap-1.5 text-[10px] font-semibold text-[#b89b72] uppercase tracking-wider mb-1">
+                <i class="fa-solid fa-seedling"></i> <span class="candle-cat-badge">Esculturales</span> · <span class="text-gray-500 font-normal">Blanco / Neutro</span>
+              </div>
+              <h3 class="text-2xl font-serif text-[#2c2c2c] mb-2 cursor-pointer hover:text-[#b89b72] transition-colors" onclick="openCandleModal('c9')">Columna Cilíndrica Acanalada</h3>
+              <p class="text-xs text-gray-600 mb-4 font-light leading-relaxed">
+                Elegante vela cilíndrica con acanalado vertical de inspiración dórica y notas cálidas de cedro y flor blanca.
+              </p>
+
+              <!-- Olfactory notes pills -->
+              <div class="flex flex-wrap gap-1.5 mb-5 text-[10px]">
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Brisa de montaña</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Flores blancas de almendro</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Ámbar seco</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
+              <button onclick="openCandleModal('c9')" class="text-xs font-semibold text-[#2c2c2c] hover:text-[#b89b72] transition-colors flex items-center gap-2 group/btn" aria-label="Ver ficha artística">
+                <span data-i18n="card_view_details">Ver Ficha Artística</span>
+                <i class="fa-solid fa-arrow-right text-[10px] transform group-hover/btn:translate-x-1 transition-transform"></i>
+              </button>
+              <button class="fav-action-btn text-xs font-semibold px-4 py-2 rounded-full border border-gray-300 hover:border-red-400 hover:text-red-500 transition-all flex items-center gap-1.5" data-id="c9" aria-label="Marcar como favorita">
+                <i class="fa-regular fa-heart"></i>
+                <span data-i18n="card_favorite">Favorita</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Candle c10: Camelia Botánica Nívea -->
+          <article class="portfolio-card group card-hover bg-[#faf8f5] p-6 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-id="c10" data-category="botanica" data-color="blanco" data-size="escultura">
+            <div>
+              <div class="relative img-rounded-zoom aspect-[4/3] mb-5 bg-[#f5f3ef]">
+                <img alt="Camelia Botánica Nívea — Sky Tu Luz" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover cursor-pointer" onclick="openCandleModal('c10')" src="assets/candles/candle_c10.jpg"/>
+                
+                <!-- Favorite Heart Button -->
+                <button class="fav-toggle-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-all duration-300 shadow-md hover:scale-110" data-id="c10" aria-label="Añadir a favoritas" title="Añadir a favoritas">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+                
+                <!-- Badges -->
+                <span class="candle-tag-badge absolute top-3 left-3 bg-[#b89b72] text-white text-[10px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full shadow-sm">
+                  <i class="fa-solid fa-sparkles mr-1"></i> Escultura Floral
+                </span>
+                <span class="candle-burn-badge absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5">
+                  <i class="fa-regular fa-clock text-amber-400"></i> 25h de floración
+                </span>
+              </div>
+              
+              <div class="flex items-center gap-1.5 text-[10px] font-semibold text-[#b89b72] uppercase tracking-wider mb-1">
+                <i class="fa-solid fa-seedling"></i> <span class="candle-cat-badge">Botánicas</span> · <span class="text-gray-500 font-normal">Blanco / Neutro</span>
+              </div>
+              <h3 class="text-2xl font-serif text-[#2c2c2c] mb-2 cursor-pointer hover:text-[#b89b72] transition-colors" onclick="openCandleModal('c10')">Camelia Botánica Nívea</h3>
+              <p class="text-xs text-gray-600 mb-4 font-light leading-relaxed">
+                Flor circular esculpida con pétalos concéntricos. Esencia delicada de camelia blanca, orquídea y flor de loto.
+              </p>
+
+              <!-- Olfactory notes pills -->
+              <div class="flex flex-wrap gap-1.5 mb-5 text-[10px]">
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Pétalos de camelia blanca</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Orquídea silvestre</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Almizcle blanco transparente</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
+              <button onclick="openCandleModal('c10')" class="text-xs font-semibold text-[#2c2c2c] hover:text-[#b89b72] transition-colors flex items-center gap-2 group/btn" aria-label="Ver ficha artística">
+                <span data-i18n="card_view_details">Ver Ficha Artística</span>
+                <i class="fa-solid fa-arrow-right text-[10px] transform group-hover/btn:translate-x-1 transition-transform"></i>
+              </button>
+              <button class="fav-action-btn text-xs font-semibold px-4 py-2 rounded-full border border-gray-300 hover:border-red-400 hover:text-red-500 transition-all flex items-center gap-1.5" data-id="c10" aria-label="Marcar como favorita">
+                <i class="fa-regular fa-heart"></i>
+                <span data-i18n="card_favorite">Favorita</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Candle c11: Girasol Silvestre del Valle -->
+          <article class="portfolio-card group card-hover bg-[#faf8f5] p-6 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-id="c11" data-category="botanica" data-color="amarillo" data-size="escultura">
+            <div>
+              <div class="relative img-rounded-zoom aspect-[4/3] mb-5 bg-[#f5f3ef]">
+                <img alt="Girasol Silvestre del Valle — Sky Tu Luz" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover cursor-pointer" onclick="openCandleModal('c11')" src="assets/candles/candle_c11.jpg"/>
+                
+                <!-- Favorite Heart Button -->
+                <button class="fav-toggle-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-all duration-300 shadow-md hover:scale-110" data-id="c11" aria-label="Añadir a favoritas" title="Añadir a favoritas">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+                
+                <!-- Badges -->
+                <span class="candle-tag-badge absolute top-3 left-3 bg-[#b89b72] text-white text-[10px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full shadow-sm">
+                  <i class="fa-solid fa-sparkles mr-1"></i> Luz & Vitalidad
+                </span>
+                <span class="candle-burn-badge absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5">
+                  <i class="fa-regular fa-clock text-amber-400"></i> 25h de calor solar
+                </span>
+              </div>
+              
+              <div class="flex items-center gap-1.5 text-[10px] font-semibold text-[#b89b72] uppercase tracking-wider mb-1">
+                <i class="fa-solid fa-seedling"></i> <span class="candle-cat-badge">Botánicas</span> · <span class="text-gray-500 font-normal">Amarillo / Dorado</span>
+              </div>
+              <h3 class="text-2xl font-serif text-[#2c2c2c] mb-2 cursor-pointer hover:text-[#b89b72] transition-colors" onclick="openCandleModal('c11')">Girasol Silvestre del Valle</h3>
+              <p class="text-xs text-gray-600 mb-4 font-light leading-relaxed">
+                Vela de girasol con centro texturizado de semillas. Fragancia cálida de miel de flores, polen silvestre y ámbar.
+              </p>
+
+              <!-- Olfactory notes pills -->
+              <div class="flex flex-wrap gap-1.5 mb-5 text-[10px]">
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Miel silvestre</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Polen floral</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Cera de abeja botánica</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
+              <button onclick="openCandleModal('c11')" class="text-xs font-semibold text-[#2c2c2c] hover:text-[#b89b72] transition-colors flex items-center gap-2 group/btn" aria-label="Ver ficha artística">
+                <span data-i18n="card_view_details">Ver Ficha Artística</span>
+                <i class="fa-solid fa-arrow-right text-[10px] transform group-hover/btn:translate-x-1 transition-transform"></i>
+              </button>
+              <button class="fav-action-btn text-xs font-semibold px-4 py-2 rounded-full border border-gray-300 hover:border-red-400 hover:text-red-500 transition-all flex items-center gap-1.5" data-id="c11" aria-label="Marcar como favorita">
+                <i class="fa-regular fa-heart"></i>
+                <span data-i18n="card_favorite">Favorita</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Candle c12: Rosa Carmesí Imperial -->
+          <article class="portfolio-card group card-hover bg-[#faf8f5] p-6 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-id="c12" data-category="botanica" data-color="rojo" data-size="escultura">
+            <div>
+              <div class="relative img-rounded-zoom aspect-[4/3] mb-5 bg-[#f5f3ef]">
+                <img alt="Rosa Carmesí Imperial — Sky Tu Luz" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover cursor-pointer" onclick="openCandleModal('c12')" src="assets/candles/candle_c12.jpg"/>
+                
+                <!-- Favorite Heart Button -->
+                <button class="fav-toggle-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-all duration-300 shadow-md hover:scale-110" data-id="c12" aria-label="Añadir a favoritas" title="Añadir a favoritas">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+                
+                <!-- Badges -->
+                <span class="candle-tag-badge absolute top-3 left-3 bg-[#b89b72] text-white text-[10px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full shadow-sm">
+                  <i class="fa-solid fa-sparkles mr-1"></i> Pasión Botánica
+                </span>
+                <span class="candle-burn-badge absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5">
+                  <i class="fa-regular fa-clock text-amber-400"></i> 25h de aroma envolvente
+                </span>
+              </div>
+              
+              <div class="flex items-center gap-1.5 text-[10px] font-semibold text-[#b89b72] uppercase tracking-wider mb-1">
+                <i class="fa-solid fa-seedling"></i> <span class="candle-cat-badge">Botánicas</span> · <span class="text-gray-500 font-normal">Rojo / Pasión</span>
+              </div>
+              <h3 class="text-2xl font-serif text-[#2c2c2c] mb-2 cursor-pointer hover:text-[#b89b72] transition-colors" onclick="openCandleModal('c12')">Rosa Carmesí Imperial</h3>
+              <p class="text-xs text-gray-600 mb-4 font-light leading-relaxed">
+                Rosa roja en plena floración con pétalos aterciopelados. Fragancia clásica de rosa damascena y toques de peonía.
+              </p>
+
+              <!-- Olfactory notes pills -->
+              <div class="flex flex-wrap gap-1.5 mb-5 text-[10px]">
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Pétalos de rosa húmedos</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Rosa damascena de Bulgaria</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Almizcle floral aterciopelado</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
+              <button onclick="openCandleModal('c12')" class="text-xs font-semibold text-[#2c2c2c] hover:text-[#b89b72] transition-colors flex items-center gap-2 group/btn" aria-label="Ver ficha artística">
+                <span data-i18n="card_view_details">Ver Ficha Artística</span>
+                <i class="fa-solid fa-arrow-right text-[10px] transform group-hover/btn:translate-x-1 transition-transform"></i>
+              </button>
+              <button class="fav-action-btn text-xs font-semibold px-4 py-2 rounded-full border border-gray-300 hover:border-red-400 hover:text-red-500 transition-all flex items-center gap-1.5" data-id="c12" aria-label="Marcar como favorita">
+                <i class="fa-regular fa-heart"></i>
+                <span data-i18n="card_favorite">Favorita</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Candle c13: Rosa de Grasse en Estuche de Regalo -->
+          <article class="portfolio-card group card-hover bg-[#faf8f5] p-6 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-id="c13" data-category="regalo" data-color="rosa" data-size="set">
+            <div>
+              <div class="relative img-rounded-zoom aspect-[4/3] mb-5 bg-[#f5f3ef]">
+                <img alt="Rosa de Grasse en Estuche de Regalo — Sky Tu Luz" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover cursor-pointer" onclick="openCandleModal('c13')" src="assets/candles/candle_c13.jpg"/>
+                
+                <!-- Favorite Heart Button -->
+                <button class="fav-toggle-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-all duration-300 shadow-md hover:scale-110" data-id="c13" aria-label="Añadir a favoritas" title="Añadir a favoritas">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+                
+                <!-- Badges -->
+                <span class="candle-tag-badge absolute top-3 left-3 bg-[#b89b72] text-white text-[10px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full shadow-sm">
+                  <i class="fa-solid fa-sparkles mr-1"></i> Edición Regalo
+                </span>
+                <span class="candle-burn-badge absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5">
+                  <i class="fa-regular fa-clock text-amber-400"></i> 25h de encanto
+                </span>
+              </div>
+              
+              <div class="flex items-center gap-1.5 text-[10px] font-semibold text-[#b89b72] uppercase tracking-wider mb-1">
+                <i class="fa-solid fa-seedling"></i> <span class="candle-cat-badge">Sets de Regalo</span> · <span class="text-gray-500 font-normal">Rosa / Pastel</span>
+              </div>
+              <h3 class="text-2xl font-serif text-[#2c2c2c] mb-2 cursor-pointer hover:text-[#b89b72] transition-colors" onclick="openCandleModal('c13')">Rosa de Grasse en Estuche de Regalo</h3>
+              <p class="text-xs text-gray-600 mb-4 font-light leading-relaxed">
+                Elegante rosa pastel presentada en estuche especial para regalo con cinta de seda y aroma floral empolvado.
+              </p>
+
+              <!-- Olfactory notes pills -->
+              <div class="flex flex-wrap gap-1.5 mb-5 text-[10px]">
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Agua de rosas de mayo</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Rosa centifolia</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Vainilla suave</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
+              <button onclick="openCandleModal('c13')" class="text-xs font-semibold text-[#2c2c2c] hover:text-[#b89b72] transition-colors flex items-center gap-2 group/btn" aria-label="Ver ficha artística">
+                <span data-i18n="card_view_details">Ver Ficha Artística</span>
+                <i class="fa-solid fa-arrow-right text-[10px] transform group-hover/btn:translate-x-1 transition-transform"></i>
+              </button>
+              <button class="fav-action-btn text-xs font-semibold px-4 py-2 rounded-full border border-gray-300 hover:border-red-400 hover:text-red-500 transition-all flex items-center gap-1.5" data-id="c13" aria-label="Marcar como favorita">
+                <i class="fa-regular fa-heart"></i>
+                <span data-i18n="card_favorite">Favorita</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Candle c14: Cúpula Floral Sinfonía de Primavera -->
+          <article class="portfolio-card group card-hover bg-[#faf8f5] p-6 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-id="c14" data-category="botanica" data-color="rosa" data-size="ramo">
+            <div>
+              <div class="relative img-rounded-zoom aspect-[4/3] mb-5 bg-[#f5f3ef]">
+                <img alt="Cúpula Floral Sinfonía de Primavera — Sky Tu Luz" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover cursor-pointer" onclick="openCandleModal('c14')" src="assets/candles/candle_c14.jpg"/>
+                
+                <!-- Favorite Heart Button -->
+                <button class="fav-toggle-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-all duration-300 shadow-md hover:scale-110" data-id="c14" aria-label="Añadir a favoritas" title="Añadir a favoritas">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+                
+                <!-- Badges -->
+                <span class="candle-tag-badge absolute top-3 left-3 bg-[#b89b72] text-white text-[10px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full shadow-sm">
+                  <i class="fa-solid fa-sparkles mr-1"></i> Centro de Mesa
+                </span>
+                <span class="candle-burn-badge absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5">
+                  <i class="fa-regular fa-clock text-amber-400"></i> 50h de resplandor
+                </span>
+              </div>
+              
+              <div class="flex items-center gap-1.5 text-[10px] font-semibold text-[#b89b72] uppercase tracking-wider mb-1">
+                <i class="fa-solid fa-seedling"></i> <span class="candle-cat-badge">Botánicas</span> · <span class="text-gray-500 font-normal">Rosa / Pastel</span>
+              </div>
+              <h3 class="text-2xl font-serif text-[#2c2c2c] mb-2 cursor-pointer hover:text-[#b89b72] transition-colors" onclick="openCandleModal('c14')">Cúpula Floral Sinfonía de Primavera</h3>
+              <p class="text-xs text-gray-600 mb-4 font-light leading-relaxed">
+                Composición floral en cúpula con rosas, dalias y peonías multicolores con esencias de jardín botánico.
+              </p>
+
+              <!-- Olfactory notes pills -->
+              <div class="flex flex-wrap gap-1.5 mb-5 text-[10px]">
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Brisa de jardín inglés</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Peonía rosa</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Maderas nobles</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
+              <button onclick="openCandleModal('c14')" class="text-xs font-semibold text-[#2c2c2c] hover:text-[#b89b72] transition-colors flex items-center gap-2 group/btn" aria-label="Ver ficha artística">
+                <span data-i18n="card_view_details">Ver Ficha Artística</span>
+                <i class="fa-solid fa-arrow-right text-[10px] transform group-hover/btn:translate-x-1 transition-transform"></i>
+              </button>
+              <button class="fav-action-btn text-xs font-semibold px-4 py-2 rounded-full border border-gray-300 hover:border-red-400 hover:text-red-500 transition-all flex items-center gap-1.5" data-id="c14" aria-label="Marcar como favorita">
+                <i class="fa-regular fa-heart"></i>
+                <span data-i18n="card_favorite">Favorita</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Candle c15: Sobre Botánico Carta de Amor -->
+          <article class="portfolio-card group card-hover bg-[#faf8f5] p-6 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-id="c15" data-category="botanica" data-color="rosa" data-size="escultura">
+            <div>
+              <div class="relative img-rounded-zoom aspect-[4/3] mb-5 bg-[#f5f3ef]">
+                <img alt="Sobre Botánico Carta de Amor — Sky Tu Luz" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover cursor-pointer" onclick="openCandleModal('c15')" src="assets/candles/candle_c15.jpg"/>
+                
+                <!-- Favorite Heart Button -->
+                <button class="fav-toggle-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-all duration-300 shadow-md hover:scale-110" data-id="c15" aria-label="Añadir a favoritas" title="Añadir a favoritas">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+                
+                <!-- Badges -->
+                <span class="candle-tag-badge absolute top-3 left-3 bg-[#b89b72] text-white text-[10px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full shadow-sm">
+                  <i class="fa-solid fa-sparkles mr-1"></i> Diseño Poético
+                </span>
+                <span class="candle-burn-badge absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5">
+                  <i class="fa-regular fa-clock text-amber-400"></i> 35h de poesía
+                </span>
+              </div>
+              
+              <div class="flex items-center gap-1.5 text-[10px] font-semibold text-[#b89b72] uppercase tracking-wider mb-1">
+                <i class="fa-solid fa-seedling"></i> <span class="candle-cat-badge">Botánicas</span> · <span class="text-gray-500 font-normal">Rosa / Pastel</span>
+              </div>
+              <h3 class="text-2xl font-serif text-[#2c2c2c] mb-2 cursor-pointer hover:text-[#b89b72] transition-colors" onclick="openCandleModal('c15')">Sobre Botánico Carta de Amor</h3>
+              <p class="text-xs text-gray-600 mb-4 font-light leading-relaxed">
+                Vela en forma de sobre postal abierto desbordando ramilletes de flores en relieve. Notas de lino, lirios y violeta.
+              </p>
+
+              <!-- Olfactory notes pills -->
+              <div class="flex flex-wrap gap-1.5 mb-5 text-[10px]">
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Papel de lino blanco</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Rosas miniatura</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Almizcle poético</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
+              <button onclick="openCandleModal('c15')" class="text-xs font-semibold text-[#2c2c2c] hover:text-[#b89b72] transition-colors flex items-center gap-2 group/btn" aria-label="Ver ficha artística">
+                <span data-i18n="card_view_details">Ver Ficha Artística</span>
+                <i class="fa-solid fa-arrow-right text-[10px] transform group-hover/btn:translate-x-1 transition-transform"></i>
+              </button>
+              <button class="fav-action-btn text-xs font-semibold px-4 py-2 rounded-full border border-gray-300 hover:border-red-400 hover:text-red-500 transition-all flex items-center gap-1.5" data-id="c15" aria-label="Marcar como favorita">
+                <i class="fa-regular fa-heart"></i>
+                <span data-i18n="card_favorite">Favorita</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Candle c16: Bouquet de Tulipanes Silvestres -->
+          <article class="portfolio-card group card-hover bg-[#faf8f5] p-6 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-id="c16" data-category="botanica" data-color="rosa" data-size="ramo">
+            <div>
+              <div class="relative img-rounded-zoom aspect-[4/3] mb-5 bg-[#f5f3ef]">
+                <img alt="Bouquet de Tulipanes Silvestres — Sky Tu Luz" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover cursor-pointer" onclick="openCandleModal('c16')" src="assets/candles/candle_c16.jpg"/>
+                
+                <!-- Favorite Heart Button -->
+                <button class="fav-toggle-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-all duration-300 shadow-md hover:scale-110" data-id="c16" aria-label="Añadir a favoritas" title="Añadir a favoritas">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+                
+                <!-- Badges -->
+                <span class="candle-tag-badge absolute top-3 left-3 bg-[#b89b72] text-white text-[10px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full shadow-sm">
+                  <i class="fa-solid fa-sparkles mr-1"></i> Pieza de Autor
+                </span>
+                <span class="candle-burn-badge absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5">
+                  <i class="fa-regular fa-clock text-amber-400"></i> 45h de llama floral
+                </span>
+              </div>
+              
+              <div class="flex items-center gap-1.5 text-[10px] font-semibold text-[#b89b72] uppercase tracking-wider mb-1">
+                <i class="fa-solid fa-seedling"></i> <span class="candle-cat-badge">Botánicas</span> · <span class="text-gray-500 font-normal">Rosa / Pastel</span>
+              </div>
+              <h3 class="text-2xl font-serif text-[#2c2c2c] mb-2 cursor-pointer hover:text-[#b89b72] transition-colors" onclick="openCandleModal('c16')">Bouquet de Tulipanes Silvestres</h3>
+              <p class="text-xs text-gray-600 mb-4 font-light leading-relaxed">
+                Ramo de tulipanes rosa esculpidos con flores secas decorativas y aroma a tallos verdes y pétalos frescos.
+              </p>
+
+              <!-- Olfactory notes pills -->
+              <div class="flex flex-wrap gap-1.5 mb-5 text-[10px]">
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Tallos verdes de tulipán</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Tulipán rosa en flor</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Musgo blanco</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
+              <button onclick="openCandleModal('c16')" class="text-xs font-semibold text-[#2c2c2c] hover:text-[#b89b72] transition-colors flex items-center gap-2 group/btn" aria-label="Ver ficha artística">
+                <span data-i18n="card_view_details">Ver Ficha Artística</span>
+                <i class="fa-solid fa-arrow-right text-[10px] transform group-hover/btn:translate-x-1 transition-transform"></i>
+              </button>
+              <button class="fav-action-btn text-xs font-semibold px-4 py-2 rounded-full border border-gray-300 hover:border-red-400 hover:text-red-500 transition-all flex items-center gap-1.5" data-id="c16" aria-label="Marcar como favorita">
+                <i class="fa-regular fa-heart"></i>
+                <span data-i18n="card_favorite">Favorita</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Candle c17: Conjunto Armonía Tulipanes & Esfera -->
+          <article class="portfolio-card group card-hover bg-[#faf8f5] p-6 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-id="c17" data-category="botanica" data-color="rosa" data-size="ramo">
+            <div>
+              <div class="relative img-rounded-zoom aspect-[4/3] mb-5 bg-[#f5f3ef]">
+                <img alt="Conjunto Armonía Tulipanes & Esfera — Sky Tu Luz" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover cursor-pointer" onclick="openCandleModal('c17')" src="assets/candles/candle_c17.jpg"/>
+                
+                <!-- Favorite Heart Button -->
+                <button class="fav-toggle-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-all duration-300 shadow-md hover:scale-110" data-id="c17" aria-label="Añadir a favoritas" title="Añadir a favoritas">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+                
+                <!-- Badges -->
+                <span class="candle-tag-badge absolute top-3 left-3 bg-[#b89b72] text-white text-[10px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full shadow-sm">
+                  <i class="fa-solid fa-sparkles mr-1"></i> Edición Escultórica
+                </span>
+                <span class="candle-burn-badge absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5">
+                  <i class="fa-regular fa-clock text-amber-400"></i> 55h de calma
+                </span>
+              </div>
+              
+              <div class="flex items-center gap-1.5 text-[10px] font-semibold text-[#b89b72] uppercase tracking-wider mb-1">
+                <i class="fa-solid fa-seedling"></i> <span class="candle-cat-badge">Botánicas</span> · <span class="text-gray-500 font-normal">Rosa / Pastel</span>
+              </div>
+              <h3 class="text-2xl font-serif text-[#2c2c2c] mb-2 cursor-pointer hover:text-[#b89b72] transition-colors" onclick="openCandleModal('c17')">Conjunto Armonía Tulipanes & Esfera</h3>
+              <p class="text-xs text-gray-600 mb-4 font-light leading-relaxed">
+                Composición de ramo de tulipanes en tonos pastel combinada con esfera aromática de cera de soja texturizada.
+              </p>
+
+              <!-- Olfactory notes pills -->
+              <div class="flex flex-wrap gap-1.5 mb-5 text-[10px]">
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Flores de loto</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Tulipán holandés</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Sándalo cálido</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
+              <button onclick="openCandleModal('c17')" class="text-xs font-semibold text-[#2c2c2c] hover:text-[#b89b72] transition-colors flex items-center gap-2 group/btn" aria-label="Ver ficha artística">
+                <span data-i18n="card_view_details">Ver Ficha Artística</span>
+                <i class="fa-solid fa-arrow-right text-[10px] transform group-hover/btn:translate-x-1 transition-transform"></i>
+              </button>
+              <button class="fav-action-btn text-xs font-semibold px-4 py-2 rounded-full border border-gray-300 hover:border-red-400 hover:text-red-500 transition-all flex items-center gap-1.5" data-id="c17" aria-label="Marcar como favorita">
+                <i class="fa-regular fa-heart"></i>
+                <span data-i18n="card_favorite">Favorita</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Candle c18: Oso Amoroso Carmesí con Bouquet -->
+          <article class="portfolio-card group card-hover bg-[#faf8f5] p-6 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-id="c18" data-category="regalo" data-color="rojo" data-size="escultura">
+            <div>
+              <div class="relative img-rounded-zoom aspect-[4/3] mb-5 bg-[#f5f3ef]">
+                <img alt="Oso Amoroso Carmesí con Bouquet — Sky Tu Luz" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover cursor-pointer" onclick="openCandleModal('c18')" src="assets/candles/candle_c18.jpg"/>
+                
+                <!-- Favorite Heart Button -->
+                <button class="fav-toggle-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-all duration-300 shadow-md hover:scale-110" data-id="c18" aria-label="Añadir a favoritas" title="Añadir a favoritas">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+                
+                <!-- Badges -->
+                <span class="candle-tag-badge absolute top-3 left-3 bg-[#b89b72] text-white text-[10px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full shadow-sm">
+                  <i class="fa-solid fa-sparkles mr-1"></i> Edición Romántica
+                </span>
+                <span class="candle-burn-badge absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5">
+                  <i class="fa-regular fa-clock text-amber-400"></i> 35h de ternura
+                </span>
+              </div>
+              
+              <div class="flex items-center gap-1.5 text-[10px] font-semibold text-[#b89b72] uppercase tracking-wider mb-1">
+                <i class="fa-solid fa-seedling"></i> <span class="candle-cat-badge">Sets de Regalo</span> · <span class="text-gray-500 font-normal">Rojo / Pasión</span>
+              </div>
+              <h3 class="text-2xl font-serif text-[#2c2c2c] mb-2 cursor-pointer hover:text-[#b89b72] transition-colors" onclick="openCandleModal('c18')">Oso Amoroso Carmesí con Bouquet</h3>
+              <p class="text-xs text-gray-600 mb-4 font-light leading-relaxed">
+                Tierno osito modelado en cera de soja roja sosteniendo un ramillete de rosas. Aroma a frutos rojos y pétalos dulces.
+              </p>
+
+              <!-- Olfactory notes pills -->
+              <div class="flex flex-wrap gap-1.5 mb-5 text-[10px]">
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Grosella roja</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Ramillete de rosas rojas</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Vainilla cremosa</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
+              <button onclick="openCandleModal('c18')" class="text-xs font-semibold text-[#2c2c2c] hover:text-[#b89b72] transition-colors flex items-center gap-2 group/btn" aria-label="Ver ficha artística">
+                <span data-i18n="card_view_details">Ver Ficha Artística</span>
+                <i class="fa-solid fa-arrow-right text-[10px] transform group-hover/btn:translate-x-1 transition-transform"></i>
+              </button>
+              <button class="fav-action-btn text-xs font-semibold px-4 py-2 rounded-full border border-gray-300 hover:border-red-400 hover:text-red-500 transition-all flex items-center gap-1.5" data-id="c18" aria-label="Marcar como favorita">
+                <i class="fa-regular fa-heart"></i>
+                <span data-i18n="card_favorite">Favorita</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Candle c19: Oso Solar Dorado con Bouquet -->
+          <article class="portfolio-card group card-hover bg-[#faf8f5] p-6 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-id="c19" data-category="regalo" data-color="amarillo" data-size="escultura">
+            <div>
+              <div class="relative img-rounded-zoom aspect-[4/3] mb-5 bg-[#f5f3ef]">
+                <img alt="Oso Solar Dorado con Bouquet — Sky Tu Luz" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover cursor-pointer" onclick="openCandleModal('c19')" src="assets/candles/candle_c19.jpg"/>
+                
+                <!-- Favorite Heart Button -->
+                <button class="fav-toggle-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-all duration-300 shadow-md hover:scale-110" data-id="c19" aria-label="Añadir a favoritas" title="Añadir a favoritas">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+                
+                <!-- Badges -->
+                <span class="candle-tag-badge absolute top-3 left-3 bg-[#b89b72] text-white text-[10px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full shadow-sm">
+                  <i class="fa-solid fa-sparkles mr-1"></i> Alegría & Cariño
+                </span>
+                <span class="candle-burn-badge absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5">
+                  <i class="fa-regular fa-clock text-amber-400"></i> 35h de calidez
+                </span>
+              </div>
+              
+              <div class="flex items-center gap-1.5 text-[10px] font-semibold text-[#b89b72] uppercase tracking-wider mb-1">
+                <i class="fa-solid fa-seedling"></i> <span class="candle-cat-badge">Sets de Regalo</span> · <span class="text-gray-500 font-normal">Amarillo / Dorado</span>
+              </div>
+              <h3 class="text-2xl font-serif text-[#2c2c2c] mb-2 cursor-pointer hover:text-[#b89b72] transition-colors" onclick="openCandleModal('c19')">Oso Solar Dorado con Bouquet</h3>
+              <p class="text-xs text-gray-600 mb-4 font-light leading-relaxed">
+                Osito de cera de soja en tono amarillo mostaza cálido con ramillete de flores. Notas dulces de miel, flor de azahar y vainilla.
+              </p>
+
+              <!-- Olfactory notes pills -->
+              <div class="flex flex-wrap gap-1.5 mb-5 text-[10px]">
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Flor de azahar</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Flores silvestres amarillas</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Vainilla bourbon</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
+              <button onclick="openCandleModal('c19')" class="text-xs font-semibold text-[#2c2c2c] hover:text-[#b89b72] transition-colors flex items-center gap-2 group/btn" aria-label="Ver ficha artística">
+                <span data-i18n="card_view_details">Ver Ficha Artística</span>
+                <i class="fa-solid fa-arrow-right text-[10px] transform group-hover/btn:translate-x-1 transition-transform"></i>
+              </button>
+              <button class="fav-action-btn text-xs font-semibold px-4 py-2 rounded-full border border-gray-300 hover:border-red-400 hover:text-red-500 transition-all flex items-center gap-1.5" data-id="c19" aria-label="Marcar como favorita">
+                <i class="fa-regular fa-heart"></i>
+                <span data-i18n="card_favorite">Favorita</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Candle c20: Trío de Ositos Afecto Eterno -->
+          <article class="portfolio-card group card-hover bg-[#faf8f5] p-6 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-id="c20" data-category="regalo" data-color="rosa" data-size="set">
+            <div>
+              <div class="relative img-rounded-zoom aspect-[4/3] mb-5 bg-[#f5f3ef]">
+                <img alt="Trío de Ositos Afecto Eterno — Sky Tu Luz" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover cursor-pointer" onclick="openCandleModal('c20')" src="assets/candles/candle_c20.jpg"/>
+                
+                <!-- Favorite Heart Button -->
+                <button class="fav-toggle-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-all duration-300 shadow-md hover:scale-110" data-id="c20" aria-label="Añadir a favoritas" title="Añadir a favoritas">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+                
+                <!-- Badges -->
+                <span class="candle-tag-badge absolute top-3 left-3 bg-[#b89b72] text-white text-[10px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full shadow-sm">
+                  <i class="fa-solid fa-sparkles mr-1"></i> Set Trío de Regalo
+                </span>
+                <span class="candle-burn-badge absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5">
+                  <i class="fa-regular fa-clock text-amber-400"></i> 3x15h de llama dulce
+                </span>
+              </div>
+              
+              <div class="flex items-center gap-1.5 text-[10px] font-semibold text-[#b89b72] uppercase tracking-wider mb-1">
+                <i class="fa-solid fa-seedling"></i> <span class="candle-cat-badge">Sets de Regalo</span> · <span class="text-gray-500 font-normal">Rosa / Pastel</span>
+              </div>
+              <h3 class="text-2xl font-serif text-[#2c2c2c] mb-2 cursor-pointer hover:text-[#b89b72] transition-colors" onclick="openCandleModal('c20')">Trío de Ositos Afecto Eterno</h3>
+              <p class="text-xs text-gray-600 mb-4 font-light leading-relaxed">
+                Set de tres ositos de cera de soja con corazón en relieve. Fragancia suave a talco de bebé, vainilla y flor de algodón.
+              </p>
+
+              <!-- Olfactory notes pills -->
+              <div class="flex flex-wrap gap-1.5 mb-5 text-[10px]">
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Talco suave de bebé</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Flor de azahar</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Vainilla dulce</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
+              <button onclick="openCandleModal('c20')" class="text-xs font-semibold text-[#2c2c2c] hover:text-[#b89b72] transition-colors flex items-center gap-2 group/btn" aria-label="Ver ficha artística">
+                <span data-i18n="card_view_details">Ver Ficha Artística</span>
+                <i class="fa-solid fa-arrow-right text-[10px] transform group-hover/btn:translate-x-1 transition-transform"></i>
+              </button>
+              <button class="fav-action-btn text-xs font-semibold px-4 py-2 rounded-full border border-gray-300 hover:border-red-400 hover:text-red-500 transition-all flex items-center gap-1.5" data-id="c20" aria-label="Marcar como favorita">
+                <i class="fa-regular fa-heart"></i>
+                <span data-i18n="card_favorite">Favorita</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Candle c21: Set 3 Monos Sabios de la Sabiduría -->
+          <article class="portfolio-card group card-hover bg-[#faf8f5] p-6 rounded-3xl border border-gray-200/80 shadow-md fade-up flex flex-col justify-between" data-id="c21" data-category="regalo" data-color="cafe" data-size="set">
+            <div>
+              <div class="relative img-rounded-zoom aspect-[4/3] mb-5 bg-[#f5f3ef]">
+                <img alt="Set 3 Monos Sabios de la Sabiduría — Sky Tu Luz" width="600" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover cursor-pointer" onclick="openCandleModal('c21')" src="assets/candles/candle_c21.jpg"/>
+                
+                <!-- Favorite Heart Button -->
+                <button class="fav-toggle-btn absolute top-3 right-3 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-all duration-300 shadow-md hover:scale-110" data-id="c21" aria-label="Añadir a favoritas" title="Añadir a favoritas">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+                
+                <!-- Badges -->
+                <span class="candle-tag-badge absolute top-3 left-3 bg-[#b89b72] text-white text-[10px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full shadow-sm">
+                  <i class="fa-solid fa-sparkles mr-1"></i> Filosofía & Sabiduría
+                </span>
+                <span class="candle-burn-badge absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-[9px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5">
+                  <i class="fa-regular fa-clock text-amber-400"></i> 3x20h de serenidad
+                </span>
+              </div>
+              
+              <div class="flex items-center gap-1.5 text-[10px] font-semibold text-[#b89b72] uppercase tracking-wider mb-1">
+                <i class="fa-solid fa-seedling"></i> <span class="candle-cat-badge">Sets de Regalo</span> · <span class="text-gray-500 font-normal">Café / Tostado</span>
+              </div>
+              <h3 class="text-2xl font-serif text-[#2c2c2c] mb-2 cursor-pointer hover:text-[#b89b72] transition-colors" onclick="openCandleModal('c21')">Set 3 Monos Sabios de la Sabiduría</h3>
+              <p class="text-xs text-gray-600 mb-4 font-light leading-relaxed">
+                Los tres monos sabios: No ver el mal, no oír el mal, no hablar el mal. Notas místicas de sándalo oriental, mirra y cedro.
+              </p>
+
+              <!-- Olfactory notes pills -->
+              <div class="flex flex-wrap gap-1.5 mb-5 text-[10px]">
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Incienso blanco</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Madera de sándalo oriental</span>
+                <span class="px-2.5 py-1 rounded-lg bg-[#eee5d3]/60 text-gray-700 border border-[#b89b72]/20 font-medium">Mirra balsámica</span>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
+              <button onclick="openCandleModal('c21')" class="text-xs font-semibold text-[#2c2c2c] hover:text-[#b89b72] transition-colors flex items-center gap-2 group/btn" aria-label="Ver ficha artística">
+                <span data-i18n="card_view_details">Ver Ficha Artística</span>
+                <i class="fa-solid fa-arrow-right text-[10px] transform group-hover/btn:translate-x-1 transition-transform"></i>
+              </button>
+              <button class="fav-action-btn text-xs font-semibold px-4 py-2 rounded-full border border-gray-300 hover:border-red-400 hover:text-red-500 transition-all flex items-center gap-1.5" data-id="c21" aria-label="Marcar como favorita">
+                <i class="fa-regular fa-heart"></i>
+                <span data-i18n="card_favorite">Favorita</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Empty State (No filter matches) -->
+          <div id="portfolio-empty-state" class="hidden col-span-full py-16 px-4 text-center bg-[#faf8f5] rounded-3xl border border-dashed border-[#b89b72]/40 shadow-sm">
+            <div class="w-16 h-16 rounded-full bg-[#eee5d3]/60 flex items-center justify-center text-[#b89b72] text-2xl mx-auto mb-4">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <h3 class="font-serif text-2xl text-[#2c2c2c] mb-2" data-i18n="filter_empty_title">No encontramos velas con esos filtros</h3>
+            <p class="text-xs text-gray-600 font-light max-w-md mx-auto mb-6" data-i18n="filter_empty_desc">
+              Prueba a cambiar los criterios de color, tamaño o borra la búsqueda.
+            </p>
+            <button onclick="resetCandleFilters()" class="px-6 py-2.5 rounded-full bg-[#2c2c2c] hover:bg-[#b89b72] text-white text-xs font-semibold uppercase tracking-wider transition-all shadow-md">
+              <span data-i18n="filter_empty_btn">Ver todas las creaciones</span>
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -1839,127 +2653,553 @@
   <script>
     // ── CANDLE PORTFOLIO DATA ──────────────────────────────────────────
     const CANDLES_DATA = {
-      c1: {
-        id: 'c1',
-        title: 'Ámbar & Vainilla Imperial',
-        category: 'Aromáticas',
-        tag: 'Pieza de Autor',
-        burnTime: '45h de llama limpia',
-        essence: 'Notas dulces de vainilla bourbon y cálidas ráfagas de ámbar silvestre.',
-        image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD6e1hWyTdoqLvQbdSI3O0ZNUxuu4YKLcLzFiQ7UDX6I2nsL4n0NKQRX7Utds44QJRRf0u3GiSpHMOdZi0K4F5Iu2lJPNE5ZP4fG2dBih9WuyGCI72Pd8MIS3pJYr0ZIHsw2GW2ZvBOuHXoW4FiCiHDCQ-sFWvbBuZORn7lZCCaDxZqwEBYdWlGC7yzkHaZO-1TfQrnAhPAZ0CrxRe8FioRag5tYv7wFX_GgvWzhDYoLobz0bx7buXJfQ',
-        story: 'Nuestra creación insignia. Nace inspirada en las tardes pausadas de lectura junto al calor de una taza de café. La vainilla de Madagascar se entrelaza de manera armónica con las resinas de ámbar báltico, llenando el espacio con un ambiente acogedor y relajante.',
-        pyramid: {
-          salida: 'Flor de vainilla, orquídea silvestre, toque de bergamota.',
-          corazon: 'Vainilla bourbon pura, benjuí de Sumatra, caramelo tostado.',
-          fondo: 'Ámbar dorado silvestre, sándalo cálido, haba tonka.'
-        },
-        specs: {
-          wax: '100% Cera de Soja Botánica',
-          wick: 'Algodón puro sin plomo',
-          origin: 'Elaborada artesanalmente en Zumarraga'
-        }
-      },
-      c2: {
-        id: 'c2',
-        title: 'Brisa de Algodón Silvestre',
-        category: 'Aromáticas',
-        tag: 'Aroma Limpio',
-        burnTime: '40h de combustión pura',
-        essence: 'Sensación de sábanas limpias y flores blancas recién cortadas.',
-        image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAUq5voZisOhc0myXDaA4Xa3YLwn-Kzin8LLBwvl95sHiM9mcbBxJb78h0ByTdJkAGhDbdtByNkkbO-W6OMBNhCGuQpKZKySYVjt-K_w7pxT_LO5XkDDPmQxjbnc8KumI34h1plAvC0lUVvsTKx9Sjn_6UnBInd0lQOHUZuTGIcn4g_s9Wg5K555svJsk2aaDQCDgB0qVC5TecszFRK-4XQxFQcRFyVlHu3It_kJs87LBSOkragNvq_Uw',
-        story: 'Un homenaje a la brisa fresca de la mañana abriendo las ventanas al amanecer. Ideal para purificar el ambiente, estudiar o trabajar con la mente despejada y en armonía.',
-        pyramid: {
-          salida: 'Brisa marina suave, lino blanco, rocío de la mañana.',
-          corazon: 'Flores de jazmín blanco, flor de algodón, lirio de los valles.',
-          fondo: 'Almizcle blanco transparente, madera de cedro claro.'
-        },
-        specs: {
-          wax: '100% Cera de Soja Ecológica',
-          wick: 'Mecha trenzada de algodón',
-          origin: 'Vertido manual en Zumarraga'
-        }
-      },
-      c3: {
-        id: 'c3',
-        title: 'Bosque Boreal & Pino Silvestre',
-        category: 'Botánicas',
-        tag: 'Botánica Silvestre',
-        burnTime: '50h de combustión noble',
-        essence: 'Esencia amaderada inspirada en los bosques del norte tras la lluvia.',
-        image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDYRPKQbOGMWGQ1F3iCYmbrjJU2ZOSUgsXhp0nFNgFvW7Laq4rf5XFCkwdcuRLqrWaQuZZJxmW-M1PF8v_3gzBLghwl71aIDsfBC9C_HIV1kIwHHQOPCzjVMtla9B-ytQUGiPMngTBufh4Q5eP8NNqWTobT7Chd7Np3dhM5FewxLc8IwoXyapg-uwGIyy5F6Sj0MxGIwg2NOI2NTFFgS_J7qnuJEv_Cd-0AmmyuvBA4ZUd1_Ea9XTcgiw',
-        story: 'Evoca un paseo solitario entre hayedos y coníferas en el corazón de Guipúzcoa. Su profundidad balsámica ayuda a desconectar del ruido de la ciudad y conectar con la tierra.',
-        pyramid: {
-          salida: 'Agujas de pino recién cortadas, eucalipto silvestre.',
-          corazon: 'Corteza de pino siberiano, resina de abeto balsámico.',
-          fondo: 'Musgo de roble húmedo, cedro del Atlas, tierra mojada.'
-        },
-        specs: {
-          wax: '100% Cera de Soja Botánica',
-          wick: 'Mecha de algodón ecológico',
-          origin: 'Elaborada artesanalmente en Zumarraga'
-        }
-      },
-      c4: {
-        id: 'c4',
-        title: 'Flor de Cerezo & Sakura',
-        category: 'Esculturales',
-        tag: 'Ritual Floral',
-        burnTime: '45h de combustión suave',
-        essence: 'Delicada mezcla floral relajante ideal para meditación y momentos zen.',
-        image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA1-hzjXCB65RreXOqYEIQV9m_Su13GD2eZWsI5f5C_UwXZQkuQxuaX-DUYirfi9BGBkCx87b9GeTtBCLZanuBbRL__4pEpLhrYy1eLBSILlN44AuDamlbKldrkgoZpzeZmB5OGhDyIG5L3HLvCi3Aa6aHzo5R3KhIyJW7qe-aWk5q5ELJor0puNutFWNiG5udbcAFKYhoSNbW90q_XTd2nkk9t63wzVXyG48_JbjCJYMMzgPkqRjON4A',
-        story: 'Inspirada en el florecimiento efímero de los cerezos en flor. Desprende una calidez floral delicadísima, perfecta para ceremonias de autocuidado, yoga y baños de espuma.',
-        pyramid: {
-          salida: 'Brotes de cerezo, bergamota delicada, mandarina.',
-          corazon: 'Pétalos de sakura, peonía rosa, magnolia blanca.',
-          fondo: 'Té blanco infusionado, sándalo dulce, vainilla ligera.'
-        },
-        specs: {
-          wax: '100% Cera de Soja Natural',
-          wick: 'Algodón libre de parafinas',
-          origin: 'Vertido manual en Zumarraga'
-        }
-      },
-      c5: {
-        id: 'c5',
-        title: 'Lavanda Serena & Azahar',
-        category: 'Aromáticas',
-        tag: 'Paz Nocturna',
-        burnTime: '48h de combustión íntima',
-        essence: 'Diseñada para propiciar el descanso y calmar la mente antes de dormir.',
-        image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCv-s7pm7tOFJep87nYyT_ylUlFDgMrcj-SPXgbHCpA6zIbSqyJ_XlH0OXnOJFG8JnVuH_cSBt13zTCHgpjw_epDvMpPZ5rmSxMVbcBXwmlBPNpsNy3ASPxehoDM-3xXHrYxMtpgb6DJO-nWJLJSHVdr95cZ_3l5RASXH08TQH4cFwkbFX0o2SOL_4Y1RJGlJrqhmTz0aWgpnQiC4GrR6_EYY1-jqcmzDgZ4gGdU3-CpMyoIShko_epRw',
-        story: 'El bálsamo olfativo definitivo para tu dormitorio. La lavanda silvestre alivia la tensión acumulada, mientras que las notas de flor de azahar acarician los sentidos.',
-        pyramid: {
-          salida: 'Lavandín fresco, notas cítricas sutiles.',
-          corazon: 'Lavanda provenzal pura, pétalos de azahar.',
-          fondo: 'Madera de cedro claro, ámbar blanco, toque herbáceo.'
-        },
-        specs: {
-          wax: '100% Cera Vegetal de Soja',
-          wick: 'Mecha trenzada ecológica',
-          origin: 'Vertido artesanal en Zumarraga'
-        }
-      },
-      c6: {
-        id: 'c6',
-        title: 'Canela & Naranja de Autor',
-        category: 'Personalizadas',
-        tag: 'Encargo de Autor',
-        burnTime: '50h de fuego especiado',
-        essence: 'Calidez vibrante de canela tostada, clavo aromático y corteza cítrica.',
-        image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD6e1hWyTdoqLvQbdSI3O0ZNUxuu4YKLcLzFiQ7UDX6I2nsL4n0NKQRX7Utds44QJRRf0u3GiSpHMOdZi0K4F5Iu2lJPNE5ZP4fG2dBih9WuyGCI72Pd8MIS3pJYr0ZIHsw2GW2ZvBOuHXoW4FiCiHDCQ-sFWvbBuZORn7lZCCaDxZqwEBYdWlGC7yzkHaZO-1TfQrnAhPAZ0CrxRe8FioRag5tYv7wFX_GgvWzhDYoLobz0bx7buXJfQ',
-        story: 'La chispa acogedora de las reuniones familiares en invierno. El contraste entre la acidez de la naranja confitada y la fuerza de la canela crea un aura mágica en el hogar.',
-        pyramid: {
-          salida: 'Corteza de naranja dulce, nuez moscada rallada.',
-          corazon: 'Canela en rama de Ceilán, anís estrellado, clavo.',
-          fondo: 'Vainilla ahumada, notas de madera tostada.'
-        },
-        specs: {
-          wax: '100% Cera de Soja Pura',
-          wick: 'Algodón puro sin plomo',
-          origin: 'Hecha con alma en Zumarraga'
-        }
-      }
-    };
+  "c1": {
+    "id": "c1",
+    "category": "vaso",
+    "color": "cafe",
+    "size": "vaso",
+    "categoryName": "Vasos Aromáticos",
+    "colorName": "Café / Tostado",
+    "sizeName": "Vaso Cristal (220g)",
+    "title": "Café Espresso & Avellana Tostada",
+    "tag": "Gourmand de Autor",
+    "burnTime": "45h de combustión pura",
+    "burnTimeHours": "45h",
+    "essence": "Intenso aroma a granos de café tostado, notas de avellana crujiente y fondo de vainilla de Madagascar.",
+    "image": "assets/candles/candle_c1.jpg",
+    "story": "Inspirada en el despertar pausado con un café humeante recién molido en el taller de Zumarraga. La intensidad del café tostado se suaviza con acordes de crema dulce y avellanas.",
+    "pyramid": {
+      "salida": "Granos de café arábica tostado, toque de cacao amargo.",
+      "corazon": "Avellana tostada, espuma de leche tibia, canela suave.",
+      "fondo": "Vainilla bourbon, haba tonka, caramelo tostado."
+    },
+    "specs": {
+      "wax": "100% Cera de Soja Pura y Botánica",
+      "wick": "Algodón ecológico trenzado sin plomo",
+      "origin": "Vertido artesanal en taller de Zumarraga"
+    }
+  },
+  "c2": {
+    "id": "c2",
+    "category": "vaso",
+    "color": "verde",
+    "size": "vaso",
+    "categoryName": "Vasos Aromáticos",
+    "colorName": "Verde / Bambú",
+    "sizeName": "Vaso Cristal (220g)",
+    "title": "Bambú Silvestre & Flor de Cerezo",
+    "tag": "Zen Botánico",
+    "burnTime": "45h de combustión noble",
+    "burnTimeHours": "45h",
+    "essence": "Frescura verde de tallos de bambú japonés entrelazada con delicados pétalos de sakura y rocío matinal.",
+    "image": "assets/candles/candle_c2.jpg",
+    "story": "Una oda a la calma oriental y la meditación serena. Su fragancia limpia abre la mente y aporta una sensación de pureza natural en cualquier estancia.",
+    "pyramid": {
+      "salida": "Hojas verdes de bambú, rocío de la mañana, bergamota fresca.",
+      "corazon": "Flor de cerezo (sakura), peonía de agua, lirio blanco.",
+      "fondo": "Madera de bambú claro, musgo blanco suave, cedro limpio."
+    },
+    "specs": {
+      "wax": "100% Cera de Soja Pura y Botánica",
+      "wick": "Algodón ecológico trenzado sin plomo",
+      "origin": "Vertido artesanal en taller de Zumarraga"
+    }
+  },
+  "c3": {
+    "id": "c3",
+    "category": "vaso",
+    "color": "blanco",
+    "size": "vaso",
+    "categoryName": "Vasos Aromáticos",
+    "colorName": "Blanco / Neutro",
+    "sizeName": "Vaso Cristal (220g)",
+    "title": "Coco de Tahití & Lima Cítrica",
+    "tag": "Cítrico Tropical",
+    "burnTime": "45h de llama limpia",
+    "burnTimeHours": "45h",
+    "essence": "Ralladura de lima verde recién exprimida sobre leche de coco cremosa y un toque chispeante de verbena.",
+    "image": "assets/candles/candle_c3.jpg",
+    "story": "Evoca una tarde soleada de brisa marina tropical. La dulzura untuosa del coco se equilibra a la perfección con la energía viva de los cítricos.",
+    "pyramid": {
+      "salida": "Ralladura de lima de Tahití, limón verde, verbena.",
+      "corazon": "Pulpa de coco fresca, crema de leche de coco, jazmín suave.",
+      "fondo": "Vainilla suave, azúcar de caña tostado, almizcle blanco."
+    },
+    "specs": {
+      "wax": "100% Cera de Soja Pura y Botánica",
+      "wick": "Algodón ecológico trenzado sin plomo",
+      "origin": "Vertido artesanal en taller de Zumarraga"
+    }
+  },
+  "c4": {
+    "id": "c4",
+    "category": "vaso",
+    "color": "verde",
+    "size": "vaso",
+    "categoryName": "Vasos Aromáticos",
+    "colorName": "Verde / Menta",
+    "sizeName": "Vaso Cristal (220g)",
+    "title": "Gelato Cremoso de Pistacho",
+    "tag": "Edición Gourmet",
+    "burnTime": "45h de combustión dulce",
+    "burnTimeHours": "45h",
+    "essence": "Pistacho siciliano molido, crema dulce de almendra amarga y sutiles acordes de mantequilla tostada.",
+    "image": "assets/candles/candle_c4.jpg",
+    "story": "Inspirada en las heladerías artesanales del norte de Italia. Un aroma adictivo y cremoso que envuelve el salón en un abrazo cálido y apetecible.",
+    "pyramid": {
+      "salida": "Pistacho tostado crujiente, licor de amaretto suave.",
+      "corazon": "Crema batida dulce, flor de almendro, leche de avena.",
+      "fondo": "Vainilla cremosa, azúcar moreno, haba tonka tostada."
+    },
+    "specs": {
+      "wax": "100% Cera de Soja Pura y Botánica",
+      "wick": "Algodón ecológico trenzado sin plomo",
+      "origin": "Vertido artesanal en taller de Zumarraga"
+    }
+  },
+  "c5": {
+    "id": "c5",
+    "category": "vaso",
+    "color": "blanco",
+    "size": "vaso",
+    "categoryName": "Vasos Aromáticos",
+    "colorName": "Blanco / Neutro",
+    "sizeName": "Vaso Cristal (220g)",
+    "title": "Brisa de Algodón & Lino Puro",
+    "tag": "Aroma Limpio",
+    "burnTime": "40h de pureza",
+    "burnTimeHours": "40h",
+    "essence": "Sensación reconfortante de sábanas blancas secadas al sol, flor de algodón y una ligera brisa de lavanda silvestre.",
+    "image": "assets/candles/candle_c5.jpg",
+    "story": "Un homenaje al orden, la paz y la frescura de un hogar recién ventilado. Ideal para momentos de descanso, lectura o teletrabajo.",
+    "pyramid": {
+      "salida": "Brisa de montaña, aire fresco matutino, flores de lino.",
+      "corazon": "Flor de algodón blanco, lirio de los valles, brotes de lavanda.",
+      "fondo": "Almizcle blanco transparente, madera de cedro suave."
+    },
+    "specs": {
+      "wax": "100% Cera de Soja Pura y Botánica",
+      "wick": "Algodón ecológico trenzado sin plomo",
+      "origin": "Vertido artesanal en taller de Zumarraga"
+    }
+  },
+  "c6": {
+    "id": "c6",
+    "category": "vaso",
+    "color": "rojo",
+    "size": "vaso",
+    "categoryName": "Vasos Aromáticos",
+    "colorName": "Rojo / Rubí",
+    "sizeName": "Vaso Cristal (220g)",
+    "title": "Sandía Fresca de Verano",
+    "tag": "Frutal Festivo",
+    "burnTime": "45h de llama viva",
+    "burnTimeHours": "45h",
+    "essence": "Jugosa sandía roja recién cortada con notas de melón cantalupo, frambuesas silvestres y un toque mentolado.",
+    "image": "assets/candles/candle_c6.jpg",
+    "story": "La alegría de las tardes de verano condensada en cera de soja vegetal pura. Un aroma vibrante, fresco y lleno de energía positiva.",
+    "pyramid": {
+      "salida": "Sandía roja jugosa, ralladura de lima, menta verde.",
+      "corazon": "Melón dulce cantalupo, fresitas silvestres, pepino fresco.",
+      "fondo": "Azúcar glas suave, almizcle blanco frutal."
+    },
+    "specs": {
+      "wax": "100% Cera de Soja Pura y Botánica",
+      "wick": "Algodón ecológico trenzado sin plomo",
+      "origin": "Vertido artesanal en taller de Zumarraga"
+    }
+  },
+  "c7": {
+    "id": "c7",
+    "category": "escultural",
+    "color": "blanco",
+    "size": "escultura",
+    "categoryName": "Esculturales",
+    "colorName": "Blanco / Neutro",
+    "sizeName": "Escultura Mediana (350g)",
+    "title": "Arco Escultural Nórdico",
+    "tag": "Diseño Arquitectónico",
+    "burnTime": "35h de diseño puro",
+    "burnTimeHours": "35h",
+    "essence": "Pieza de diseño en forma de arco doble U. Notas sutiles de vainilla blanca natural y madera de haya.",
+    "image": "assets/candles/candle_c7.jpg",
+    "story": "Inspirada en la arquitectura minimalista escandinava. Su silueta pura funciona como objeto de arte contemporáneo tanto encendida como apagada.",
+    "pyramid": {
+      "salida": "Aire blanco, lino nórdico, sutil flor de loto.",
+      "corazon": "Vainilla suave aterciopelada, cera de soja virgen.",
+      "fondo": "Madera de sándalo rubio, almizcle blanco."
+    },
+    "specs": {
+      "wax": "100% Cera de Soja Pura y Botánica",
+      "wick": "Algodón ecológico trenzado sin plomo",
+      "origin": "Vertido artesanal en taller de Zumarraga"
+    }
+  },
+  "c8": {
+    "id": "c8",
+    "category": "escultural",
+    "color": "blanco",
+    "size": "escultura",
+    "categoryName": "Esculturales",
+    "colorName": "Blanco / Neutro",
+    "sizeName": "Escultura Mediana (250g)",
+    "title": "Cubo Bubble Geométrico",
+    "tag": "Tendencia Minimalista",
+    "burnTime": "30h de llama suave",
+    "burnTimeHours": "30h",
+    "essence": "Vela cúbica esférica elaborada con esferas de cera de soja. Fragancia equilibrada de jazmín blanco y algodón.",
+    "image": "assets/candles/candle_c8.jpg",
+    "story": "La pieza que revolucionó el interiorismo moderno. Vertida meticulosamente en Zumarraga para lograr una textura impecable y sedosa al tacto.",
+    "pyramid": {
+      "salida": "Rocío limpio, flor de algodón, bergamota ligera.",
+      "corazon": "Jazmín de Grasse, lirio blanco, pétalos de magnolia.",
+      "fondo": "Cera botánica cremosa, sándalo blanco."
+    },
+    "specs": {
+      "wax": "100% Cera de Soja Pura y Botánica",
+      "wick": "Algodón ecológico trenzado sin plomo",
+      "origin": "Vertido artesanal en taller de Zumarraga"
+    }
+  },
+  "c9": {
+    "id": "c9",
+    "category": "escultural",
+    "color": "blanco",
+    "size": "escultura",
+    "categoryName": "Esculturales",
+    "colorName": "Blanco / Neutro",
+    "sizeName": "Escultura Mediana (300g)",
+    "title": "Columna Cilíndrica Acanalada",
+    "tag": "Elegancia Clásica",
+    "burnTime": "40h de presencia",
+    "burnTimeHours": "40h",
+    "essence": "Elegante vela cilíndrica con acanalado vertical de inspiración dórica y notas cálidas de cedro y flor blanca.",
+    "image": "assets/candles/candle_c9.jpg",
+    "story": "Su relieve estriado capta la luz natural creando un juego de sombras bellísimo sobre mesas, repisas o consolas de entrada.",
+    "pyramid": {
+      "salida": "Brisa de montaña, incienso blanco, ciprés.",
+      "corazon": "Flores blancas de almendro, madera de cedro fino.",
+      "fondo": "Ámbar seco, mirra sutil, almizcle noble."
+    },
+    "specs": {
+      "wax": "100% Cera de Soja Pura y Botánica",
+      "wick": "Algodón ecológico trenzado sin plomo",
+      "origin": "Vertido artesanal en taller de Zumarraga"
+    }
+  },
+  "c10": {
+    "id": "c10",
+    "category": "botanica",
+    "color": "blanco",
+    "size": "escultura",
+    "categoryName": "Botánicas",
+    "colorName": "Blanco / Neutro",
+    "sizeName": "Escultura Mediana (200g)",
+    "title": "Camelia Botánica Nívea",
+    "tag": "Escultura Floral",
+    "burnTime": "25h de floración",
+    "burnTimeHours": "25h",
+    "essence": "Flor circular esculpida con pétalos concéntricos. Esencia delicada de camelia blanca, orquídea y flor de loto.",
+    "image": "assets/candles/candle_c10.jpg",
+    "story": "Cada pétalo está modelado para emular la perfección geométrica de las camelias de los jardines centenarios de Guipúzcoa.",
+    "pyramid": {
+      "salida": "Pétalos de camelia blanca, rocío matinal, té blanco.",
+      "corazon": "Orquídea silvestre, flor de loto, jazmín sambac.",
+      "fondo": "Almizcle blanco transparente, madera de peral."
+    },
+    "specs": {
+      "wax": "100% Cera de Soja Pura y Botánica",
+      "wick": "Algodón ecológico trenzado sin plomo",
+      "origin": "Vertido artesanal en taller de Zumarraga"
+    }
+  },
+  "c11": {
+    "id": "c11",
+    "category": "botanica",
+    "color": "amarillo",
+    "size": "escultura",
+    "categoryName": "Botánicas",
+    "colorName": "Amarillo / Dorado",
+    "sizeName": "Escultura Mediana (220g)",
+    "title": "Girasol Silvestre del Valle",
+    "tag": "Luz & Vitalidad",
+    "burnTime": "25h de calor solar",
+    "burnTimeHours": "25h",
+    "essence": "Vela de girasol con centro texturizado de semillas. Fragancia cálida de miel de flores, polen silvestre y ámbar.",
+    "image": "assets/candles/candle_c11.jpg",
+    "story": "Símbolo de luz inagotable, energía positiva y gratitud. Llena el ambiente de luminosidad estival incluso en los días más fríos.",
+    "pyramid": {
+      "salida": "Miel silvestre, flor de girasol, néctar de naranja.",
+      "corazon": "Polen floral, manzanilla dorada, pétalos de caléndula.",
+      "fondo": "Cera de abeja botánica, ámbar cálido, vainilla dorada."
+    },
+    "specs": {
+      "wax": "100% Cera de Soja Pura y Botánica",
+      "wick": "Algodón ecológico trenzado sin plomo",
+      "origin": "Vertido artesanal en taller de Zumarraga"
+    }
+  },
+  "c12": {
+    "id": "c12",
+    "category": "botanica",
+    "color": "rojo",
+    "size": "escultura",
+    "categoryName": "Botánicas",
+    "colorName": "Rojo / Pasión",
+    "sizeName": "Escultura Mediana (200g)",
+    "title": "Rosa Carmesí Imperial",
+    "tag": "Pasión Botánica",
+    "burnTime": "25h de aroma envolvente",
+    "burnTimeHours": "25h",
+    "essence": "Rosa roja en plena floración con pétalos aterciopelados. Fragancia clásica de rosa damascena y toques de peonía.",
+    "image": "assets/candles/candle_c12.jpg",
+    "story": "La reina indiscutible de las flores recreada con pigmentos minerales naturales y esencias florales de alta fijación olfativa.",
+    "pyramid": {
+      "salida": "Pétalos de rosa húmedos, bergamota, pimienta rosa.",
+      "corazon": "Rosa damascena de Bulgaria, peonía roja, clavel suave.",
+      "fondo": "Almizcle floral aterciopelado, madera de cedro, pachulí dulce."
+    },
+    "specs": {
+      "wax": "100% Cera de Soja Pura y Botánica",
+      "wick": "Algodón ecológico trenzado sin plomo",
+      "origin": "Vertido artesanal en taller de Zumarraga"
+    }
+  },
+  "c13": {
+    "id": "c13",
+    "category": "regalo",
+    "color": "rosa",
+    "size": "set",
+    "categoryName": "Sets de Regalo",
+    "colorName": "Rosa / Pastel",
+    "sizeName": "Set / Pack Regalo (180g)",
+    "title": "Rosa de Grasse en Estuche de Regalo",
+    "tag": "Edición Regalo",
+    "burnTime": "25h de encanto",
+    "burnTimeHours": "25h",
+    "essence": "Elegante rosa pastel presentada en estuche especial para regalo con cinta de seda y aroma floral empolvado.",
+    "image": "assets/candles/candle_c13.jpg",
+    "story": "El detalle perfecto para aniversarios, bodas y ocasiones memorables. Lista para regalar y deleitar los sentidos.",
+    "pyramid": {
+      "salida": "Agua de rosas de mayo, lichi dulce, flor de mandarina.",
+      "corazon": "Rosa centifolia, violeta de Parma, flor de almendro.",
+      "fondo": "Vainilla suave, almizcle empolvado, ámbar blanco."
+    },
+    "specs": {
+      "wax": "100% Cera de Soja Pura y Botánica",
+      "wick": "Algodón ecológico trenzado sin plomo",
+      "origin": "Vertido artesanal en taller de Zumarraga"
+    }
+  },
+  "c14": {
+    "id": "c14",
+    "category": "botanica",
+    "color": "rosa",
+    "size": "ramo",
+    "categoryName": "Botánicas",
+    "colorName": "Rosa / Pastel",
+    "sizeName": "Centro / Ramo Grande (450g)",
+    "title": "Cúpula Floral Sinfonía de Primavera",
+    "tag": "Centro de Mesa",
+    "burnTime": "50h de resplandor",
+    "burnTimeHours": "50h",
+    "essence": "Composición floral en cúpula con rosas, dalias y peonías multicolores con esencias de jardín botánico.",
+    "image": "assets/candles/candle_c14.jpg",
+    "story": "Nuestra obra más elaborada. Decora majestuosamente mesas de comedor, dormitorios y salones con un festín de color.",
+    "pyramid": {
+      "salida": "Brisa de jardín inglés, pétalos de rosa, pera verde.",
+      "corazon": "Peonía rosa, magnolia en flor, jazmín silvestre.",
+      "fondo": "Maderas nobles, musgo de roble blanco, ámbar claro."
+    },
+    "specs": {
+      "wax": "100% Cera de Soja Pura y Botánica",
+      "wick": "Algodón ecológico trenzado sin plomo",
+      "origin": "Vertido artesanal en taller de Zumarraga"
+    }
+  },
+  "c15": {
+    "id": "c15",
+    "category": "botanica",
+    "color": "rosa",
+    "size": "escultura",
+    "categoryName": "Botánicas",
+    "colorName": "Rosa / Pastel",
+    "sizeName": "Escultura Mediana (280g)",
+    "title": "Sobre Botánico Carta de Amor",
+    "tag": "Diseño Poético",
+    "burnTime": "35h de poesía",
+    "burnTimeHours": "35h",
+    "essence": "Vela en forma de sobre postal abierto desbordando ramilletes de flores en relieve. Notas de lino, lirios y violeta.",
+    "image": "assets/candles/candle_c15.jpg",
+    "story": "Inspirada en las cartas de amor manuscritas de antaño. Un diseño lírico que celebra las palabras sentidas y el cariño auténtico.",
+    "pyramid": {
+      "salida": "Papel de lino blanco, rocío matinal, flor de azahar.",
+      "corazon": "Rosas miniatura, violeta silvestre, lirio blanco.",
+      "fondo": "Almizcle poético, madera de haya, ámbar suave."
+    },
+    "specs": {
+      "wax": "100% Cera de Soja Pura y Botánica",
+      "wick": "Algodón ecológico trenzado sin plomo",
+      "origin": "Vertido artesanal en taller de Zumarraga"
+    }
+  },
+  "c16": {
+    "id": "c16",
+    "category": "botanica",
+    "color": "rosa",
+    "size": "ramo",
+    "categoryName": "Botánicas",
+    "colorName": "Rosa / Pastel",
+    "sizeName": "Centro / Ramo Grande (400g)",
+    "title": "Bouquet de Tulipanes Silvestres",
+    "tag": "Pieza de Autor",
+    "burnTime": "45h de llama floral",
+    "burnTimeHours": "45h",
+    "essence": "Ramo de tulipanes rosa esculpidos con flores secas decorativas y aroma a tallos verdes y pétalos frescos.",
+    "image": "assets/candles/candle_c16.jpg",
+    "story": "El frescor de los campos de tulipanes en primavera. Una pieza sublime que embellece y llena de aroma cualquier estancia.",
+    "pyramid": {
+      "salida": "Tallos verdes de tulipán, aire fresco de rocío, mandarina.",
+      "corazon": "Tulipán rosa en flor, jacinto silvestre, flor de manzano.",
+      "fondo": "Musgo blanco, cedro limpio, almizcle floral."
+    },
+    "specs": {
+      "wax": "100% Cera de Soja Pura y Botánica",
+      "wick": "Algodón ecológico trenzado sin plomo",
+      "origin": "Vertido artesanal en taller de Zumarraga"
+    }
+  },
+  "c17": {
+    "id": "c17",
+    "category": "botanica",
+    "color": "rosa",
+    "size": "ramo",
+    "categoryName": "Botánicas",
+    "colorName": "Rosa / Pastel",
+    "sizeName": "Centro / Ramo Grande (480g)",
+    "title": "Conjunto Armonía Tulipanes & Esfera",
+    "tag": "Edición Escultórica",
+    "burnTime": "55h de calma",
+    "burnTimeHours": "55h",
+    "essence": "Composición de ramo de tulipanes en tonos pastel combinada con esfera aromática de cera de soja texturizada.",
+    "image": "assets/candles/candle_c17.jpg",
+    "story": "Equilibrio perfecto entre escultura geométrica y belleza botánica orgánica. Una presencia imponente y sofisticada.",
+    "pyramid": {
+      "salida": "Flores de loto, melocotón blanco, brisa fresca.",
+      "corazon": "Tulipán holandés, orquídea rosa, lirio de agua.",
+      "fondo": "Sándalo cálido, ámbar dorado, almizcle de seda."
+    },
+    "specs": {
+      "wax": "100% Cera de Soja Pura y Botánica",
+      "wick": "Algodón ecológico trenzado sin plomo",
+      "origin": "Vertido artesanal en taller de Zumarraga"
+    }
+  },
+  "c18": {
+    "id": "c18",
+    "category": "regalo",
+    "color": "rojo",
+    "size": "escultura",
+    "categoryName": "Sets de Regalo",
+    "colorName": "Rojo / Pasión",
+    "sizeName": "Escultura Mediana (320g)",
+    "title": "Oso Amoroso Carmesí con Bouquet",
+    "tag": "Edición Romántica",
+    "burnTime": "35h de ternura",
+    "burnTimeHours": "35h",
+    "essence": "Tierno osito modelado en cera de soja roja sosteniendo un ramillete de rosas. Aroma a frutos rojos y pétalos dulces.",
+    "image": "assets/candles/candle_c18.jpg",
+    "story": "La pieza favorita para San Valentín, aniversarios y demostraciones de cariño sincero. Modelado con minucioso detalle en cada rosa.",
+    "pyramid": {
+      "salida": "Grosella roja, fresas silvestres, frambuesa.",
+      "corazon": "Ramillete de rosas rojas, flor de cerezo, violeta.",
+      "fondo": "Vainilla cremosa, caramelo dulce, almizcle suave."
+    },
+    "specs": {
+      "wax": "100% Cera de Soja Pura y Botánica",
+      "wick": "Algodón ecológico trenzado sin plomo",
+      "origin": "Vertido artesanal en taller de Zumarraga"
+    }
+  },
+  "c19": {
+    "id": "c19",
+    "category": "regalo",
+    "color": "amarillo",
+    "size": "escultura",
+    "categoryName": "Sets de Regalo",
+    "colorName": "Amarillo / Dorado",
+    "sizeName": "Escultura Mediana (320g)",
+    "title": "Oso Solar Dorado con Bouquet",
+    "tag": "Alegría & Cariño",
+    "burnTime": "35h de calidez",
+    "burnTimeHours": "35h",
+    "essence": "Osito de cera de soja en tono amarillo mostaza cálido con ramillete de flores. Notas dulces de miel, flor de azahar y vainilla.",
+    "image": "assets/candles/candle_c19.jpg",
+    "story": "Transmite felicidad, optimismo y compañía. Un regalo entrañable que ilumina habitaciones infantiles, salones o despachos.",
+    "pyramid": {
+      "salida": "Flor de azahar, mandarina dulce, miel dorada.",
+      "corazon": "Flores silvestres amarillas, flor de almendro, manzanilla.",
+      "fondo": "Vainilla bourbon, cera de soja pura, madera suave."
+    },
+    "specs": {
+      "wax": "100% Cera de Soja Pura y Botánica",
+      "wick": "Algodón ecológico trenzado sin plomo",
+      "origin": "Vertido artesanal en taller de Zumarraga"
+    }
+  },
+  "c20": {
+    "id": "c20",
+    "category": "regalo",
+    "color": "rosa",
+    "size": "set",
+    "categoryName": "Sets de Regalo",
+    "colorName": "Rosa / Pastel",
+    "sizeName": "Set / Pack Regalo (3x90g)",
+    "title": "Trío de Ositos Afecto Eterno",
+    "tag": "Set Trío de Regalo",
+    "burnTime": "3x15h de llama dulce",
+    "burnTimeHours": "3x15h",
+    "essence": "Set de tres ositos de cera de soja con corazón en relieve. Fragancia suave a talco de bebé, vainilla y flor de algodón.",
+    "image": "assets/candles/candle_c20.jpg",
+    "story": "El trío más dulce de nuestro catálogo. Se presentan juntos para repartir armonía y encanto en varios rincones de la casa.",
+    "pyramid": {
+      "salida": "Talco suave de bebé, flor de algodón, bergamota ligera.",
+      "corazon": "Flor de azahar, rosa empolvada, crema batida.",
+      "fondo": "Vainilla dulce, almizcle blanco, azúcar glas."
+    },
+    "specs": {
+      "wax": "100% Cera de Soja Pura y Botánica",
+      "wick": "Algodón ecológico trenzado sin plomo",
+      "origin": "Vertido artesanal en taller de Zumarraga"
+    }
+  },
+  "c21": {
+    "id": "c21",
+    "category": "regalo",
+    "color": "cafe",
+    "size": "set",
+    "categoryName": "Sets de Regalo",
+    "colorName": "Café / Tostado",
+    "sizeName": "Set / Pack Regalo (3x110g)",
+    "title": "Set 3 Monos Sabios de la Sabiduría",
+    "tag": "Filosofía & Sabiduría",
+    "burnTime": "3x20h de serenidad",
+    "burnTimeHours": "3x20h",
+    "essence": "Los tres monos sabios: No ver el mal, no oír el mal, no hablar el mal. Notas místicas de sándalo oriental, mirra y cedro.",
+    "image": "assets/candles/candle_c21.jpg",
+    "story": "Representación en cera de soja de la milenaria filosofía Toshogu. Una pieza llena de significado espiritual y profundidad interior.",
+    "pyramid": {
+      "salida": "Incienso blanco, nuez moscada, corteza de canela.",
+      "corazon": "Madera de sándalo oriental, clavo de olor, cedro del Atlas.",
+      "fondo": "Mirra balsámica, resina de ámbar, almizcle amaderado."
+    },
+    "specs": {
+      "wax": "100% Cera de Soja Pura y Botánica",
+      "wick": "Algodón ecológico trenzado sin plomo",
+      "origin": "Vertido artesanal en taller de Zumarraga"
+    }
+  }
+};
 
     // ── FAVORITES LOCAL STORAGE STATE ──────────────────────────────────
     let favoritesList = [];
@@ -2403,50 +3643,185 @@
       });
     }
 
-    // ── PORTFOLIO CATEGORY FILTER TABS ─────────────────────────────────
-    const portfolioFilterBtns = document.querySelectorAll('.portfolio-filter-btn');
-    const portfolioCards = document.querySelectorAll('.portfolio-card');
+        // ── CANDLE MULTIFACETED FILTERING ENGINE ───────────────────────────
+    let candleFilters = {
+      category: 'all',
+      color: 'all',
+      size: 'all',
+      search: ''
+    };
 
-    function applyCategoryFilter(filter) {
-      portfolioFilterBtns.forEach(btn => {
-        const isMatch = btn.dataset.filter === filter;
-        if (isMatch) {
-          btn.classList.add('active', 'bg-[#2c2c2c]', 'text-white', 'shadow-sm');
-          btn.classList.remove('text-gray-600');
-          btn.setAttribute('aria-selected', 'true');
-        } else {
-          btn.classList.remove('active', 'bg-[#2c2c2c]', 'text-white', 'shadow-sm');
-          btn.classList.add('text-gray-600');
-          btn.setAttribute('aria-selected', 'false');
+    function applyCombinedFilters() {
+      const cards = document.querySelectorAll('#portfolio-grid .portfolio-card');
+      const emptyState = document.getElementById('portfolio-empty-state');
+      const countEl = document.getElementById('candle-count-num');
+      const resetBtn = document.getElementById('reset-filters-btn');
+      const searchClearBtn = document.getElementById('candle-search-clear');
+
+      let visibleCount = 0;
+      const q = candleFilters.search.toLowerCase().trim();
+
+      cards.forEach(card => {
+        const id = card.getAttribute('data-id');
+        const cat = card.getAttribute('data-category');
+        const col = card.getAttribute('data-color');
+        const sz = card.getAttribute('data-size');
+        const candleData = (typeof CANDLES_DATA !== 'undefined' && CANDLES_DATA[id]) ? CANDLES_DATA[id] : null;
+
+        const matchCat = candleFilters.category === 'all' || cat === candleFilters.category;
+        const matchCol = candleFilters.color === 'all' || col === candleFilters.color;
+        const matchSz = candleFilters.size === 'all' || sz === candleFilters.size;
+
+        let matchSearch = true;
+        if (q.length > 0) {
+          const cardText = card.textContent.toLowerCase();
+          const extraText = candleData ? (candleData.title + ' ' + candleData.essence + ' ' + candleData.story + ' ' + candleData.tag + ' ' + (candleData.categoryName || '') + ' ' + (candleData.colorName || '') + ' ' + (candleData.pyramid ? (candleData.pyramid.salida + ' ' + candleData.pyramid.corazon + ' ' + candleData.pyramid.fondo) : '')).toLowerCase() : '';
+          matchSearch = cardText.includes(q) || extraText.includes(q);
         }
-      });
 
-      portfolioCards.forEach(card => {
-        if (filter === 'all' || card.dataset.category === filter) {
+        if (matchCat && matchCol && matchSz && matchSearch) {
           card.style.display = 'flex';
-          card.classList.add('fade-up', 'visible');
+          card.classList.add('visible');
+          visibleCount++;
         } else {
           card.style.display = 'none';
         }
       });
+
+      if (countEl) countEl.textContent = visibleCount;
+
+      if (emptyState) {
+        if (visibleCount === 0) {
+          emptyState.classList.remove('hidden');
+        } else {
+          emptyState.classList.add('hidden');
+        }
+      }
+
+      // Show / hide reset button
+      const hasActiveFilter = candleFilters.category !== 'all' || candleFilters.color !== 'all' || candleFilters.size !== 'all' || q.length > 0;
+      if (resetBtn) {
+        if (hasActiveFilter) {
+          resetBtn.classList.remove('hidden');
+        } else {
+          resetBtn.classList.add('hidden');
+        }
+      }
+
+      if (searchClearBtn) {
+        if (q.length > 0) {
+          searchClearBtn.classList.remove('hidden');
+        } else {
+          searchClearBtn.classList.add('hidden');
+        }
+      }
     }
 
-    portfolioFilterBtns.forEach(btn => {
+    function resetCandleFilters() {
+      candleFilters = {
+        category: 'all',
+        color: 'all',
+        size: 'all',
+        search: ''
+      };
+
+      const searchInput = document.getElementById('candle-search-input');
+      if (searchInput) searchInput.value = '';
+
+      document.querySelectorAll('.candle-filter-btn').forEach(btn => {
+        const val = btn.getAttribute('data-filter-value');
+        if (val === 'all') {
+          btn.classList.add('active', 'bg-[#2c2c2c]', 'text-white');
+          btn.classList.remove('bg-white/80', 'text-gray-700');
+        } else {
+          btn.classList.remove('active', 'bg-[#2c2c2c]', 'text-white');
+          btn.classList.add('bg-white/80', 'text-gray-700');
+        }
+      });
+
+      applyCombinedFilters();
+    }
+
+    window.resetCandleFilters = resetCandleFilters;
+    window.applyCombinedFilters = applyCombinedFilters;
+    window.updateFilterCounterDisplay = applyCombinedFilters;
+
+    // Filter button click handler
+    document.querySelectorAll('.candle-filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        const filter = btn.dataset.filter;
-        applyCategoryFilter(filter);
-        showToast(`Colección: ${btn.textContent}`);
+        const type = btn.getAttribute('data-filter-type'); // 'category', 'color', 'size'
+        const val = btn.getAttribute('data-filter-value');
+        if (!type || !val) return;
+
+        candleFilters[type] = val;
+
+        // Update active class for this specific dimension
+        document.querySelectorAll(`.candle-filter-btn[data-filter-type="${type}"]`).forEach(b => {
+          if (b.getAttribute('data-filter-value') === val) {
+            b.classList.add('active', 'bg-[#2c2c2c]', 'text-white');
+            b.classList.remove('bg-white/80', 'text-gray-700');
+          } else {
+            b.classList.remove('active', 'bg-[#2c2c2c]', 'text-white');
+            b.classList.add('bg-white/80', 'text-gray-700');
+          }
+        });
+
+        applyCombinedFilters();
       });
     });
 
+    // Real-time search handler
+    const searchInputEl = document.getElementById('candle-search-input');
+    const searchClearBtnEl = document.getElementById('candle-search-clear');
+
+    if (searchInputEl) {
+      searchInputEl.addEventListener('input', (e) => {
+        candleFilters.search = e.target.value;
+        applyCombinedFilters();
+      });
+    }
+
+    if (searchClearBtnEl) {
+      searchClearBtnEl.addEventListener('click', () => {
+        if (searchInputEl) searchInputEl.value = '';
+        candleFilters.search = '';
+        applyCombinedFilters();
+        if (searchInputEl) searchInputEl.focus();
+      });
+    }
+
     // Triggers from "Colecciones" section to filter portfolio
+    const categoryAliasMap = {
+      'aromaticas': 'vaso',
+      'personalizadas': 'regalo',
+      'botanica': 'botanica',
+      'esculturales': 'escultura'
+    };
+
     document.querySelectorAll('.category-filter-trigger').forEach(trigger => {
       trigger.addEventListener('click', () => {
-        const filter = trigger.dataset.filter;
-        applyCategoryFilter(filter);
+        const rawFilter = trigger.dataset.filter;
+        const mappedFilter = categoryAliasMap[rawFilter] || rawFilter;
+
+        // Set category filter
+        candleFilters.category = mappedFilter;
+
+        // Update active state in category buttons
+        document.querySelectorAll('.candle-filter-btn[data-filter-type="category"]').forEach(b => {
+          if (b.getAttribute('data-filter-value') === mappedFilter) {
+            b.classList.add('active', 'bg-[#2c2c2c]', 'text-white');
+            b.classList.remove('bg-white/80', 'text-gray-700');
+          } else {
+            b.classList.remove('active', 'bg-[#2c2c2c]', 'text-white');
+            b.classList.add('bg-white/80', 'text-gray-700');
+          }
+        });
+
+        applyCombinedFilters();
+
         const target = document.getElementById('portafolio');
         if (target) target.scrollIntoView({ behavior: 'smooth' });
-        showToast(`Filtrado por: ${trigger.parentElement.querySelector('h3').textContent}`);
+        showToast(`Colección seleccionada ✨`);
       });
     });
 
