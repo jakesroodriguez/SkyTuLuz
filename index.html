@@ -330,6 +330,66 @@
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.2);
     }
 
+    /* Dynamic Island Icon Buttons & Floating Tooltips */
+    .island-icon-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .island-icon-btn:hover {
+      transform: translateY(-1.5px);
+    }
+    .island-icon-btn:active {
+      transform: scale(0.92);
+    }
+    .island-icon-btn.island-active {
+      background-color: rgba(184, 155, 114, 0.22) !important;
+      color: #b89b72 !important;
+      box-shadow: inset 0 1px 2px rgba(184, 155, 114, 0.3);
+    }
+    .island-tooltip {
+      position: absolute;
+      pointer-events: none;
+      white-space: nowrap;
+      background: rgba(44, 44, 44, 0.94);
+      color: #faf8f5;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      padding: 3px 8px;
+      border-radius: 8px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 60;
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+    }
+    /* On desktop (island is at top of viewport), tooltips drop down */
+    @media (min-width: 768px) {
+      .island-tooltip {
+        top: calc(100% + 8px);
+        bottom: auto;
+      }
+      .island-icon-btn:hover .island-tooltip {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+    /* On mobile, tooltips are hidden for clean touch ergonomics */
+    @media (max-width: 767px) {
+      .island-tooltip {
+        display: none !important;
+      }
+    }
+
     /* Smooth Hardware Accelerated Hover Animations */
     .card-hover {
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -379,11 +439,27 @@
       from { transform: translateX(0); opacity: 1; }
       to { transform: translateX(110%); opacity: 0; }
     }
+    @keyframes slideInDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes slideOutUp {
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(-100%); opacity: 0; }
+    }
     .toast-enter {
       animation: slideInRight 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
     .toast-exit {
       animation: slideOutRight 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @media (max-width: 767px) {
+      .toast-enter {
+        animation: slideInDown 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      .toast-exit {
+        animation: slideOutUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
     }
 
     /* Scroll Reveal Animations */
@@ -428,7 +504,7 @@
 <body class="antialiased font-light text-gray-800">
 
   <!-- Toast Notification Container -->
-  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 pointer-events-none" role="status" aria-live="polite"></div>
+  <div id="toast-container" class="fixed max-md:top-6 max-md:left-1/2 max-md:-translate-x-1/2 md:bottom-6 md:right-6 z-50 flex flex-col gap-3 pointer-events-none" role="status" aria-live="polite"></div>
 
   <!-- Search Modal Overlay -->
   <div id="search-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Búsqueda de velas y aromas">
@@ -499,102 +575,94 @@
   <!-- LIQUID GLASS APPLE DYNAMIC ISLAND (TOP ON DESKTOP, BOTTOM ON MOBILE) -->
   <header id="island-header" class="fixed left-1/2 -translate-x-1/2 z-40 max-md:bottom-5 md:top-6 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" role="banner">
     
-    <!-- Mobile Popup Menu Drawer (Morphs Upward on Mobile) -->
-    <div id="island-mobile-menu" class="md:hidden absolute bottom-14 left-1/2 -translate-x-1/2 w-[88vw] max-w-xs liquid-glass rounded-3xl p-4 shadow-2xl border border-white/85 opacity-0 pointer-events-none transform translate-y-4 scale-95 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]">
-      
-      <!-- Mobile Language Switcher Bar -->
-      <div class="flex items-center justify-between p-2 mb-2.5 rounded-2xl bg-[#eee5d3]/50 border border-[#b89b72]/20 shadow-sm">
-        <span class="text-xs font-semibold text-[#2c2c2c] flex items-center gap-1.5">
-          <i class="fa-solid fa-globe text-[#b89b72]"></i>
-          <span data-i18n="lang_label">Idioma</span>
-        </span>
-        <div class="flex gap-1 bg-white/70 p-1 rounded-xl border border-[#b89b72]/20">
-          <button onclick="changeLanguage('eu')" id="mobile-lang-eu" class="px-2.5 py-1 rounded-lg text-[10px] font-bold text-[#5c4632] hover:bg-white/60 transition-all">EUS</button>
-          <button onclick="changeLanguage('es')" id="mobile-lang-es" class="px-2.5 py-1 rounded-lg text-[10px] font-bold bg-[#b89b72] text-white shadow-sm transition-all">ESP</button>
-          <button onclick="changeLanguage('en')" id="mobile-lang-en" class="px-2.5 py-1 rounded-lg text-[10px] font-bold text-[#5c4632] hover:bg-white/60 transition-all">ENG</button>
-        </div>
-      </div>
-
-      <div class="flex items-center justify-between pb-2 mb-2 border-b border-[#2c2c2c]/10">
-        <span class="text-[10px] font-bold uppercase tracking-widest text-[#b89b72]">Sky Tu Luz</span>
-        <span class="text-[10px] text-gray-500 font-mono">Zumarraga</span>
-      </div>
-      <nav class="flex flex-col space-y-1 text-xs font-semibold uppercase tracking-wider text-[#2c2c2c]">
-        <a class="nav-link py-2 px-3 rounded-xl hover:bg-white/80 hover:text-[#b89b72] transition-colors flex items-center justify-between" href="#inicio" onclick="closeIslandMobile()">
-          <span data-i18n="nav_home">Inicio</span>
-          <i class="fa-solid fa-chevron-right text-[9px] text-[#b89b72]"></i>
-        </a>
-        <a class="nav-link py-2 px-3 rounded-xl hover:bg-white/80 hover:text-[#b89b72] transition-colors flex items-center justify-between" href="#portafolio" onclick="closeIslandMobile()">
-          <span data-i18n="nav_portfolio">Portafolio</span>
-          <i class="fa-solid fa-chevron-right text-[9px] text-[#b89b72]"></i>
-        </a>
-        <a class="nav-link py-2 px-3 rounded-xl hover:bg-white/80 hover:text-[#b89b72] transition-colors flex items-center justify-between" href="#experiencia" onclick="closeIslandMobile()">
-          <span data-i18n="nav_collections">Colecciones</span>
-          <i class="fa-solid fa-chevron-right text-[9px] text-[#b89b72]"></i>
-        </a>
-        <a class="nav-link py-2 px-3 rounded-xl hover:bg-white/80 hover:text-[#b89b72] transition-colors flex items-center justify-between" href="#instagram-3d-section" onclick="closeIslandMobile()">
-          <span data-i18n="nav_instagram">Instagram 3D</span>
-          <i class="fa-solid fa-chevron-right text-[9px] text-[#b89b72]"></i>
-        </a>
-        <a class="nav-link py-2 px-3 rounded-xl hover:bg-white/80 hover:text-[#b89b72] transition-colors flex items-center justify-between" href="#nosotros" onclick="closeIslandMobile()">
-          <span data-i18n="nav_about">Nosotros</span>
-          <i class="fa-solid fa-chevron-right text-[9px] text-[#b89b72]"></i>
-        </a>
-        <a class="nav-link py-2 px-3 rounded-xl hover:bg-white/80 hover:text-[#b89b72] transition-colors flex items-center justify-between" href="#faq" onclick="closeIslandMobile()">
-          <span data-i18n="nav_faq">Preguntas Frecuentes</span>
-          <i class="fa-solid fa-chevron-right text-[9px] text-[#b89b72]"></i>
-        </a>
-        <a class="nav-link py-2 px-3 rounded-xl hover:bg-white/80 hover:text-[#b89b72] transition-colors flex items-center justify-between" href="#contacto" onclick="closeIslandMobile()">
-          <span data-i18n="nav_contact">Contacto</span>
-          <i class="fa-solid fa-chevron-right text-[9px] text-[#b89b72]"></i>
-        </a>
-      </nav>
-    </div>
-
-    <!-- Main Dynamic Island Capsule -->
-    <div id="dynamic-island" class="liquid-glass rounded-full px-4 sm:px-5 py-2 sm:py-2.5 flex items-center gap-2 sm:gap-3 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-2xl border border-white/85 select-none backdrop-blur-xl">
+    <!-- Main Dynamic Island Capsule (Sleek Vector SVG Navigation) -->
+    <div id="dynamic-island" class="liquid-glass rounded-full px-3 sm:px-4 py-1.5 sm:py-2 flex items-center gap-1 sm:gap-2 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-2xl border border-white/85 select-none backdrop-blur-xl flex-nowrap whitespace-nowrap">
       
       <!-- Luxury Brand Logo Capsule (Sky serif + TU LUZ in gold - Strictly 2 Lines) -->
-      <a href="#inicio" class="flex flex-col items-center justify-center text-center px-2 sm:px-3 py-1 rounded-2xl hover:bg-black/[0.04] transition-all duration-300 group select-none min-h-[32px] sm:min-h-[36px] flex-shrink-0 whitespace-nowrap" aria-label="Sky Tu Luz - Inicio">
-        <span class="text-[16px] sm:text-[19px] font-serif font-bold tracking-tight text-[#2c2c2c] leading-none group-hover:text-[#b89b72] transition-colors block whitespace-nowrap">
+      <a href="#inicio" class="flex flex-col items-center justify-center text-center px-1.5 sm:px-2.5 py-0.5 rounded-xl hover:bg-black/[0.04] transition-all duration-300 group select-none min-h-[30px] sm:min-h-[34px] flex-shrink-0 whitespace-nowrap" aria-label="Sky Tu Luz - Inicio" title="Sky Tu Luz · Inicio">
+        <span class="text-[15px] sm:text-[17px] font-serif font-bold tracking-tight text-[#2c2c2c] leading-none group-hover:text-[#b89b72] transition-colors block whitespace-nowrap">
           Sky
         </span>
-        <span class="text-[7.5px] sm:text-[8.5px] font-sans font-bold uppercase tracking-[0.22em] sm:tracking-[0.28em] text-[#b89b72] leading-none mt-1 -mr-[0.22em] sm:-mr-[0.28em] block whitespace-nowrap">
+        <span class="text-[7px] sm:text-[8px] font-sans font-bold uppercase tracking-[0.22em] sm:tracking-[0.26em] text-[#b89b72] leading-none mt-0.5 -mr-[0.22em] sm:-mr-[0.26em] block whitespace-nowrap">
           Tu&nbsp;Luz
         </span>
       </a>
 
-      <!-- Subtle Vertical Divider to Frame the Logo -->
-      <div class="h-4 w-px bg-[#2c2c2c]/15 self-center" aria-hidden="true"></div>
+      <!-- Subtle Vertical Divider -->
+      <div class="h-4 w-px bg-[#2c2c2c]/15 self-center mx-0.5" aria-hidden="true"></div>
 
-      <!-- Menu Toggle Button -->
-      <button id="island-toggle-btn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/70 hover:bg-[#b89b72] hover:text-white text-[#2c2c2c] flex items-center justify-center transition-all duration-300 shadow-sm" title="Menú de Navegación" aria-label="Abrir menú de navegación" aria-expanded="false" data-i18n-title="nav_menu_title">
-        <i id="island-toggle-icon" class="fa-solid fa-bars text-[11px] sm:text-xs transition-transform duration-300"></i>
-      </button>
+      <!-- Core Essential Navigation Icons (Catálogo, Instagram, Ubicación) -->
+      <nav id="island-nav" class="flex items-center gap-0.5 sm:gap-1" aria-label="Navegación principal">
+        
+        <!-- 1. Catálogo / Portafolio de Velas (Artisanal Candle SVG) -->
+        <a href="#portafolio" id="island-btn-portfolio" class="island-icon-btn group w-7 h-7 sm:w-8 sm:h-8 rounded-full text-[#2c2c2c] hover:text-[#b89b72] hover:bg-[#b89b72]/15 transition-all duration-300" aria-label="Catálogo de Velas" title="Catálogo de Velas" data-i18n-title="nav_portfolio_title">
+          <svg class="w-4 h-4 sm:w-[17px] sm:h-[17px] transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2.5c-.9 1.6-2.1 3.2-2.1 4.7 0 1.5 1 2.6 2.1 2.6s2.1-1.1 2.1-2.6c0-1.5-1.2-3.1-2.1-4.7z" fill="currentColor" fill-opacity="0.25"/>
+            <line x1="12" y1="9.8" x2="12" y2="12.2"/>
+            <rect x="7" y="12.2" width="10" height="9.3" rx="2"/>
+          </svg>
+          <span class="island-tooltip" data-i18n="nav_portfolio">Portafolio</span>
+        </a>
 
-      <!-- Expandable Navigation links (Desktop inline) -->
-      <nav id="island-nav" aria-label="Navegación principal" class="hidden md:flex max-w-0 opacity-0 overflow-hidden items-center gap-4 sm:gap-5 text-[11px] font-semibold tracking-widest uppercase text-[#2c2c2c] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] whitespace-nowrap">
-        <a class="nav-link hover:text-[#b89b72] transition-colors" href="#inicio" data-i18n="nav_home">Inicio</a>
-        <a class="nav-link hover:text-[#b89b72] transition-colors" href="#portafolio" data-i18n="nav_portfolio">Portafolio</a>
-        <a class="nav-link hover:text-[#b89b72] transition-colors" href="#experiencia" data-i18n="nav_collections">Colecciones</a>
-        <a class="nav-link hover:text-[#b89b72] transition-colors" href="#instagram-3d-section" data-i18n="nav_instagram">Instagram</a>
-        <a class="nav-link hover:text-[#b89b72] transition-colors" href="#nosotros" data-i18n="nav_about">Nosotros</a>
-        <a class="nav-link hover:text-[#b89b72] transition-colors" href="#faq" data-i18n="nav_faq">Preguntas</a>
-        <a class="nav-link hover:text-[#b89b72] transition-colors" href="#contacto" data-i18n="nav_contact">Contacto</a>
+        <!-- 2. Instagram 3D Showcase (Instagram Vector SVG) -->
+        <a href="#instagram-3d-section" id="island-btn-instagram" class="island-icon-btn group w-7 h-7 sm:w-8 sm:h-8 rounded-full text-[#2c2c2c] hover:text-[#b89b72] hover:bg-[#b89b72]/15 transition-all duration-300" aria-label="Instagram @skytuluz.tu" title="Instagram 3D @skytuluz.tu" data-i18n-title="nav_instagram_title">
+          <svg class="w-4 h-4 sm:w-[17px] sm:h-[17px] transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" ry="5.5"/>
+            <circle cx="12" cy="12" r="4.2"/>
+            <circle cx="17.2" cy="6.8" r="1" fill="currentColor"/>
+          </svg>
+          <span class="island-tooltip" data-i18n="nav_instagram">Instagram</span>
+        </a>
+
+        <!-- 3. Ubicación / Taller en Zumarraga (Location Pin SVG) -->
+        <a href="#contacto" id="island-btn-location" class="island-icon-btn group w-7 h-7 sm:w-8 sm:h-8 rounded-full text-[#2c2c2c] hover:text-[#b89b72] hover:bg-[#b89b72]/15 transition-all duration-300" aria-label="Ubicación y Taller en Zumarraga" title="Ubicación y Taller en Zumarraga" data-i18n-title="nav_location_title">
+          <svg class="w-4 h-4 sm:w-[17px] sm:h-[17px] transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21.5C12 21.5 19 14.5 19 9.5a7 7 0 1 0-14 0c0 5 7 12 7 12z"/>
+            <circle cx="12" cy="9.5" r="2.5"/>
+          </svg>
+          <span class="island-tooltip" data-i18n="nav_location">Ubicación</span>
+        </a>
+
       </nav>
 
-      <!-- Action Buttons -->
-      <div class="flex items-center gap-1.5 sm:gap-2 border-l border-[#2c2c2c]/10 pl-2 sm:pl-3">
-        <!-- Language Switcher Dropdown Button -->
+      <!-- Subtle Vertical Divider -->
+      <div class="h-4 w-px bg-[#2c2c2c]/15 self-center mx-0.5" aria-hidden="true"></div>
+
+      <!-- Island Interactive Utilities (Buscar, Favoritos, Idioma) -->
+      <div class="flex items-center gap-0.5 sm:gap-1">
+
+        <!-- Buscador de Aromas -->
+        <button id="open-search-btn" class="island-icon-btn group w-7 h-7 sm:w-8 sm:h-8 rounded-full text-[#2c2c2c] hover:text-[#b89b72] hover:bg-[#b89b72]/15 transition-all duration-300" aria-label="Buscar en la web" title="Buscar aromas" data-i18n-title="nav_search_title">
+          <svg class="w-4 h-4 sm:w-[17px] sm:h-[17px] transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="7"/>
+            <line x1="21" y1="21" x2="16.2" y2="16.2"/>
+          </svg>
+          <span class="island-tooltip" data-i18n="search_subtitle">Buscar</span>
+        </button>
+
+        <!-- Velas Favoritas -->
+        <button id="open-fav-btn" class="island-icon-btn group w-7 h-7 sm:w-8 sm:h-8 rounded-full text-[#2c2c2c] hover:text-red-500 hover:bg-red-50/80 transition-all duration-300 relative" aria-label="Abrir mis velas favoritas" title="Mis Velas Favoritas" data-i18n-title="nav_favs_title">
+          <svg id="island-fav-svg" class="w-4 h-4 sm:w-[17px] sm:h-[17px] transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+          <span id="fav-badge" class="absolute -top-1 -right-1 w-4 h-4 bg-[#b89b72] text-white text-[9px] font-bold rounded-full flex items-center justify-center shadow-md scale-0 transition-transform duration-300">0</span>
+          <span class="island-tooltip" data-i18n="hero_favs">Favoritas</span>
+        </button>
+
+        <!-- Selector de Idioma (Globe SVG + Dropdown) -->
         <div class="relative" id="lang-switcher-container">
           <button id="lang-menu-btn" onclick="toggleLangMenu()" class="h-7 sm:h-8 px-2 sm:px-2.5 rounded-full bg-white/70 hover:bg-[#b89b72] hover:text-white text-[#2c2c2c] flex items-center gap-1 text-[10px] sm:text-[11px] font-bold tracking-wider uppercase transition-all shadow-sm" title="Hizkuntza / Idioma / Language" aria-label="Cambiar idioma">
-            <i class="fa-solid fa-globe text-[11px]"></i>
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
             <span id="current-lang-code">ES</span>
             <i class="fa-solid fa-chevron-down text-[7px] opacity-70"></i>
           </button>
           
-          <!-- Language Floating Glass Dropdown -->
-          <div id="lang-dropdown" class="hidden absolute top-full mt-2 right-0 bg-[#faf8f5]/95 backdrop-blur-xl border border-[#b89b72]/30 rounded-2xl shadow-2xl p-1.5 flex-col gap-1 min-w-[125px] z-50 transition-all duration-200 transform origin-top-right">
+          <!-- Language Floating Glass Dropdown (Upwards on mobile, Downwards on desktop) -->
+          <div id="lang-dropdown" class="hidden absolute max-md:bottom-full max-md:mb-2 md:top-full md:mt-2 right-0 bg-[#faf8f5]/95 backdrop-blur-xl border border-[#b89b72]/30 rounded-2xl shadow-2xl p-1.5 flex-col gap-1 min-w-[125px] z-50 transition-all duration-200 transform origin-top-right">
             <button onclick="changeLanguage('eu')" class="lang-opt-btn flex items-center justify-between px-3 py-1.5 rounded-xl text-xs font-semibold text-[#2c2c2c] hover:bg-[#b89b72] hover:text-white transition-colors" data-lang="eu">
               <span>Euskara</span>
               <span class="text-[9px] uppercase tracking-widest opacity-60">EUS</span>
@@ -610,13 +678,6 @@
           </div>
         </div>
 
-        <button id="open-search-btn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full hover:bg-black/5 flex items-center justify-center text-[#2c2c2c] hover:text-[#b89b72] transition-colors text-xs sm:text-sm" title="Buscar aromas" aria-label="Buscar en la web" data-i18n-title="nav_search_title">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-        <button id="open-fav-btn" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full hover:bg-black/5 flex items-center justify-center text-[#2c2c2c] hover:text-red-500 transition-colors relative text-xs sm:text-sm" title="Mis Velas Favoritas" aria-label="Abrir mis velas favoritas" data-i18n-title="nav_favs_title">
-          <i id="island-fav-heart" class="fa-regular fa-heart"></i>
-          <span id="fav-badge" class="absolute -top-1 -right-1 w-4 h-4 bg-[#b89b72] text-white text-[9px] font-bold rounded-full flex items-center justify-center shadow-md scale-0 transition-transform duration-300">0</span>
-        </button>
       </div>
     </div>
   </header>
@@ -662,7 +723,7 @@
     </section>
 
     <!-- REDESIGNED CANDLE PORTFOLIO SECTION -->
-    <section id="portafolio" class="py-24 px-6 bg-[#eee5d3] relative">
+    <section id="portafolio" class="py-24 px-6 bg-[#eee5d3] relative scroll-mt-20 md:scroll-mt-24">
       <!-- Backwards compatibility anchor for #tienda -->
       <div id="tienda" class="absolute -top-10"></div>
 
@@ -1162,7 +1223,8 @@
     </section>
 
     <!-- VISIT US SECTION (LOCAL SEO GROUNDING) -->
-    <section id="contacto" class="py-24 px-6 bg-[#eee5d3] relative">
+    <section id="contacto" class="py-24 px-6 bg-[#eee5d3] relative scroll-mt-20 md:scroll-mt-24">
+      <div id="ubicacion" class="absolute -top-24 pointer-events-none"></div>
       <div class="container mx-auto max-w-6xl">
         <div class="bg-[#faf8f5] rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row relative z-10 border border-gray-200/80">
           <!-- Map image -->
@@ -1266,7 +1328,7 @@
     <!-- ═══════════════════════════════════════════════════════════════
          INSTAGRAM CINEMATIC 3D SHOWCASE & VIRAL GROWTH ENGINE
          ═══════════════════════════════════════════════════════════════ -->
-    <section id="instagram-3d-section" class="relative py-24 lg:py-32 overflow-hidden" style="background:#1f1610; min-height:100vh;">
+    <section id="instagram-3d-section" class="relative py-24 lg:py-32 overflow-hidden scroll-mt-20 md:scroll-mt-24" style="background:#1f1610; min-height:100vh;">
 
       <!-- WebGL/2D Particle Canvas (Ambient Golden Candle Ember Sparks) -->
       <canvas id="ig-particles-canvas" class="absolute inset-0 w-full h-full z-0 pointer-events-none"></canvas>
@@ -1942,12 +2004,24 @@
       // Update badge in Dynamic Island
       const badge = document.getElementById('fav-badge');
       const islandHeart = document.getElementById('island-fav-heart');
+      const islandFavSvg = document.getElementById('island-fav-svg');
       if (badge) {
         badge.textContent = favoritesList.length;
         if (favoritesList.length > 0) {
           badge.classList.remove('scale-0');
         } else {
           badge.classList.add('scale-0');
+        }
+      }
+      if (islandFavSvg) {
+        if (favoritesList.length > 0) {
+          islandFavSvg.classList.add('text-red-500');
+          islandFavSvg.setAttribute('fill', '#ef4444');
+          islandFavSvg.setAttribute('stroke', '#ef4444');
+        } else {
+          islandFavSvg.classList.remove('text-red-500');
+          islandFavSvg.setAttribute('fill', 'none');
+          islandFavSvg.setAttribute('stroke', 'currentColor');
         }
       }
       if (islandHeart) {
@@ -2376,119 +2450,41 @@
       });
     });
 
-    // ── DYNAMIC ISLAND RESPONSIVE LOGIC & MORPHING ────────────────────
-    const islandToggleBtn = document.getElementById('island-toggle-btn');
-    const islandToggleIcon = document.getElementById('island-toggle-icon');
-    const islandNav = document.getElementById('island-nav');
-    const islandHeader = document.getElementById('island-header');
-    let isIslandExpanded = false;
-
-    function closeIslandMobile() {
-      const mobileMenu = document.getElementById('island-mobile-menu');
-      if (mobileMenu) {
-        mobileMenu.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4', 'scale-95');
-        mobileMenu.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0', 'scale-100');
-      }
-      if (islandToggleIcon) {
-        islandToggleIcon.classList.remove('fa-xmark');
-        islandToggleIcon.classList.add('fa-bars');
-      }
-      if (islandToggleBtn) islandToggleBtn.setAttribute('aria-expanded', 'false');
-      isIslandExpanded = false;
-    }
-    window.closeIslandMobile = closeIslandMobile;
-
-    function toggleIsland(expand) {
-      isIslandExpanded = expand !== undefined ? expand : !isIslandExpanded;
-      const isMobile = window.innerWidth < 768;
-      const mobileMenu = document.getElementById('island-mobile-menu');
-
-      if (isMobile) {
-        // Mobile behavior: Toggle upward popup drawer
-        if (islandNav) {
-          islandNav.classList.remove('max-w-[650px]', 'opacity-100');
-          islandNav.classList.add('max-w-0', 'opacity-0');
-        }
-        if (isIslandExpanded) {
-          if (mobileMenu) {
-            mobileMenu.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4', 'scale-95');
-            mobileMenu.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0', 'scale-100');
-          }
-          if (islandToggleIcon) {
-            islandToggleIcon.classList.remove('fa-bars');
-            islandToggleIcon.classList.add('fa-xmark');
-          }
-          if (islandToggleBtn) islandToggleBtn.setAttribute('aria-expanded', 'true');
-        } else {
-          closeIslandMobile();
-        }
-      } else {
-        // Desktop behavior: Morph island horizontally
-        if (mobileMenu) {
-          mobileMenu.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4', 'scale-95');
-          mobileMenu.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0', 'scale-100');
-        }
-        if (isIslandExpanded) {
-          if (islandNav) {
-            islandNav.classList.remove('max-w-0', 'opacity-0');
-            islandNav.classList.add('max-w-[650px]', 'opacity-100');
-          }
-          if (islandToggleIcon) {
-            islandToggleIcon.classList.remove('fa-bars');
-            islandToggleIcon.classList.add('fa-xmark');
-          }
-          if (islandToggleBtn) islandToggleBtn.setAttribute('aria-expanded', 'true');
-        } else {
-          if (islandNav) {
-            islandNav.classList.remove('max-w-[650px]', 'opacity-100');
-            islandNav.classList.add('max-w-0', 'opacity-0');
-          }
-          if (islandToggleIcon) {
-            islandToggleIcon.classList.remove('fa-xmark');
-            islandToggleIcon.classList.add('fa-bars');
-          }
-          if (islandToggleBtn) islandToggleBtn.setAttribute('aria-expanded', 'false');
-        }
-      }
-    }
-
-    if (islandToggleBtn) {
-      islandToggleBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleIsland();
-      });
-    }
-
-    // Close on click outside of the entire island header or popup
-    document.addEventListener('click', (e) => {
-      if (isIslandExpanded && islandHeader && !islandHeader.contains(e.target)) {
-        toggleIsland(false);
-      }
-    });
-
-    // Close on ESC key for keyboard accessibility
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && isIslandExpanded) {
-        toggleIsland(false);
-      }
-    });
+    // ── DYNAMIC ISLAND COMPATIBILITY & LIFECYCLE ───────────────────────
+    window.closeIslandMobile = function() {};
+    window.toggleIsland = function() {};
 
     // Dynamic Island Heart micro-interaction
     function pulseIslandHeart() {
       const heart = document.getElementById('island-fav-heart');
-      if (!heart) return;
-      heart.classList.remove('fa-regular');
-      heart.classList.add('fa-solid', 'text-red-500', 'heart-active');
+      const svgHeart = document.getElementById('island-fav-svg');
+      if (svgHeart) {
+        svgHeart.classList.add('scale-125', 'text-red-500');
+        svgHeart.setAttribute('fill', '#ef4444');
+        svgHeart.setAttribute('stroke', '#ef4444');
+        setTimeout(() => {
+          svgHeart.classList.remove('scale-125');
+          if (favoritesList.length === 0) {
+            svgHeart.classList.remove('text-red-500');
+            svgHeart.setAttribute('fill', 'none');
+            svgHeart.setAttribute('stroke', 'currentColor');
+          }
+        }, 400);
+      }
+      if (heart) {
+        heart.classList.remove('fa-regular');
+        heart.classList.add('fa-solid', 'text-red-500', 'heart-active');
+        setTimeout(() => {
+          heart.classList.remove('heart-active');
+          if (favoritesList.length === 0) {
+            heart.classList.remove('fa-solid', 'text-red-500');
+            heart.classList.add('fa-regular');
+          }
+        }, 400);
+      }
       if (navigator.vibrate) {
         try { navigator.vibrate(25); } catch (_) {}
       }
-      setTimeout(() => {
-        heart.classList.remove('heart-active');
-        if (favoritesList.length === 0) {
-          heart.classList.remove('fa-solid', 'text-red-500');
-          heart.classList.add('fa-regular');
-        }
-      }, 400);
     }
     window.pulseIslandHeart = pulseIslandHeart;
 
@@ -2496,7 +2492,11 @@
     function initScrollSpy() {
       const sections = ['inicio', 'portafolio', 'experiencia', 'instagram-3d-section', 'nosotros', 'faq', 'contacto'];
       const navLinks = document.querySelectorAll('.nav-link');
-      if (!navLinks.length) return;
+      const iconMap = {
+        'portafolio': document.getElementById('island-btn-portfolio'),
+        'instagram-3d-section': document.getElementById('island-btn-instagram'),
+        'contacto': document.getElementById('island-btn-location')
+      };
 
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -2510,11 +2510,23 @@
                 link.classList.remove('text-[#b89b72]', 'font-bold');
               }
             });
+
+            // Update Dynamic Island SVG buttons active state
+            Object.keys(iconMap).forEach(key => {
+              const btn = iconMap[key];
+              if (btn) {
+                if (key === id) {
+                  btn.classList.add('island-active');
+                } else {
+                  btn.classList.remove('island-active');
+                }
+              }
+            });
           }
         });
       }, {
         root: null,
-        rootMargin: '-20% 0px -60% 0px',
+        rootMargin: '-15% 0px -55% 0px',
         threshold: 0.05
       });
 
