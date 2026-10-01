@@ -276,17 +276,37 @@
       font-family: 'Dancing Script', cursive;
     }
 
-    .hero-btn-group {
-      transform: translate(-14cm, 3cm);
+    /* Hero Action Buttons - Universal Responsive Placement System */
+    #hero-action-buttons {
+      position: absolute;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s ease;
+      will-change: transform, left, top;
     }
-    @media (max-width: 1024px) {
-      .hero-btn-group {
-        transform: translateY(3cm);
+
+    /* Video & Button switching by orientation / aspect-ratio */
+    @media (orientation: portrait), (max-aspect-ratio: 1/1) {
+      #hero-desktop-video { display: none !important; }
+      #hero-mobile-video { display: block !important; }
+      #hero-action-buttons {
+        top: 24.8%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: auto;
+        max-width: calc(100vw - 24px);
       }
     }
-    @media (max-width: 767px) {
-      .hero-btn-group {
-        transform: none !important;
+    @media (orientation: landscape) and (min-aspect-ratio: 1/1) {
+      #hero-desktop-video { display: block !important; }
+      #hero-mobile-video { display: none !important; }
+      #hero-action-buttons {
+        top: 66.5%;
+        left: clamp(170px, 31vw, 550px);
+        transform: translateX(-50%);
+        max-width: calc(50vw - 20px);
       }
     }
 
@@ -563,35 +583,34 @@
   <main id="contenido-principal" role="main">
 
     <!-- HERO SECTION WITH VIDEO BACKGROUND & H1 KEYWORD OVERLAY -->
-    <section id="inicio" class="relative h-screen min-h-[680px] flex items-center justify-center pt-20 overflow-hidden">
+    <section id="inicio" class="relative h-screen min-h-[580px] flex items-center justify-center overflow-hidden">
+      <!-- Semantic SEO heading -->
+      <h1 class="sr-only">Sky Tu Luz · Velas Artesanales de Cera de Soja en Zumarraga</h1>
+
       <!-- Video background full fit with warm beige fallback -->
       <div class="absolute inset-0 z-0 bg-[#eee5d3]">
-        <!-- Desktop Video (Horizontal >= 768px) -->
-        <video autoplay loop muted playsinline preload="metadata" class="hidden md:block w-full h-full object-cover opacity-85">
-          <source src="Candle_flames_flicker_quietly_202608050031.mp4?v=20260930" type="video/mp4"/>
+        <!-- Desktop Video (Horizontal >= 768px / Landscape) -->
+        <video id="hero-desktop-video" autoplay loop muted playsinline preload="metadata" class="w-full h-full object-cover opacity-85">
+          <source src="Candle_flames_flicker_quietly_202608050031.mp4?v=20261001" type="video/mp4"/>
         </video>
-        <!-- Mobile Video (Vertical 9:16 < 768px) -->
-        <video autoplay loop muted playsinline preload="metadata" poster="landigMovil_poster.jpg" class="block md:hidden w-full h-full object-cover opacity-85">
-          <source src="landigMovil.mp4?v=20260930" type="video/mp4"/>
+        <!-- Mobile Video (Vertical 9:16 / Portrait) -->
+        <video id="hero-mobile-video" autoplay loop muted playsinline preload="metadata" poster="landigMovil_poster.jpg" class="w-full h-full object-cover opacity-85">
+          <source src="landigMovil.mp4?v=20261001" type="video/mp4"/>
         </video>
         <!-- Top and bottom gradient overlays for smooth blending -->
         <div class="absolute inset-0 bg-gradient-to-b from-[#eee5d3]/50 via-transparent to-[#eee5d3] pointer-events-none"></div>
       </div>
 
-      <!-- Hero Main Content with Action Buttons (Positioned below 'Tu equilibrio' on mobile) -->
-      <div class="relative z-10 container mx-auto max-w-4xl px-3 sm:px-6 text-center text-[#2c2c2c] fade-up visible max-md:absolute max-md:top-[24.5%] max-md:left-0 max-md:right-0 max-md:w-full max-md:pr-6 max-md:pl-2">
-        <h1 class="sr-only">Sky Tu Luz · Velas Artesanales de Cera de Soja en Zumarraga</h1>
-
-        <div class="hero-btn-group flex items-center justify-center gap-2 sm:gap-4 flex-nowrap sm:flex-wrap mx-auto">
-          <a href="#portafolio" class="bg-[#a68257] hover:bg-[#8f6d43] text-[#fdfbf7] border border-[#c4a67e] px-3.5 sm:px-8 py-2 sm:py-3.5 rounded-full text-[10.5px] sm:text-xs font-semibold tracking-wider sm:tracking-widest uppercase transition-all duration-300 shadow-md shadow-[#a68257]/20 flex items-center gap-1.5 sm:gap-2 whitespace-nowrap">
-            <span>Explorar Portafolio</span>
-            <i class="fa-solid fa-arrow-down text-[8px] sm:text-[10px] text-[#fdfbf7]/80"></i>
-          </a>
-          <button onclick="toggleFavDrawer(true)" class="bg-[#fdfaf5]/90 hover:bg-[#f5ede0] backdrop-blur-md border border-[#d6c4aa] text-[#5c4632] px-3.5 sm:px-6 py-2 sm:py-3.5 rounded-full text-[10.5px] sm:text-xs font-semibold tracking-wider transition-all duration-300 shadow-sm hover:shadow-md flex items-center gap-1.5 sm:gap-2 whitespace-nowrap">
-            <i class="fa-regular fa-heart text-[#a68257] text-[11px] sm:text-xs"></i>
-            <span>Mis Favoritas</span>
-          </button>
-        </div>
+      <!-- Hero Action Buttons (Dynamically aligned directly below 'Tu equilibrio.') -->
+      <div id="hero-action-buttons" class="absolute z-20 flex items-center gap-2 sm:gap-4 flex-nowrap pointer-events-auto">
+        <a href="#portafolio" class="bg-[#a68257] hover:bg-[#8f6d43] text-[#fdfbf7] border border-[#c4a67e] px-3.5 sm:px-7 py-2 sm:py-3 rounded-full text-[10.5px] sm:text-xs font-semibold tracking-wider sm:tracking-widest uppercase transition-all duration-300 shadow-md shadow-[#a68257]/20 flex items-center gap-1.5 sm:gap-2 whitespace-nowrap">
+          <span>Explorar Portafolio</span>
+          <i class="fa-solid fa-arrow-down text-[8px] sm:text-[10px] text-[#fdfbf7]/80"></i>
+        </a>
+        <button onclick="toggleFavDrawer(true)" class="bg-[#fdfaf5]/90 hover:bg-[#f5ede0] backdrop-blur-md border border-[#d6c4aa] text-[#5c4632] px-3.5 sm:px-5 py-2 sm:py-3 rounded-full text-[10.5px] sm:text-xs font-semibold tracking-wider transition-all duration-300 shadow-sm hover:shadow-md flex items-center gap-1.5 sm:gap-2 whitespace-nowrap">
+          <i class="fa-regular fa-heart text-[#a68257] text-[11px] sm:text-xs"></i>
+          <span>Mis Favoritas</span>
+        </button>
       </div>
 
       <!-- Scroll Indicator -->
@@ -2434,9 +2453,82 @@
     }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initScrollSpy);
+      document.addEventListener('DOMContentLoaded', () => {
+        initScrollSpy();
+        updateHeroButtonsPosition();
+      });
     } else {
       initScrollSpy();
+      updateHeroButtonsPosition();
+    }
+
+    // ── UNIVERSAL RESPONSIVE HERO BUTTON POSITIONING ───────────────────
+    function updateHeroButtonsPosition() {
+      const hero = document.getElementById('inicio');
+      const btnGroup = document.getElementById('hero-action-buttons');
+      if (!hero || !btnGroup) return;
+
+      const w = hero.clientWidth;
+      const h = hero.clientHeight;
+      const isPortrait = (w / h) < 1.0;
+
+      if (isPortrait) {
+        // Mobile & Tablet Portrait: Centered under 'Tu equilibrio.' in landigMovil.mp4
+        btnGroup.style.left = '50%';
+        btnGroup.style.top = '24.8%';
+        btnGroup.style.transform = 'translateX(-50%)';
+        return;
+      }
+
+      // Desktop, Chromebook, Laptop & Tablet Landscape (16:9 Video Projection)
+      const videoRatio = 16 / 9;
+      const containerRatio = w / h;
+      let renderW, renderH, offsetX, offsetY;
+
+      if (containerRatio > videoRatio) {
+        // Screen is wider than 16:9 (crops top/bottom)
+        renderW = w;
+        renderH = w / videoRatio;
+        offsetX = 0;
+        offsetY = (h - renderH) / 2;
+      } else {
+        // Screen is narrower than 16:9 (crops left/right)
+        renderH = h;
+        renderW = h * videoRatio;
+        offsetX = (w - renderW) / 2;
+        offsetY = 0;
+      }
+
+      // Normalized coordinates of 'Tu equilibrio.' in Candle_flames 1280x720 video:
+      // Center X = 31.0%, Bottom Y = 62.5% -> Place button group top at Y = 66.5%
+      let targetX = offsetX + (renderW * 0.31);
+      let targetY = offsetY + (renderH * 0.665);
+
+      // Strict Safety Clamp: Prevent buttons from ever clipping left dock/taskbar or right edge
+      const halfWidth = (btnGroup.offsetWidth || 300) / 2;
+      const minX = halfWidth + 24; // At least 24px safety margin from screen edge
+      const maxX = w - halfWidth - 24;
+      targetX = Math.max(minX, Math.min(maxX, targetX));
+
+      // Vertical safety bounds (avoid navbar and bottom indicator)
+      const minY = 85;
+      const maxY = h - 75;
+      targetY = Math.max(minY, Math.min(maxY, targetY));
+
+      btnGroup.style.left = `${Math.round(targetX)}px`;
+      btnGroup.style.top = `${Math.round(targetY)}px`;
+      btnGroup.style.transform = 'translateX(-50%)';
+    }
+
+    window.addEventListener('resize', () => requestAnimationFrame(updateHeroButtonsPosition), { passive: true });
+    window.addEventListener('orientationchange', () => setTimeout(updateHeroButtonsPosition, 100), { passive: true });
+    window.addEventListener('load', updateHeroButtonsPosition);
+
+    if (window.ResizeObserver) {
+      const heroSection = document.getElementById('inicio');
+      if (heroSection) {
+        new ResizeObserver(() => requestAnimationFrame(updateHeroButtonsPosition)).observe(heroSection);
+      }
     }
 
     // ── NEWSLETTER SIGNUP ──────────────────────────────────────────────
