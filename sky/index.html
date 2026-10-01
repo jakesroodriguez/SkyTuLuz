@@ -574,28 +574,24 @@
 
   <!-- LIQUID GLASS APPLE DYNAMIC ISLAND (TOP ON DESKTOP, BOTTOM ON MOBILE) -->
   <header id="island-header" class="fixed left-1/2 -translate-x-1/2 z-40 max-md:bottom-5 md:top-6 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" role="banner">
-    
-    <!-- Main Dynamic Island Capsule (Sleek Vector SVG Navigation) -->
+
+    <!-- Main Dynamic Island Capsule -->
     <div id="dynamic-island" class="liquid-glass rounded-full px-3 sm:px-4 py-1.5 sm:py-2 flex items-center gap-1 sm:gap-2 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-2xl border border-white/85 select-none backdrop-blur-xl flex-nowrap whitespace-nowrap">
-      
-      <!-- Luxury Brand Logo Capsule (Sky serif + TU LUZ in gold - Strictly 2 Lines) -->
+
+      <!-- Logo -->
       <a href="#inicio" class="flex flex-col items-center justify-center text-center px-1.5 sm:px-2.5 py-0.5 rounded-xl hover:bg-black/[0.04] transition-all duration-300 group select-none min-h-[30px] sm:min-h-[34px] flex-shrink-0 whitespace-nowrap" aria-label="Sky Tu Luz - Inicio" title="Sky Tu Luz · Inicio">
-        <span class="text-[15px] sm:text-[17px] font-serif font-bold tracking-tight text-[#2c2c2c] leading-none group-hover:text-[#b89b72] transition-colors block whitespace-nowrap">
-          Sky
-        </span>
-        <span class="text-[7px] sm:text-[8px] font-sans font-bold uppercase tracking-[0.22em] sm:tracking-[0.26em] text-[#b89b72] leading-none mt-0.5 -mr-[0.22em] sm:-mr-[0.26em] block whitespace-nowrap">
-          Tu&nbsp;Luz
-        </span>
+        <span class="text-[15px] sm:text-[17px] font-serif font-bold tracking-tight text-[#2c2c2c] leading-none group-hover:text-[#b89b72] transition-colors block whitespace-nowrap">Sky</span>
+        <span class="text-[7px] sm:text-[8px] font-sans font-bold uppercase tracking-[0.22em] sm:tracking-[0.26em] text-[#b89b72] leading-none mt-0.5 -mr-[0.22em] sm:-mr-[0.26em] block whitespace-nowrap">Tu&nbsp;Luz</span>
       </a>
 
-      <!-- Subtle Vertical Divider -->
+      <!-- Divider -->
       <div class="h-4 w-px bg-[#2c2c2c]/15 self-center mx-0.5" aria-hidden="true"></div>
 
-      <!-- Core Essential Navigation Icons (Catálogo, Instagram, Ubicación) -->
-      <nav id="island-nav" class="flex items-center gap-0.5 sm:gap-1" aria-label="Navegación principal">
-        
-        <!-- 1. Catálogo / Portafolio de Velas (Artisanal Candle SVG) -->
-        <a href="#portafolio" id="island-btn-portfolio" class="island-icon-btn group w-7 h-7 sm:w-8 sm:h-8 rounded-full text-[#2c2c2c] hover:text-[#b89b72] hover:bg-[#b89b72]/15 transition-all duration-300" aria-label="Catálogo de Velas" title="Catálogo de Velas" data-i18n-title="nav_portfolio_title">
+      <!-- Expandable nav icons (hidden by default, shown on hamburger click) -->
+      <nav id="island-nav" class="flex items-center gap-0.5 sm:gap-1 overflow-hidden transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]" style="max-width:0; opacity:0; pointer-events:none;" aria-label="Navegación principal">
+
+        <!-- Catálogo de Velas -->
+        <a href="#portafolio" id="island-btn-portfolio" onclick="collapseIsland()" class="island-icon-btn group w-7 h-7 sm:w-8 sm:h-8 rounded-full text-[#2c2c2c] hover:text-[#b89b72] hover:bg-[#b89b72]/15 transition-all duration-300" aria-label="Catálogo de Velas" title="Catálogo">
           <svg class="w-4 h-4 sm:w-[17px] sm:h-[17px] transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 2.5c-.9 1.6-2.1 3.2-2.1 4.7 0 1.5 1 2.6 2.1 2.6s2.1-1.1 2.1-2.6c0-1.5-1.2-3.1-2.1-4.7z" fill="currentColor" fill-opacity="0.25"/>
             <line x1="12" y1="9.8" x2="12" y2="12.2"/>
@@ -604,8 +600,8 @@
           <span class="island-tooltip" data-i18n="nav_portfolio">Portafolio</span>
         </a>
 
-        <!-- 2. Instagram 3D Showcase (Instagram Vector SVG) -->
-        <a href="#instagram-3d-section" id="island-btn-instagram" class="island-icon-btn group w-7 h-7 sm:w-8 sm:h-8 rounded-full text-[#2c2c2c] hover:text-[#b89b72] hover:bg-[#b89b72]/15 transition-all duration-300" aria-label="Instagram @skytuluz.tu" title="Instagram 3D @skytuluz.tu" data-i18n-title="nav_instagram_title">
+        <!-- Instagram -->
+        <a href="#instagram-3d-section" id="island-btn-instagram" onclick="collapseIsland()" class="island-icon-btn group w-7 h-7 sm:w-8 sm:h-8 rounded-full text-[#2c2c2c] hover:text-[#b89b72] hover:bg-[#b89b72]/15 transition-all duration-300" aria-label="Instagram @skytuluz.tu" title="Instagram">
           <svg class="w-4 h-4 sm:w-[17px] sm:h-[17px] transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" ry="5.5"/>
             <circle cx="12" cy="12" r="4.2"/>
@@ -614,8 +610,8 @@
           <span class="island-tooltip" data-i18n="nav_instagram">Instagram</span>
         </a>
 
-        <!-- 3. Ubicación / Taller en Zumarraga (Location Pin SVG) -->
-        <a href="#contacto" id="island-btn-location" class="island-icon-btn group w-7 h-7 sm:w-8 sm:h-8 rounded-full text-[#2c2c2c] hover:text-[#b89b72] hover:bg-[#b89b72]/15 transition-all duration-300" aria-label="Ubicación y Taller en Zumarraga" title="Ubicación y Taller en Zumarraga" data-i18n-title="nav_location_title">
+        <!-- Ubicación -->
+        <a href="#contacto" id="island-btn-location" onclick="collapseIsland()" class="island-icon-btn group w-7 h-7 sm:w-8 sm:h-8 rounded-full text-[#2c2c2c] hover:text-[#b89b72] hover:bg-[#b89b72]/15 transition-all duration-300" aria-label="Ubicación Zumarraga" title="Ubicación">
           <svg class="w-4 h-4 sm:w-[17px] sm:h-[17px] transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 21.5C12 21.5 19 14.5 19 9.5a7 7 0 1 0-14 0c0 5 7 12 7 12z"/>
             <circle cx="12" cy="9.5" r="2.5"/>
@@ -623,16 +619,8 @@
           <span class="island-tooltip" data-i18n="nav_location">Ubicación</span>
         </a>
 
-      </nav>
-
-      <!-- Subtle Vertical Divider -->
-      <div class="h-4 w-px bg-[#2c2c2c]/15 self-center mx-0.5" aria-hidden="true"></div>
-
-      <!-- Island Interactive Utilities (Buscar, Favoritos, Idioma) -->
-      <div class="flex items-center gap-0.5 sm:gap-1">
-
-        <!-- Buscador de Aromas -->
-        <button id="open-search-btn" class="island-icon-btn group w-7 h-7 sm:w-8 sm:h-8 rounded-full text-[#2c2c2c] hover:text-[#b89b72] hover:bg-[#b89b72]/15 transition-all duration-300" aria-label="Buscar en la web" title="Buscar aromas" data-i18n-title="nav_search_title">
+        <!-- Buscar -->
+        <button id="open-search-btn" onclick="collapseIsland()" class="island-icon-btn group w-7 h-7 sm:w-8 sm:h-8 rounded-full text-[#2c2c2c] hover:text-[#b89b72] hover:bg-[#b89b72]/15 transition-all duration-300" aria-label="Buscar" title="Buscar">
           <svg class="w-4 h-4 sm:w-[17px] sm:h-[17px] transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="7"/>
             <line x1="21" y1="21" x2="16.2" y2="16.2"/>
@@ -640,8 +628,8 @@
           <span class="island-tooltip" data-i18n="search_subtitle">Buscar</span>
         </button>
 
-        <!-- Velas Favoritas -->
-        <button id="open-fav-btn" class="island-icon-btn group w-7 h-7 sm:w-8 sm:h-8 rounded-full text-[#2c2c2c] hover:text-red-500 hover:bg-red-50/80 transition-all duration-300 relative" aria-label="Abrir mis velas favoritas" title="Mis Velas Favoritas" data-i18n-title="nav_favs_title">
+        <!-- Favoritas -->
+        <button id="open-fav-btn" onclick="collapseIsland()" class="island-icon-btn group w-7 h-7 sm:w-8 sm:h-8 rounded-full text-[#2c2c2c] hover:text-red-500 hover:bg-red-50/80 transition-all duration-300 relative" aria-label="Mis Favoritas" title="Mis Favoritas">
           <svg id="island-fav-svg" class="w-4 h-4 sm:w-[17px] sm:h-[17px] transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
           </svg>
@@ -649,36 +637,50 @@
           <span class="island-tooltip" data-i18n="hero_favs">Favoritas</span>
         </button>
 
-        <!-- Selector de Idioma (Globe SVG + Dropdown) -->
-        <div class="relative" id="lang-switcher-container">
-          <button id="lang-menu-btn" onclick="toggleLangMenu()" class="h-7 sm:h-8 px-2 sm:px-2.5 rounded-full bg-white/70 hover:bg-[#b89b72] hover:text-white text-[#2c2c2c] flex items-center gap-1 text-[10px] sm:text-[11px] font-bold tracking-wider uppercase transition-all shadow-sm" title="Hizkuntza / Idioma / Language" aria-label="Cambiar idioma">
-            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <line x1="2" y1="12" x2="22" y2="12"/>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-            </svg>
-            <span id="current-lang-code">ES</span>
-            <i class="fa-solid fa-chevron-down text-[7px] opacity-70"></i>
-          </button>
-          
-          <!-- Language Floating Glass Dropdown (Upwards on mobile, Downwards on desktop) -->
-          <div id="lang-dropdown" class="hidden absolute max-md:bottom-full max-md:mb-2 md:top-full md:mt-2 right-0 bg-[#faf8f5]/95 backdrop-blur-xl border border-[#b89b72]/30 rounded-2xl shadow-2xl p-1.5 flex-col gap-1 min-w-[125px] z-50 transition-all duration-200 transform origin-top-right">
-            <button onclick="changeLanguage('eu')" class="lang-opt-btn flex items-center justify-between px-3 py-1.5 rounded-xl text-xs font-semibold text-[#2c2c2c] hover:bg-[#b89b72] hover:text-white transition-colors" data-lang="eu">
-              <span>Euskara</span>
-              <span class="text-[9px] uppercase tracking-widest opacity-60">EUS</span>
-            </button>
-            <button onclick="changeLanguage('es')" class="lang-opt-btn flex items-center justify-between px-3 py-1.5 rounded-xl text-xs font-semibold bg-[#b89b72] text-white hover:bg-[#b89b72] transition-colors" data-lang="es">
-              <span>Español</span>
-              <span class="text-[9px] uppercase tracking-widest opacity-60">ESP</span>
-            </button>
-            <button onclick="changeLanguage('en')" class="lang-opt-btn flex items-center justify-between px-3 py-1.5 rounded-xl text-xs font-semibold text-[#2c2c2c] hover:bg-[#b89b72] hover:text-white transition-colors" data-lang="en">
-              <span>English</span>
-              <span class="text-[9px] uppercase tracking-widest opacity-60">ENG</span>
-            </button>
-          </div>
-        </div>
+        <!-- Divider before lang -->
+        <div class="h-4 w-px bg-[#2c2c2c]/15 self-center mx-0.5" aria-hidden="true"></div>
 
+      </nav>
+
+      <!-- Selector de Idioma (siempre visible) -->
+      <div class="relative" id="lang-switcher-container">
+        <button id="lang-menu-btn" onclick="toggleLangMenu()" class="h-7 sm:h-8 px-2 sm:px-2.5 rounded-full bg-white/70 hover:bg-[#b89b72] hover:text-white text-[#2c2c2c] flex items-center gap-1 text-[10px] sm:text-[11px] font-bold tracking-wider uppercase transition-all shadow-sm" title="Hizkuntza / Idioma / Language" aria-label="Cambiar idioma">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          <span id="current-lang-code">ES</span>
+          <i class="fa-solid fa-chevron-down text-[7px] opacity-70"></i>
+        </button>
+
+        <!-- Language Dropdown -->
+        <div id="lang-dropdown" class="hidden absolute max-md:bottom-full max-md:mb-2 md:top-full md:mt-2 right-0 bg-[#faf8f5]/95 backdrop-blur-xl border border-[#b89b72]/30 rounded-2xl shadow-2xl p-1.5 flex-col gap-1 min-w-[125px] z-50 transition-all duration-200 transform origin-top-right">
+          <button onclick="changeLanguage('eu')" class="lang-opt-btn flex items-center justify-between px-3 py-1.5 rounded-xl text-xs font-semibold text-[#2c2c2c] hover:bg-[#b89b72] hover:text-white transition-colors" data-lang="eu">
+            <span>Euskara</span><span class="text-[9px] uppercase tracking-widest opacity-60">EUS</span>
+          </button>
+          <button onclick="changeLanguage('es')" class="lang-opt-btn flex items-center justify-between px-3 py-1.5 rounded-xl text-xs font-semibold bg-[#b89b72] text-white hover:bg-[#b89b72] transition-colors" data-lang="es">
+            <span>Español</span><span class="text-[9px] uppercase tracking-widest opacity-60">ESP</span>
+          </button>
+          <button onclick="changeLanguage('en')" class="lang-opt-btn flex items-center justify-between px-3 py-1.5 rounded-xl text-xs font-semibold text-[#2c2c2c] hover:bg-[#b89b72] hover:text-white transition-colors" data-lang="en">
+            <span>English</span><span class="text-[9px] uppercase tracking-widest opacity-60">ENG</span>
+          </button>
+        </div>
       </div>
+
+      <!-- Divider -->
+      <div class="h-4 w-px bg-[#2c2c2c]/15 self-center mx-0.5" aria-hidden="true"></div>
+
+      <!-- ☰ Hamburger button (tres rayas) — siempre visible -->
+      <button id="island-hamburger" onclick="toggleIslandNav()" class="island-icon-btn group w-7 h-7 sm:w-8 sm:h-8 rounded-full text-[#2c2c2c] hover:text-[#b89b72] hover:bg-[#b89b72]/15 transition-all duration-300 flex-shrink-0" aria-label="Menú de navegación" title="Navegación" aria-expanded="false">
+        <!-- Animated 3-line → X icon -->
+        <svg id="hamburger-icon" class="w-4 h-4 sm:w-[17px] sm:h-[17px] transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line id="ham-line1" x1="3" y1="7"  x2="21" y2="7"  class="transition-all duration-300 origin-center"/>
+          <line id="ham-line2" x1="3" y1="12" x2="21" y2="12" class="transition-all duration-300 origin-center"/>
+          <line id="ham-line3" x1="3" y1="17" x2="21" y2="17" class="transition-all duration-300 origin-center"/>
+        </svg>
+      </button>
+
     </div>
   </header>
 
@@ -3885,9 +3887,63 @@
       });
     });
 
+    // ── DYNAMIC ISLAND HAMBURGER NAVIGATION ───────────────────────────
+    let islandNavOpen = false;
+
+    function toggleIslandNav() {
+      islandNavOpen = !islandNavOpen;
+      const nav = document.getElementById('island-nav');
+      const btn = document.getElementById('island-hamburger');
+      const l1  = document.getElementById('ham-line1');
+      const l2  = document.getElementById('ham-line2');
+      const l3  = document.getElementById('ham-line3');
+
+      if (islandNavOpen) {
+        // Expand nav
+        nav.style.maxWidth  = '280px';
+        nav.style.opacity   = '1';
+        nav.style.pointerEvents = 'auto';
+        btn.setAttribute('aria-expanded', 'true');
+        // Animate to X
+        if (l1) { l1.setAttribute('x1','5'); l1.setAttribute('y1','5');  l1.setAttribute('x2','19'); l1.setAttribute('y2','19'); }
+        if (l2) { l2.style.opacity = '0'; l2.style.transform = 'scaleX(0)'; }
+        if (l3) { l3.setAttribute('x1','5'); l3.setAttribute('y1','19'); l3.setAttribute('x2','19'); l3.setAttribute('y2','5'); }
+      } else {
+        collapseIsland();
+      }
+    }
+
+    function collapseIsland() {
+      islandNavOpen = false;
+      const nav = document.getElementById('island-nav');
+      const btn = document.getElementById('island-hamburger');
+      const l1  = document.getElementById('ham-line1');
+      const l2  = document.getElementById('ham-line2');
+      const l3  = document.getElementById('ham-line3');
+
+      nav.style.maxWidth  = '0';
+      nav.style.opacity   = '0';
+      nav.style.pointerEvents = 'none';
+      btn.setAttribute('aria-expanded', 'false');
+      // Restore 3 lines
+      if (l1) { l1.setAttribute('x1','3'); l1.setAttribute('y1','7');  l1.setAttribute('x2','21'); l1.setAttribute('y2','7'); }
+      if (l2) { l2.style.opacity = '1'; l2.style.transform = 'scaleX(1)'; }
+      if (l3) { l3.setAttribute('x1','3'); l3.setAttribute('y1','17'); l3.setAttribute('x2','21'); l3.setAttribute('y2','17'); }
+    }
+
+    // Close island nav when clicking outside
+    document.addEventListener('click', (e) => {
+      if (islandNavOpen && !e.target.closest('#dynamic-island')) {
+        collapseIsland();
+      }
+    });
+
+    window.collapseIsland  = collapseIsland;
+    window.toggleIslandNav = toggleIslandNav;
+
     // ── DYNAMIC ISLAND COMPATIBILITY & LIFECYCLE ───────────────────────
-    window.closeIslandMobile = function() {};
-    window.toggleIsland = function() {};
+    window.closeIslandMobile = collapseIsland;
+    window.toggleIsland      = toggleIslandNav;
 
     // Dynamic Island Heart micro-interaction
     function pulseIslandHeart() {
